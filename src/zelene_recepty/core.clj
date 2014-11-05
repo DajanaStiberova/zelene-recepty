@@ -19,7 +19,6 @@
   (group-by (comp string/upper-case str first key) coll))
 
 (defn recipes-for-ingredient [ingredient-id all-recipes]
-
   (filter (fn [recipe]
             (contains? (:ingredients recipe) ingredient-id))
           all-recipes))

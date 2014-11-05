@@ -1,21 +1,21 @@
-({:id 1
-  :title {:sk "Najnovšie recepty" :en "Newest recipes"}
-  :link :home#hr}
-{:id 2
- :title {:sk "Hlavné jedlá" :en "Main dishes"}
-  :link :main-dishes#hr}
- {:id 3
-  :title {:sk "Nátierky" :en "Spreads"}
-  :link :spreads#hr}
- {:id 4
-  :title {:sk "Sladkosti" :en "Sweets"}
-  :link :sweets#hr}
- {:id 5
-  :title {:sk "Nápoje" :en "Drinks"}
-  :link :drinks#hr}
- {:id 6
-  :title {:sk "Suroviny" :en "Ingredients"}
-  :link :list-of-ingredients#hr}
-{:id 7
- :title {:sk "Recepty" :en "Recipes"}
- :link :list-of-recipes#hr})
+{1 {:id 1
+    :title {:sk "Najnovšie recepty" :en "Newest recipes"}
+    :link :home#hr}
+ 2 {:id 2
+    :title {:sk "Hlavné jedlá" :en "Main dishes"}
+    :link :main-dishes#hr}
+ 3 {:id 3
+    :title {:sk "Nátierky" :en "Spreads"}
+    :link :spreads#hr}
+ 4 {:id 4
+    :title {:sk "Sladkosti" :en "Sweets"}
+    :link :sweets#hr}
+ 5 {:id 5
+    :title {:sk "Nápoje" :en "Drinks"}
+    :link :drinks#hr}
+ 6 {:id 6
+    :title {:sk "Suroviny" :en "Ingredients"}
+    :link :list-of-ingredients#hr}
+ 7 {:id 7
+    :title {:sk "Recepty" :en "Recipes"}
+    :link :list-of-recipes#hr}}

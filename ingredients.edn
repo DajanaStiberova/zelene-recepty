@@ -1,52 +1,52 @@
-({:id 1 :name {:sk "Soľ" :en "Salt"}}
- {:id 2 :name {:sk "Avokádo" :en "Avocado"}}
- {:id 3 :name {:sk "Cesnak" :en "Garlic"}}
- {:id 4 :name {:sk "Cibuľa" :en "Onion" }}
- {:id 5 :name {:sk "Rajčina" :en "Tomato"}}
- {:id 6 :name {:sk "Citrónová šťava" :en "Lemon-juice"}}
- {:id 7 :name {:sk "Kakao" :en "Cocoa"}}
- {:id 8 :name {:sk "Kokosový olej" :en "Coconut oil"}}
- {:id 9 :name {:sk "Mandle" :en "Almond"}}
- {:id 10 :name {:sk "Agáve" :en "Agave"}}
- {:id 11 :name {:sk "Mätový extrakt" :en "Pepermit extract"}}
- {:id 12 :name {:sk "Brokolica" :en "Broccoli"}}
- {:id 13 :name {:sk "Špenát" :en "Spinach"}}
- {:id 14 :name {:sk "Čínska kapusta" :en "Chinese cabbage"}}
- {:id 15 :name {:sk "Slnečnicové semienka" :en "Sunflower seeds"}}
- {:id 16 :name {:sk "Olivový olej" :en "Olive oil"}}
- {:id 17 :name {:sk "Jablčný ocot" :en "Apple Cider Vinegar"}}
- {:id 18 :name {:sk "Tamari omáčka" :en "Tamari sauce"}}
- {:id 19 :name {:sk "Horčica" :en "Mustard"}}
- {:id 20 :name {:sk "Špalda" :en "Spelt"}}
- {:id 21 :name {:sk "Voda" :en "Water"}}
- {:id 22 :name {:sk "Himalájska soľ" :en "Himalayan salt"}}
- {:id 23 :name {:sk "Horčičné semiačka" :en "Mustard seeds"}}
- {:id 24 :name {:sk "Sušené rajčiny" :en "Dried tomatoes"}}
- {:id 25 :name {:sk "Vínny ocot" :en "Vinegar"}}
- {:id 26 :name {:sk "Konopné semiačka" :en "Hemp seeds"}}
- {:id 27 :name {:sk "Tekvicové semiačka" :en "Pumpkin seeds"}}
- {:id 28 :name {:sk "Čierne korenie" :en "Black pepper"}}
- {:id 29 :name {:sk "Bazalka" :en "Basil"}}
- {:id 30 :name {:sk "Mungo" :en "Mungo beens"}}
- {:id 31 :name {:sk "Píniové oriešky" :en "Pine nuts"}}
- {:id 32 :name {:sk "Huby" :en "Mushrooms"}}
- {:id 33 :name {:sk "Paprika" :en "Fresh pepper"}}
- {:id 34 :name {:sk "Vlašské orechy" :en "Walnuts"}}
- {:id 35 :name {:sk "Drvené bylinky" :en "Crushed herbs"}}
- {:id 36 :name {:sk "Kešu" :en "Cashew"}}
- {:id 37 :name {:sk "Karob" :en "Carob"}}
- {:id 38 :name {:sk "Chia semiačka" :en "Chia seeds"}}
- {:id 39 :name {:sk "Hrozienka" :en "Raisins"}}
- {:id 40 :name {:sk "Datle" :en "Dates"}}
- {:id 41 :name {:sk "Obilné zrná" :en "Cereal grains"}}
- {:id 42 :name {:sk "Jahody" :en "Strawberries"}}
- {:id 43 :name {:sk "Rebarbora" :en "Rhubarb"}}
- {:id 44 :name {:sk "Mrkva" :en "Carrot"}}
- {:id 45 :name {:sk "Ľanové semiačka" :en "Flax seeds"}}
- {:id 46 :name {:sk "Rasca" :en "Cumin"}}
- {:id 47 :name {:sk "Červená kapusta" :en "Red cabbage"}}
- {:id 48 :name {:sk "Listová zelenina" :en "Leafy vegetables"}}
- {:id 49 :name {:sk "Tahini dressing" :en "Tahini dressing"}}
- {:id 50 :name {:sk "Cícer" :en "Chickpea"}}
- {:id 51 :name {:sk "Červená paprika" :en "Red pepper"}}
- {:id 52 :name {:sk "Tahini" :en "Tahini"}})
+{1 {:id 1 :name {:sk "Soľ" :en "Salt"}}
+ 2 {:id 2 :name {:sk "Avokádo" :en "Avocado"}}
+ 3 {:id 3 :name {:sk "Cesnak" :en "Garlic"}}
+ 4 {:id 4 :name {:sk "Cibuľa" :en "Onion" }}
+ 5 {:id 5 :name {:sk "Rajčina" :en "Tomato"}}
+ 6 {:id 6 :name {:sk "Citrónová šťava" :en "Lemon-juice"}}
+ 7 {:id 7 :name {:sk "Kakao" :en "Cocoa"}}
+ 8 {:id 8 :name {:sk "Kokosový olej" :en "Coconut oil"}}
+ 9 {:id 9 :name {:sk "Mandle" :en "Almond"}}
+ 10 {:id 10 :name {:sk "Agáve" :en "Agave"}}
+ 11 {:id 11 :name {:sk "Mätový extrakt" :en "Pepermit extract"}}
+ 12 {:id 12 :name {:sk "Brokolica" :en "Broccoli"}}
+ 13 {:id 13 :name {:sk "Špenát" :en "Spinach"}}
+ 14 {:id 14 :name {:sk "Čínska kapusta" :en "Chinese cabbage"}}
+ 15 {:id 15 :name {:sk "Slnečnicové semienka" :en "Sunflower seeds"}}
+ 16 {:id 16 :name {:sk "Olivový olej" :en "Olive oil"}}
+ 17 {:id 17 :name {:sk "Jablčný ocot" :en "Apple Cider Vinegar"}}
+ 18 {:id 18 :name {:sk "Tamari omáčka" :en "Tamari sauce"}}
+ 19 {:id 19 :name {:sk "Horčica" :en "Mustard"}}
+ 20 {:id 20 :name {:sk "Špalda" :en "Spelt"}}
+ 21 {:id 21 :name {:sk "Voda" :en "Water"}}
+ 22 {:id 22 :name {:sk "Himalájska soľ" :en "Himalayan salt"}}
+ 23 {:id 23 :name {:sk "Horčičné semiačka" :en "Mustard seeds"}}
+ 24 {:id 24 :name {:sk "Sušené rajčiny" :en "Dried tomatoes"}}
+ 25 {:id 25 :name {:sk "Vínny ocot" :en "Vinegar"}}
+ 26 {:id 26 :name {:sk "Konopné semiačka" :en "Hemp seeds"}}
+ 27 {:id 27 :name {:sk "Tekvicové semiačka" :en "Pumpkin seeds"}}
+ 28 {:id 28 :name {:sk "Čierne korenie" :en "Black pepper"}}
+ 29 {:id 29 :name {:sk "Bazalka" :en "Basil"}}
+ 30 {:id 30 :name {:sk "Mungo" :en "Mungo beens"}}
+ 31 {:id 31 :name {:sk "Píniové oriešky" :en "Pine nuts"}}
+ 32 {:id 32 :name {:sk "Huby" :en "Mushrooms"}}
+ 33 {:id 33 :name {:sk "Paprika" :en "Fresh pepper"}}
+ 34 {:id 34 :name {:sk "Vlašské orechy" :en "Walnuts"}}
+ 35 {:id 35 :name {:sk "Drvené bylinky" :en "Crushed herbs"}}
+ 36 {:id 36 :name {:sk "Kešu" :en "Cashew"}}
+ 37 {:id 37 :name {:sk "Karob" :en "Carob"}}
+ 38 {:id 38 :name {:sk "Chia semiačka" :en "Chia seeds"}}
+ 39 {:id 39 :name {:sk "Hrozienka" :en "Raisins"}}
+ 40 {:id 40 :name {:sk "Datle" :en "Dates"}}
+ 41 {:id 41 :name {:sk "Obilné zrná" :en "Cereal grains"}}
+ 42 {:id 42 :name {:sk "Jahody" :en "Strawberries"}}
+ 43 {:id 43 :name {:sk "Rebarbora" :en "Rhubarb"}}
+ 44 {:id 44 :name {:sk "Mrkva" :en "Carrot"}}
+ 45 {:id 45 :name {:sk "Ľanové semiačka" :en "Flax seeds"}}
+ 46 {:id 46 :name {:sk "Rasca" :en "Cumin"}}
+ 47 {:id 47 :name {:sk "Červená kapusta" :en "Red cabbage"}}
+ 48 {:id 48 :name {:sk "Listová zelenina" :en "Leafy vegetables"}}
+ 49 {:id 49 :name {:sk "Tahini dressing" :en "Tahini dressing"}}
+ 50 {:id 50 :name {:sk "Cícer" :en "Chickpea"}}
+ 51 {:id 51 :name {:sk "Červená paprika" :en "Red pepper"}}
+ 52 {:id 52 :name {:sk "Tahini" :en "Tahini"}}}
