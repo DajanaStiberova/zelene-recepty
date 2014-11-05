@@ -1,0 +1,40 @@
+({:id 1
+  :names
+  [{:sk "Šálka" :en "Cup"}
+   {:sk "Šálky" :en "Cups"}
+   {:sk"Šálok" :en "Cups"}]}
+ {:id 2
+  :names
+  [{:sk "Gram" :en "Gram"}
+   {:sk "Gramy" :en "Grams"}
+   {:sk"Gramov" :en "Grams"}]}
+ {:id 3
+  :names
+  [{:sk "Lyžica" :en "Tablespoon"}
+   {:sk "Lyžice" :en "Tablespoons"}
+   {:sk "Lyžíc" :en "Tablespoons"}]}
+ {:id 5
+  :names
+  [{:sk "Čajová lyžička" :en "Teaspoon" }
+   {:sk "Čajové lyžičky" :en "Teaspoons"}
+   {:sk "Čajových lyžičiek" :en "Teaspoons" }]}
+ {:id 6
+  :names
+  [{:sk "Kus" :en "Piece"}
+   {:sk "Kusy" :en "Pieces"}
+   {:sk "Kusov" :en "Pieces"}]}
+ {:id 7
+  :names
+  [{:sk "Strúčik" :en "Clove" }
+   {:sk "Strúčiky" :en "Cloves" }
+   {:sk "Strúčikov" :en "Cloves"}]}
+ {:id 8
+  :names
+  [{:sk "Liter" :en "Liter"}
+   {:sk "Litre" :en "Liters"}
+   {:sk "Litrov" :en "Liters"}]}
+ {:id 9
+  :names
+  [{:sk "Štipka" :en "Pinch"}
+   {:sk "Štipky" :en "Pinches"}
+   {:sk "Štipiek" :en "Pinches"}]})
