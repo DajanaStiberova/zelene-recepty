@@ -14,12 +14,12 @@
 (deftest group-by-first-letter
   (testing
       "Collection should be grouped by uppercase of first letter under specified key"
-    (is (= (core/group-by-first-letter :a {1 {:a "hej"}
-                                           2 {:a "Hej !"}
-                                           3 {:a "bej"}
-                                           4 {:a "Bej" }})
-           {"H" [{:a "hej"} {:a "Hej !"}]
-            "B" [{:a "Bej"} {:a "bej"}]}))))
+    (is (= (core/group-by-first-letter :sk :name '({:name {:sk "Avokádo" :en "Avocado"}}
+                                                   {:name {:sk "Agáve" :en "Agave"}}
+                                                   {:name {:sk "Bazalka" :en "Basil"}}
+                                                   {:name {:sk "Brokolica" :en "Broccoli"}}))
+           {"A" [{:name {:sk "Avokádo" :en "Avocado"}} {:name {:sk "Agáve" :en "Agave"}}]
+            "B" [{:name {:sk "Bazalka" :en "Basil"}} {:name {:sk "Brokolica" :en "Broccoli"}}]}))))
 
 (deftest recipes-for-ingredient
   (testing
@@ -56,50 +56,50 @@
                                           :ingredients #{7 8 9 1 10 11}
                                           :category 4}})
            '([1 {:id 1,
-                :thumbnail-link "images/thumbnails/guacamole.jpg",
-                :title {:sk "Guacamole" :en "Guacamole"}
-                :ingredients #{1 4 6 3 2 5},
-                :category 2}])))))
+                 :thumbnail-link "images/thumbnails/guacamole.jpg",
+                 :title {:sk "Guacamole" :en "Guacamole"}
+                 :ingredients #{1 4 6 3 2 5},
+                 :category 2}])))))
 
 (deftest property-formatted-all-ingredients
   (testing
       "Function takes ingredients and put them into string which is defined in function"
-    (is (= (core/property-formatted-all-ingredients
-            '({:id 1 :name {:sk "Soľ" :en "Salt"}}
-              {:id 2 :name {:sk "Avokádo" :en "Avocado"}}
-              {:id 3 :name {:sk "Cesnak" :en "Garlic"}}) :sk)
+    (is (= (core/property-formatted-all-ingredients 
+            {1 {:id 1 :name {:sk "Soľ" :en "Salt"}}
+             2 {:id 2 :name {:sk "Avokádo" :en "Avocado"}}
+             3 {:id 3 :name {:sk "Cesnak" :en "Garlic"}}} :sk)
            '("Key :name has a value Soľ"
+             "Key :name has a value Cesnak"
              "Key :name has a value Avokádo"
-             "Key :name has a value Cesnak") ))))
+             ) ))))
 
 (deftest populate-recipe
   (testing
       "Units and amounts should be added to recipe"
-    (is (= (core/populate-recipe {:id 1,
-                                  :thumbnail-link "images/thumbnails/guacamole.jpg",
-                                  :title "Guacamole",
-                                  :ingredients #{1 3 2},
-                                  :category 2}
-                                 '({:id 1 :name {:sk "Soľ" :en "Salt"}}
-                                   {:id 2 :name {:sk "Avokádo" :en "Avocado"}}
-                                   {:id 3 :name {:sk "Cesnak" :en "Garlic"}})
-                                 '({:recipe-id 1 :ingredient-id 2 :unit-id 6 :amount 4}
-                                   {:recipe-id 1 :ingredient-id 3 :unit-id 7 :amount 4}
-                                   {:recipe-id 1 :ingredient-id 1 :unit-id 5 :amount 1})
-                                 '(
-                                   {:id 5 :names
-                                    [{:sk "Čajová lyžička" :en "Teaspoon" }
-                                     {:sk "Čajové lyžičky" :en "Teaspoons"}
-                                     {:sk "Čajových lyžičiek" :en "Teaspoons" }]}
-                                   {:id 6 :names
-                                    [{:sk "Kus" :en "Piece"}
-                                     {:sk "Kusy" :en "Pieces"}
-                                     {:sk "Kusov" :en "Pieces"}]}
-                                   {:id 7 :names
-                                    [{:sk "Strúčik" :en "Clove" }
-                                     {:sk "Strúčiky" :en "Cloves" }
-                                     {:sk "Strúčikov" :en "Cloves"}]}
-                                   ) :sk)
+    (is (= (core/populate-recipe [1 {:id 1,
+                                     :thumbnail-link "images/thumbnails/guacamole.jpg",
+                                     :title "Guacamole",
+                                     :ingredients #{1 3 2},
+                                     :category 2}]
+                                 {1 {:id 1 :name {:sk "Soľ" :en "Salt"}}
+                                  2 {:id 2 :name {:sk "Avokádo" :en "Avocado"}}
+                                  3 {:id 3 :name {:sk "Cesnak" :en "Garlic"}}}
+                                 {[1 2] {:recipe-id 1 :ingredient-id 2 :unit-id 6 :amount 4}
+                                  [1 3] {:recipe-id 1 :ingredient-id 3 :unit-id 7 :amount 4}
+                                  [1 1] {:recipe-id 1 :ingredient-id 1 :unit-id 5 :amount 1}}
+                                 {5 {:id 5 :names
+                                     [{:sk "Čajová lyžička" :en "Teaspoon"}
+                                      {:sk "Čajové lyžičky" :en "Teaspoons"}
+                                      {:sk "Čajových lyžičiek" :en "Teaspoons"}]}
+                                  6 {:id 6 :names
+                                     [{:sk "Kus" :en "Piece"}
+                                      {:sk "Kusy" :en "Pieces"}
+                                      {:sk "Kusov" :en "Pieces"}]}
+                                  7 {:id 7 :names
+                                     [{:sk "Strúčik" :en "Clove" }
+                                      {:sk "Strúčiky" :en "Cloves"}
+                                      {:sk "Strúčikov" :en "Cloves"}]}}
+                                 :sk)
            {:category 2,
             :title "Guacamole",
             :thumbnail-link "images/thumbnails/guacamole.jpg",
@@ -110,30 +110,30 @@
   (testing
       "Maps should be grouped by first letter under key and then sorted alphabetically"
     (is (= (core/group-and-sort
-            '({:id 2 :name {:sk "Avokádo" :en "Avocado"}}
-              {:id 10 :name {:sk "Agáve" :en "Agave"}}
-              {:id 3 :name {:sk "Cesnak" :en "Garlic"}}) :name :sk)
-           '(["A" ({:id 10, :name "Agáve"}
-                   {:id 2, :name "Avokádo"})]
-               ["C" ({:id 3, :name "Cesnak"})])))))
+            (vals {1 {:id 2 :name {:sk "Avokádo" :en "Avocado"}}
+                   2 {:id 10 :name {:sk "Agáve" :en "Agave"}}
+                   3 {:id 3 :name {:sk "Cesnak" :en "Garlic"}}}) :name :sk)
+           '(["A" ({:id 10, :name {:sk "Agáve" :en "Agave"}}
+                   {:id 2, :name {:sk "Avokádo" :en "Avocado"}})]
+               ["C" ({:id 3, :name {:sk "Cesnak" :en "Garlic"}})])))))
 
 (deftest recipes-for-selected-category
   (testing
       "Recipes should be filtered by selected category with filled ingredients names"
     (is (= (core/recipes-for-selected-category 2
-                                               '({:id 1
+                                               {1 {:id 1
                                                   :thumbnail-link "images/thumbnails/guacamole.jpg"
                                                   :title {:sk "Guacamole" :en "Guacamole"}
                                                   :ingredients #{2 3 1}
-                                                  :category 2}
-                                                 {:id 2
-                                                  :thumbnail-link "images/thumbnails/choco-mint.jpg"
-                                                  :title {:sk "Mätové toliariky" :en "Chocolate mints"}
-                                                  :ingredients #{7 8 9 1 10 11}
-                                                  :category 4})
-                                               '({:id 1 :name {:sk "Soľ" :en "Salt"}}
-                                                 {:id 2 :name {:sk "Avokádo" :en "Avocado"}}
-                                                 {:id 3 :name {:sk "Cesnak" :en "Garlic"}}) :sk )
+                                                 :category 2}
+                                                2 {:id 2
+                                                 :thumbnail-link "images/thumbnails/choco-mint.jpg"
+                                                 :title {:sk "Mätové toliariky" :en "Chocolate mints"}
+                                                 :ingredients #{7 8 9 1 10 11}
+                                                 :category 4}}
+                                               {1 {:id 1 :name {:sk "Soľ" :en "Salt"}}
+                                                2 {:id 2 :name {:sk "Avokádo" :en "Avocado"}}
+                                                3 {:id 3 :name {:sk "Cesnak" :en "Garlic"}}} :sk )
            '({:id 1
               :thumbnail-link "images/thumbnails/guacamole.jpg"
               :title  "Guacamole"
