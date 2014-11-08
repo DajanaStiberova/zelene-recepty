@@ -20,41 +20,38 @@
 
 (defn- view-main-template [id-category title ]
   (view/main-template
+   (current-language {:sk "Recept" :en "Recipe"})
    (core/recipes-for-selected-category id-category data/recipes data/ingredients current-language)
-   (map (fn [categories]
-          (update-in categories [:title] current-language))
-        data/categories)
+   (core/list-of-categories data/categories current-language)
    7
    (current-language title)
    (current-language {:sk "RAW Vegan Kuchárka" :en "RAW Vegan CookBook"})
    (current-language {:sk "Hore" :en "Up"})
    (current-language {:sk "Zelené recepty" :en"Green recipes"})))
 
-(defn- home-page [ title ]
+(defn- home-page [title]
   (view/main-template
+   (current-language {:sk "Recept" :en "Recipe"})
    (map (fn [recipe-title]
           (update-in recipe-title [:title]
                      current-language))
-        (map (fn [recipe]
+        (map (fn [[recipe-key recipe]]
                (update-in recipe [:ingredients]
                           #(map  (partial core/name-for-ingredient data/ingredients current-language) % )))
              data/recipes))
-   (map (fn [categories]
-          (update-in categories [:title] current-language))
-        data/categories)
+   (core/list-of-categories data/categories current-language)
    7
    (current-language title)
    (current-language {:sk "RAW Vegan Kuchárka" :en "RAW Vegan CookBook"})
    (current-language {:sk "Hore" :en "Up"})
    (current-language {:sk "Zelené recepty" :en"Green recipes"})))
 
-(defn- lists [template title all-data key]
+(defn- lists [template title all-data key name-path]
   (template
    (current-language title)
-   (core/group-and-sort all-data key  current-language )
-   (map (fn [categories]
-          (update-in categories [:title] current-language))
-        data/categories)
+   (core/group-and-sort (vals all-data) key current-language)
+   name-path
+   (core/list-of-categories data/categories current-language)
    (current-language {:sk "RAW Vegan Kuchárka" :en "RAW Vegan CookBook"})
    (current-language {:sk "Hore" :en "Up"})
    (current-language {:sk "Zelené recepty" :en"Green recipes"})))
@@ -64,40 +61,38 @@
 (def routing-map {"/home" (fn [request]
                             {:status 200
                              :body (apply str (home-page
-                                                         {:sk "Najnovšie recepty" :en "Newest recipes"}))})
+                                               {:sk "Najnovšie recepty" :en "Newest recipes"}))})
                   "/main-dishes" (fn [request]
                                    {:status 200
                                     :body (apply str (view-main-template 2
-                                                                         {:sk "Hlavné jedlá" :en "Main dishes"}
-                                                                         ))})
+                                                                         {:sk "Hlavné jedlá" :en "Main dishes"}))})
                   "/spreads" (fn [request]
                                {:status 200
                                 :body (apply str (view-main-template  3
-                                                                     {:sk "Nátierky" :en "Spreads"}
-                                                                     ))})
+                                                                      {:sk "Nátierky" :en "Spreads"}))})
                   "/sweets" (fn [request]
                               {:status 200
                                :body (apply str (view-main-template 4
-                                                                    {:sk "Sladkosti" :en "Sweets"}
-                                                                    ))})
+                                                                    {:sk "Sladkosti" :en "Sweets"}))})
                   "/drinks" (fn [request]
                               {:status 200
                                :body (apply str (view-main-template 5
-                                                                    {:sk "Nápoje" :en "Drinks"}
-                                                                    ))})
+                                                                    {:sk "Nápoje" :en "Drinks"}))})
 
                   "/list-of-ingredients" (fn [request]
                                            {:status 200
                                             :body (apply str  (lists  view/ingredients-template
                                                                       {:sk "Zoznam surovín" :en "List of ingredients"}
                                                                       data/ingredients
-                                                                      :name ))})
+                                                                      :name
+                                                                      [:name current-language]))})
                   "/list-of-recipes" (fn [request]
                                        {:status 200
                                         :body (apply str (lists view/recipes-template
                                                                 {:sk "Zoznam receptov" :en "List of recipes"}
                                                                 data/recipes
-                                                                :title ))})
+                                                                :title
+                                                                [:title current-language]))})
 
                   "/recipes" (fn [request]
                                (let [ingredient-id (-> request :params :ingredientId (maybe-param 0))]

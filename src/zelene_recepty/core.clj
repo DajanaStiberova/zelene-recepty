@@ -2,30 +2,28 @@
   (:require [zelene-recepty.data :as data]
             [clojure.string :as string]))
 
-(def guacamole (first data/recipes))
+(def guacamole (second data/recipes))
 
-(def sol (first data/ingredients))
+(defn list-of-categories [all-catedories current-language]
+  (map (fn [[category-key category]]
+           (update-in category [:title] current-language))
+         data/categories))
 
-(def  ^:private ff (comp first filter))
+(defn name-for-ingredient [all-ingredients language-key ingredient-key]
+  (language-key (:name (get all-ingredients ingredient-key))))
 
-(defn name-for-ingredient [all-ingredients language-key ingredient-id]
-  (language-key (first (map :name (filter (fn [ingredients]
-                                            (= ingredient-id
-                                               (:id ingredients)))
-                                          all-ingredients)))))
+(defn group-by-first-letter [language-key key seq]
+  "Map is grouped by uppercase of first letter under specified key maps"
+  (group-by (comp string/upper-case str first language-key key) seq))
 
-(defn group-by-first-letter [ key coll]
-  ;; "Collection is grouped by uppercase of first letter under specified key"
-  (group-by (comp string/upper-case str first key) coll))
-
-(defn recipes-for-ingredient [ingredient-id all-recipes]
-  (filter (fn [recipe]
-            (contains? (:ingredients recipe) ingredient-id))
+(defn recipes-for-ingredient [ingredient-key all-recipes]
+  (filter (fn [[recipe-key recipe]]
+            (contains? (:ingredients recipe) ingredient-key))
           all-recipes))
 
-(defn recipes-for-category [category-number all-recipes]
-  (filter (fn [recipe]
-            (= category-number (:category recipe)))
+(defn recipes-for-category [category-key all-recipes]
+  (filter (fn [[recipes-key recipe]]
+            (= category-key (:category recipe)))
           all-recipes))
 
 ;; Exercises
@@ -48,7 +46,7 @@
 (defn property-formatted-all-ingredients [all-ingredients language-key]
   (map (fn [ingredient]
          (property-formatted :name "Key %s has a value %s" language-key ingredient))
-       all-ingredients))
+       (vals all-ingredients)))
 
 ;; takýto ma byt vysledok
 (comment
@@ -61,24 +59,22 @@
 
 (defn- amounts-from-recipe [recipe all-amounts]
   (filter (fn [amounts]
-            (= (:id recipe) (:recipe-id amounts)))
+            (= (first recipe) (first (key amounts))))
           all-amounts))
 
-(defn- unit-id-from-ingredient-id [ingredient-id recipe all-amounts]
-  (filter (fn [recipe-ingredients]
-            (= ingredient-id (:ingredient-id recipe-ingredients)))
+(defn- unit-id-from-ingredient-id [ingredient-key recipe all-amounts]
+  (filter (fn [[key recipe-ingredients]]
+            (= ingredient-key (:ingredient-id recipe-ingredients)))
           (amounts-from-recipe recipe all-amounts)))
 
 (defn- amount-name-from-unit-id [unit-id all-units language-key]
-  (map language-key (:names (ff (fn [units]
-                                  (= unit-id (:id units)))
-                                all-units))))
+  (map language-key (:names (get all-units unit-id))))
 
 (defn- fill-units-and-amounts-into-ingredients [recipe all-ingredients all-amounts all-units language-key]
   (map
    (fn [ingredient-id]
-     (let [amount-from-id (first (map :amount (unit-id-from-ingredient-id ingredient-id recipe all-amounts)))
-           units-from-id (amount-name-from-unit-id (first (map :unit-id (unit-id-from-ingredient-id ingredient-id recipe all-amounts))) all-units language-key)]
+     (let [amount-from-id (:amount (second (first (unit-id-from-ingredient-id ingredient-id recipe all-amounts))))
+           units-from-id (amount-name-from-unit-id (:unit-id (second (first (unit-id-from-ingredient-id ingredient-id recipe all-amounts)))) all-units language-key)]
        [(name-for-ingredient all-ingredients language-key ingredient-id)
         amount-from-id
         (cond
@@ -86,10 +82,10 @@
          (and (< 1 amount-from-id) (> 5 amount-from-id)) (second units-from-id)
          (> 4 amount-from-id) (last units-from-id)
          :else units-from-id)]))
-   (:ingredients recipe)))
+   (:ingredients (second recipe))))
 
 (defn populate-recipe [recipe all-ingredients all-amounts all-units language-key]
-  (assoc-in recipe [:ingredients]
+  (assoc-in (second recipe) [:ingredients]
             (into #{} (fill-units-and-amounts-into-ingredients recipe all-ingredients all-amounts all-units language-key))))
 
 (defn group-and-sort
@@ -97,12 +93,9 @@
   and groups them according to first letters under specified key (as for example :name).
   It also sort the grouped structure alphabetically at all levels."
   [sequence-of-maps key language-key]
-  (->> (map (fn [name]
-              (update-in name [key]  language-key))
-            sequence-of-maps)
-       (group-by-first-letter key)
+  (->> (group-by-first-letter language-key key sequence-of-maps)
        (sort-by first)
-       (map (juxt first (comp (partial sort-by key) second)))))
+       (map (juxt first (comp (partial sort-by (comp language-key key)) second)))))
 
 (defn recipes-for-selected-category [id-category all-recipes all-ingredients language-key]
   "This function takes a category id and select all recipes containing this category with ingredents names "
@@ -112,4 +105,4 @@
        (map (fn [recipe]
               (update-in recipe [:ingredients]
                          #(into #{} (map  (partial name-for-ingredient all-ingredients language-key)  %))))
-            (recipes-for-category  id-category all-recipes))))
+            (vals (recipes-for-category id-category all-recipes)))))

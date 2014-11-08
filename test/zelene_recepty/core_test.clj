@@ -6,60 +6,60 @@
   (testing
       "Function should filter ingredients by id, and return name of ingredient"
     (is (= (core/name-for-ingredient
-            '({:id 1 :name {:sk "Soľ" :en "Salt"}}
-              {:id 2 :name {:sk "Avokádo" :en "Avocado"}}
-              {:id 3 :name {:sk "Cesnak" :en "Garlic"}}) :sk 3)
+            {1 {:id 1 :name {:sk "Soľ" :en "Salt"}}
+             2 {:id 2 :name {:sk "Avokádo" :en "Avocado"}}
+             3 {:id 3 :name {:sk "Cesnak" :en "Garlic"}}}  :sk 3)
            "Cesnak"))))
 
 (deftest group-by-first-letter
   (testing
       "Collection should be grouped by uppercase of first letter under specified key"
-    (is (= (core/group-by-first-letter :a '({:a "hej"}
-                                            {:a "Hej !"}
-                                            {:a "bej"}
-                                            {:a "Bej"}))
+    (is (= (core/group-by-first-letter :a {1 {:a "hej"}
+                                           2 {:a "Hej !"}
+                                           3 {:a "bej"}
+                                           4 {:a "Bej" }})
            {"H" [{:a "hej"} {:a "Hej !"}]
-            "B" [{:a "bej"} {:a "Bej"}]}))))
+            "B" [{:a "Bej"} {:a "bej"}]}))))
 
 (deftest recipes-for-ingredient
   (testing
       "Recipes should be filtered by selected ingredient-id"
     (is (= (core/recipes-for-ingredient 2
-                                        '({:id 1
-                                           :thumbnail-link "images/thumbnails/guacamole.jpg"
-                                           :title {:sk "Guacamole" :en "Guacamole"}
-                                           :ingredients #{2 3 1 4 5 6}
-                                           :category 2}
-                                          {:id 2
-                                           :thumbnail-link "images/thumbnails/choco-mint.jpg"
-                                           :title {:sk "Mätové toliariky" :en "Chocolate mints"}
-                                           :ingredients #{7 8 9 1 10 11}
-                                           :category 4}))
-           '({:id 1,
-              :thumbnail-link "images/thumbnails/guacamole.jpg",
-              :title {:sk "Guacamole" :en "Guacamole"}
-              :ingredients #{1 4 6 3 2 5},
-              :category 2})))))
+                                        {1 {:id 1
+                                            :thumbnail-link "images/thumbnails/guacamole.jpg"
+                                            :title {:sk "Guacamole" :en "Guacamole"}
+                                            :ingredients #{2 3 1 4 5 6}
+                                            :category 2}
+                                         2 {:id 2
+                                            :thumbnail-link "images/thumbnails/choco-mint.jpg"
+                                            :title {:sk "Mätové toliariky" :en "Chocolate mints"}
+                                            :ingredients #{7 8 9 1 10 11}
+                                            :category 4}})
+           '([1 {:id 1,
+                 :thumbnail-link "images/thumbnails/guacamole.jpg",
+                 :title {:sk "Guacamole" :en "Guacamole"}
+                 :ingredients #{1 4 6 3 2 5},
+                 :category 2}])))))
 
 (deftest recipes-for-category
   (testing
       "Recipes should be filtered by selected category"
     (is (= (core/recipes-for-category 2
-                                      '({:id 1
-                                         :thumbnail-link "images/thumbnails/guacamole.jpg"
-                                         :title {:sk "Guacamole" :en "Guacamole"}
-                                         :ingredients #{2 3 1 4 5 6}
-                                         :category 2}
-                                        {:id 2
-                                         :thumbnail-link "images/thumbnails/choco-mint.jpg"
-                                         :title {:sk "Mätové toliariky" :en "Chocolate mints"}
-                                         :ingredients #{7 8 9 1 10 11}
-                                         :category 4}))
-           '({:id 1,
-              :thumbnail-link "images/thumbnails/guacamole.jpg",
-              :title {:sk "Guacamole" :en "Guacamole"}
-              :ingredients #{1 4 6 3 2 5},
-              :category 2})))))
+                                      {1 {:id 1
+                                          :thumbnail-link "images/thumbnails/guacamole.jpg"
+                                          :title {:sk "Guacamole" :en "Guacamole"}
+                                          :ingredients #{2 3 1 4 5 6}
+                                          :category 2}
+                                       2 {:id 2
+                                          :thumbnail-link "images/thumbnails/choco-mint.jpg"
+                                          :title {:sk "Mätové toliariky" :en "Chocolate mints"}
+                                          :ingredients #{7 8 9 1 10 11}
+                                          :category 4}})
+           '([1 {:id 1,
+                :thumbnail-link "images/thumbnails/guacamole.jpg",
+                :title {:sk "Guacamole" :en "Guacamole"}
+                :ingredients #{1 4 6 3 2 5},
+                :category 2}])))))
 
 (deftest property-formatted-all-ingredients
   (testing

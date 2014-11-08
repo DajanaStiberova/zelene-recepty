@@ -26,16 +26,19 @@
                (map list-snippet items))))
 
 (html/defsnippet ingredient-list-item "listings.html" [:div#ingredients-list [:ul (html/nth-of-type 1)] [:li (html/nth-of-type 2)]]
-  [{:keys [name id]}]
+  [name-path {:keys [id] :as ingredient}]
   [:li :a] (html/do->
             (html/set-attr :href (format "recipes?ingredientId=%s#hr" id))
-            (html/content name)))
+            (html/content (get-in ingredient name-path))))
 
 (html/deftemplate ingredients-template "listings.html"
-  [site-title ingredients-grouped categories site-name up-text title-text]
+  [site-title ingredients-grouped ingredient-name-path categories site-name up-text title-text]
   [:div#recipes :h1] (html/content site-title)
   [:div#ingredients-list] (html/content
-                           (map (partial grouped-list ingredient-list-item) ingredients-grouped))
+                           (map (partial grouped-list
+                                         (partial ingredient-list-item
+                                                  ingredient-name-path))
+                                ingredients-grouped))
   [:ul#menu] (html/content
               (map (fn [{:keys [title link]}]
                      (menu-bar title (name link)))
@@ -45,14 +48,17 @@
   [:head :title] (html/content title-text))
 
 (html/defsnippet recipe-list-item "listings.html" [:div#ingredients-list [:ul (html/nth-of-type 1)] [:li (html/nth-of-type 2)]]
-  [{:keys [title]}]
-  [:li :a] (html/content title))
+  [name-path recipe]
+  [:li :a] (html/content (get-in recipe name-path)))
 
 (html/deftemplate recipes-template "listings.html"
-  [site-title recipes-grouped categories site-name up-text title-text]
+  [site-title recipes-grouped recipe-name-path categories site-name up-text title-text]
   [:div#recipes :h1] (html/content site-title)
   [:div#ingredients-list] (html/content
-                           (map (partial grouped-list recipe-list-item) recipes-grouped))
+                           (map (partial grouped-list
+                                         (partial recipe-list-item
+                                                  recipe-name-path))
+                                recipes-grouped))
   [:ul#menu] (html/content
               (map (fn [{:keys [title link]}]
                      (menu-bar title (name link)))
@@ -63,18 +69,19 @@
 
 
 (html/defsnippet thumbnail "index.html" [[:div.thumbnail (html/nth-of-type 1)]]
-  [thumbnail-link name description]
+  [thumbnail-link name description recipe-link]
   [:img] (html/set-attr :src thumbnail-link)
   [:h2] (html/content name)
-  [:p] (html/content description))
+  [:p] (html/content description)
+  [:a.info] (html/content recipe-link))
 
 
 (html/deftemplate main-template "index.html"
-  [recipes categories max-ingredients site-title site-name up-text title-text]
+  [recipe-link recipes categories max-ingredients site-title site-name up-text title-text]
   [:div#thumbnails] (html/content
                      (map (fn [{:keys [title ingredients thumbnail-link]}]
-                            (thumbnail thumbnail-link title (render-list 7 ingredients)))
-                          recipes))
+                            (thumbnail thumbnail-link title (render-list 7 ingredients) recipe-link))
+                        recipes))
   [:ul#menu] (html/content
               (map (fn [{:keys [title link]}]
                      (menu-bar title (name link)))
