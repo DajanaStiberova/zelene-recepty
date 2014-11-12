@@ -132,13 +132,24 @@ hr {
 
 /*******RECIPE**********/
 
+#close {
+    width: 28px;
+    margin-top: 50px;
+    margin-right: 70px;
+    margin-left: auto;
+    margin-left: auto;
+    right: 0;
+}
+
+
+
 #date {
     position: absolute;
     width: 5%;
     font-family: Mathilde;
     font-size: 2.5em;
     font-weight: bold;
-    padding: 6px 40px 6px 70px;
+    padding: 7px 60px 7px 60px;
     margin: 30px 10px 10px -20px;
     color:rgba(221, 15, 32, 1);
     background-color: rgba(237, 53, 68, 1);
@@ -152,7 +163,7 @@ hr {
     color:#ffffff;
 }
 
-#date:after{
+#date:after {
     content: ' ';
     position: absolute;
     width: 0;
@@ -164,7 +175,7 @@ hr {
     border-color: rgba(137, 22, 31, 1) rgba(137, 22, 31, 1) transparent transparent;
 }
 
-#date:before{
+#date:before {
     content: ' ';
     position: absolute;
     width: 30px;
@@ -177,19 +188,19 @@ hr {
 }
 
 #content {
+    margin-top:30px;
     margin-left:auto;
     margin-right:auto;
     padding-bottom:150px;
-    margin-top: 40px;
     background: url(images/recept.png);
-    width: 1000px;
+    width: 1100px;
     /* border-radius: 5px; */
     box-shadow: 0px 0px 10px #494444;
     margin-bottom:40px;
 }
 
 #content h1 {
-    font-size:60px;
+    font-size:80px;
     font-family:Mathilde;
     color:#69A62E;
     /* color:rgba(237, 53, 68, 1); */
@@ -202,32 +213,89 @@ hr {
     line-height:20px;
 
 }
-
-#recipe-title {
-    margin-top:90px;
-    padding-top:20px;
+#title-and-serve {
+    position:absolute;
 }
 
-#recipe-title p {
+#title-and-serve  h1 {
+    font-size: 40px;
+    font-family: Mathilde;
+    color: #10100F;
+    padding-bottom: 0px;
+    padding-left: 90px;
+}
+
+#title-and-serve  p {
+    font-size: 40px;
+    font-family: Mathilde;
+    color: #10100F;
+    padding-bottom: 0px;
+    text-align:center;
+    padding-left: 90px;
+}
+
+
+#header {
+
+}
+
+#serve {
+    display:inline-block;
+    /* float:right; */
+    /* width:30%; */
+    padding-left: 650px;
+}
+
+#serve img {
+    align:center;
+    position: absolute;
+}
+
+#serving {
+    /* margin-top:20px; */
+    display:inline-block;
+/* width:40%; */
+/* padding-left:40px; */
+}
+
+#time {
+    display:inline-block;
+    /* width:40%; */
+    padding-left:40px;
+}
+
+#recipe-title {
+
+/* padding-top:20px; */
+/* width:60%; */
+/* display:inline-block; */
+
+}
+
+#recipe-title h2 {
     font-family:Mathilde;
-    font-size:110px;
+    font-size:130px;
     display:block;
     text-align:center;
     padding-top:70px;
     color:#98DA57;
     color:rgba(237, 53, 68, 1);
     padding-bottom:70px;
+/* margin-left: 160px; */
 }
 
-#ingredients{
+#ingredients {
     font-size: 17px;
     display:inline-block;
     width:30%;
     padding-left:60px;
     vertical-align:top;
-    padding-top:20px;
+/* padding-top:20px; */
 }
 
+#ingredients-and-instructions {
+    display:block;
+}
 
 #ingredients td {
     color:#444141;
@@ -331,7 +399,7 @@ hr {
     padding-left:30px;
     color:#445141;
     display:inline-block;
-    padding-top:20px;
+    padding-top:60px;
 }
 
 /* #instructions h1 { */

@@ -9,9 +9,10 @@
 (def units (read-file "units.edn"))
 (def amounts (read-file "amounts.edn"))
 
-(-> (get recipes 1)
-    :text
-    :en
-    io/resource
-    io/file
-    slurp)
+(defn recipe-text [recipe-id language-key]
+  (-> (get recipes recipe-id)
+      :text
+      language-key
+      io/resource
+      io/file
+      slurp))

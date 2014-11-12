@@ -1,7 +1,7 @@
 {1 {:id 1
     :date #inst "2014-04-12"
     :thumbnail-link "images/thumbnails/guacamole.jpg"
-    :title {:sk  "Guacamole" :en "Guacamole"}
+    :title {:sk  "Avokádové guacamole" :en "Guacamole"}
     :images [{:link "images/recipes/guacamole/guacamole1.jpg"
               :name {:sk "Avokádo" :en "Avocado"}}
              {:link "images/recipes/guacamole/guacamole3.jpg"

@@ -104,13 +104,14 @@
   [[:td (html/nth-of-type 3)]] (html/content unit))
 
 (html/deftemplate recipe-template "recipe.html"
-  [recipe-title ingredients-title {:keys [images] :as recipe} language instructions ingredients]
+  [recipe-title ingredients-title {:keys [images] :as recipe} language instructions recipe-text ingredients]
   [:div.polaroid-images] (html/content (map (fn [{:keys [link name]}]
                                               (recipe-images link (language name)))
                                             images))
   [:div#recipe-title :p] (html/content recipe-title)
   [:div#ingredients :h1] (html/content ingredients-title)
   [:div#instructions :h1] (html/content instructions)
+  [:div#instructions :p] (html/content recipe-text)
   [:div#ingredients :table] (html/content (map ingredients-template ingredients)))
 
 ;; Returns not-found html with dynamic message (first argument) in the content of

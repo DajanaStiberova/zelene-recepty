@@ -9,7 +9,7 @@
             [zelene-recepty.data :as data]
             [zelene-recepty.view :as view]))
 
-(def current-language :en)
+(def current-language :sk)
 
 (defn not-found [request]
   {:status 404
@@ -108,6 +108,7 @@
                                                    (get data/recipes recipe-id)
                                                    current-language
                                                    (current-language {:en "Method" :sk "Postup"})
+                                                   (data/recipe-text recipe-id current-language)
                                                    (vec (:ingredients (core/populate-recipe (first (filter (fn [recipe]
                                                                                                              (= recipe-id (first recipe)))
                                                                                                            data/recipes))
