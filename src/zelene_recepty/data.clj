@@ -1,4 +1,5 @@
-(ns zelene-recepty.data)
+(ns zelene-recepty.data
+  (:require [clojure.java.io :as io]))
 
 (def ^:private read-file (comp read-string slurp))
 
@@ -7,3 +8,10 @@
 (def categories (read-file "categories.edn"))
 (def units (read-file "units.edn"))
 (def amounts (read-file "amounts.edn"))
+
+(-> (get recipes 1)
+    :text
+    :en
+    io/resource
+    io/file
+    slurp)

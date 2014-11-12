@@ -1,8 +1,23 @@
 {1 {:id 1
+    :date #inst "2014-04-12"
     :thumbnail-link "images/thumbnails/guacamole.jpg"
     :title {:sk  "Guacamole" :en "Guacamole"}
-    :ingredients #{2 3 1 4 5 6}
-    :category 2}
+    :images [{:link "images/recipes/guacamole/guacamole1.jpg"
+              :name {:sk "Avokádo" :en "Avocado"}}
+             {:link "images/recipes/guacamole/guacamole3.jpg"
+              :name {:sk "Ingrediencie" :en "Ingredients"}}
+             {:link "images/recipes/guacamole/guacamole2.jpg"
+              :name {:sk "Ingrediencie" :en "Ingredients"}}
+             {:link "images/recipes/guacamole/guacamole4.jpg"
+              :name {:sk "Pučenie avokáda" :en "Mashing avocados"}}
+             {:link "images/recipes/guacamole/guacamole3.jpg"
+              :name {:sk "Miešanie ingrediencií" :en "Mixing ingredients"}}
+             {:link "images/recipes/guacamole/guacamole.jpg"
+              :name {:sk "Avokádové guacamole" :en "Guacamole"}}]
+    :ingredients #{2 3 1 4 5 6 53}
+    :category 2
+    :text {:sk "recipes/guacamole_sk.md"
+           :en "recipes/guacamole_en.md"}}
  2 {:id 2
     :thumbnail-link "images/thumbnails/choco-mint.jpg"
     :title {:sk "Mätové toliariky" :en "Chocolate mints"}

@@ -1,7 +1,7 @@
 {1  {:id 1
      :names [{:sk "Šálka" :en "Cup"}
              {:sk "Šálky" :en "Cups"}
-             {:sk"Šálok" :en "Cups"}]}
+             {:sk "Šálok" :en "Cups"}]}
  2 {:id 2
     :names [{:sk "Gram" :en "Gram"}
             {:sk "Gramy" :en "Grams"}

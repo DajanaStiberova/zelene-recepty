@@ -22,6 +22,10 @@
         :ingredient-id 6
         :unit-id 3
         :amount 1}
+ [1 53] {:recipe-id 1
+         :ingredient-id 53
+         :unit-id 3
+         :amount 1}
  [2 7] {:recipe-id 2
         :ingredient-id 7
         :unit-id 3

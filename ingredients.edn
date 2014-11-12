@@ -49,4 +49,5 @@
  49 {:id 49 :name {:sk "Tahini dressing" :en "Tahini dressing"}}
  50 {:id 50 :name {:sk "Cícer" :en "Chickpea"}}
  51 {:id 51 :name {:sk "Červená paprika" :en "Red pepper"}}
- 52 {:id 52 :name {:sk "Tahini" :en "Tahini"}}}
+ 52 {:id 52 :name {:sk "Tahini" :en "Tahini"}}
+ 53 {:id 53 :name {:sk "Petržlenová vňať" :en "Parsley leaves"}}}
