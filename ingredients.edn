@@ -6,7 +6,7 @@
  6 {:id 6 :name {:sk "Citrónová šťava" :en "Lemon-juice"}}
  7 {:id 7 :name {:sk "Kakao" :en "Cocoa"}}
  8 {:id 8 :name {:sk "Kokosový olej" :en "Coconut oil"}}
- 9 {:id 9 :name {:sk "Mandle" :en "Almond"}}
+ 9 {:id 9 :name {:sk "Mandlová múka" :en "Almond flour"}}
  10 {:id 10 :name {:sk "Agáve" :en "Agave"}}
  11 {:id 11 :name {:sk "Mätový extrakt" :en "Pepermit extract"}}
  12 {:id 12 :name {:sk "Brokolica" :en "Broccoli"}}
@@ -17,7 +17,7 @@
  17 {:id 17 :name {:sk "Jablčný ocot" :en "Apple Cider Vinegar"}}
  18 {:id 18 :name {:sk "Tamari omáčka" :en "Tamari sauce"}}
  19 {:id 19 :name {:sk "Horčica" :en "Mustard"}}
- 20 {:id 20 :name {:sk "Špalda" :en "Spelt"}}
+ 20 {:id 20 :name {:sk "Špaldová múka" :en "Spelt flour"}}
  21 {:id 21 :name {:sk "Voda" :en "Water"}}
  22 {:id 22 :name {:sk "Himalájska soľ" :en "Himalayan salt"}}
  23 {:id 23 :name {:sk "Horčičné semiačka" :en "Mustard seeds"}}
@@ -50,4 +50,7 @@
  50 {:id 50 :name {:sk "Cícer" :en "Chickpea"}}
  51 {:id 51 :name {:sk "Červená paprika" :en "Red pepper"}}
  52 {:id 52 :name {:sk "Tahini" :en "Tahini"}}
- 53 {:id 53 :name {:sk "Petržlenová vňať" :en "Parsley leaves"}}}
+ 53 {:id 53 :name {:sk "Petržlenová vňať" :en "Parsley leaves"}}
+ 54 {:id 54 :name {:sk "Červená cibuľa" :en "Red onion"}}
+ 55 {:id 55 :name {:sk "Koriander" :en "Cilantro"}}
+ 56 {:id 56 :name {:sk "sézamové semiačka" }}}

@@ -1,0 +1,1 @@
+Umyjeme a nakrájame brokolicu na maličké kúsky. Posypeme morkou soľou a premiešame. Pridáme olivovy olej a raw jablčný ocot. Poriadne premiešame prísady aby brokolica trocha zmäkla. Nakoniec pridáme črenú cibuľu a čerstvý koriander.

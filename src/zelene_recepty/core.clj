@@ -31,7 +31,7 @@
   (cond
    (> 2 amount) first-form
    (and (< 1 amount) (> 5 amount)) second-form
-   (> 4 amount) third-form))
+   (< 4 amount) third-form))
 
 (defn- map-into-set [mapping-fn]
   (comp (partial into #{})
@@ -39,7 +39,7 @@
 
 (defn populate-recipe
   "TODO"
-  [[recipe-id recipe-map] all-ingredients all-amounts all-units language-key]
+  [{recipe-id :id :as recipe-map} all-ingredients all-amounts all-units language-key]
   (update-in recipe-map [:ingredients]
              (map-into-set (fn [ingredient-id]
                              (let [{:keys [amount unit-id]} (get all-amounts [recipe-id ingredient-id])]

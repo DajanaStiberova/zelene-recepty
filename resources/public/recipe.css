@@ -147,13 +147,13 @@ hr {
     position: absolute;
     width: 5%;
     font-family: Mathilde;
-    font-size: 2.5em;
+    font-size: 2.6em;
     font-weight: bold;
     padding: 7px 60px 7px 60px;
     margin: 30px 10px 10px -20px;
     color:rgba(221, 15, 32, 1);
     background-color: rgba(237, 53, 68, 1);
-    text-shadow: 0px 1px 2px rgba(245, 239, 240, 1);
+    text-shadow: 0px 1px 2px rgba(144, 25, 45, 1);
     -webkit-box-shadow: 0px 2px 4px rgba(221, 15, 32, 1);
     -moz-box-shadow: 0px 2px 4px rgba(221, 15, 32, 1);
     box-shadow: 0px 2px 4px rgba(58, 55, 55, 1);
@@ -274,10 +274,10 @@ hr {
 
 #recipe-title h2 {
     font-family:Mathilde;
-    font-size:130px;
+    font-size:150px;
     display:block;
     text-align:center;
-    padding-top:70px;
+    padding-top:40px;
     color:#98DA57;
     color:rgba(237, 53, 68, 1);
     padding-bottom:70px;
@@ -400,6 +400,24 @@ hr {
     color:#445141;
     display:inline-block;
     padding-top:60px;
+}
+
+#origin  {
+    margin-left: 20px;
+}
+
+#origin h1 {
+    display:inline-block;
+    font-size:50px;
+    padding-right:10px;
+}
+
+#origin a {
+    display:inline-block;
+    color: #444141;
+    list-style: none;
+    line-height: 20px;
+    text-decoration:none;
 }
 
 /* #instructions h1 { */

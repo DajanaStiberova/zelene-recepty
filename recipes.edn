@@ -1,5 +1,5 @@
 {1 {:id 1
-    :date #inst "2014-04-12"
+    :date #inst "2014-10-12"
     :thumbnail-link "images/thumbnails/guacamole.jpg"
     :title {:sk  "Avokádové guacamole" :en "Guacamole"}
     :images [{:link "images/recipes/guacamole/guacamole1.jpg"
@@ -17,54 +17,212 @@
     :ingredients #{2 3 1 4 5 6 53}
     :category 2
     :text {:sk "recipes/guacamole_sk.md"
-           :en "recipes/guacamole_en.md"}}
+           :en "recipes/guacamole_en.md"}
+    :serving 2
+    :time 15
+    :origin "http://katherineschwarzenegger.com/"}
  2 {:id 2
+    :date #inst "2014-10-12"
     :thumbnail-link "images/thumbnails/choco-mint.jpg"
     :title {:sk "Mätové toliariky" :en "Chocolate mints"}
+    :images [{:link "images/recipes/chocolate-mints/chocolate-mints3.jpg"
+              :name {:sk "Natieranie čokolády" :en " Coating with a chocolate"}}
+             {:link "images/recipes/chocolate-mints/chocolate-mints2.jpg"
+              :name {:sk "Mätové toliariky" :en "Chocolate mints"}}
+             {:link "images/recipes/chocolate-mints/chocolate-mints1.jpg"
+              :name {:sk "Mätové toliariky" :en "Chocolate mints"}}]
     :ingredients #{7 8 9 1 10 11}
-    :category 4}
+    :category 4
+    :text {:sk "recipes/chocolate-mints_sk.md"
+           :en "recipes/chocolate-mints_en.md"}
+    :serving 3
+    :time 30
+    :origin "http://pureella.com/"}
  3 {:id 3
+    :date #inst "2014-10-12"
     :thumbnail-link "images/thumbnails/brokolicovy-salat.jpg"
     :title {:sk "Brokolicový šalát" :en "Broccoli salad"}
-    :ingredients #{12 13 14 5 15 16 17 6 10 18 19 3 1}
-    :category 2}
+    :images [{:link "images/recipes/broccoli-salad/broccoli-salad1.jpg"
+              :name {:sk "Brokolicový šalát" :en "Broccoli salad"}}
+             {:link "images/recipes/broccoli-salad/broccoli-salad2.jpg"
+              :name {:sk "Ingrediencie" :en "Ingredients"}}
+             {:link "images/recipes/broccoli-salad/broccoli-salad3.jpg"
+              :name {:sk "Ingrediencie" :en "Ingredients"}}]
+    :ingredients #{12 22 16 17 54 55}
+    :category 2
+    :text {:sk "recipes/broccoli-salad_sk.md"
+           :en "recipes/broccoli-salad_en.md"}
+    :serving 2
+    :time 15
+    :origin "http://theglobalgirl.com/"}
  4 {:id 4
+    :date #inst "2014-10-12"
     :thumbnail-link "images/thumbnails/spaldovy-chlieb.jpg"
     :title {:sk "Špaldový chlieb" :en "Spelt bread" }
-    :ingredients #{20 21 22}
-    :category 2}
+    :images [{:link "images/recipes/spelt-bread/spelt-bread1.jpg"
+              :name {:sk "Avokádo" :en "Avocado"}}
+             {:link "images/recipes/spelt-bread/spelt-bread2.jpg"
+              :name {:sk "Ingrediencie" :en "Ingredients"}}
+             {:link "images/recipes/spelt-bread/spelt-bread3.jpg"
+              :name {:sk "Ingrediencie" :en "Ingredients"}}
+             {:link "images/recipes/spelt-bread/spelt-bread4.jpg"
+              :name {:sk "Pučenie avokáda" :en "Mashing avocados"}}
+             {:link "images/recipes/spelt-bread/spelt-bread5.jpg"
+              :name {:sk "Miešanie ingrediencií" :en "Mixing ingredients"}}]
+    :ingredients #{20 21 22 8}
+    :category 2
+    :text {:sk "recipes/spelt-bread_sk.md"
+           :en "recipes/spelt-bread_en.md"}
+    :serving 
+    :time 15}
  5 {:id 5
+    :date #inst "2014-10-12"
     :thumbnail-link "images/thumbnails/horcica.jpg"
     :title {:sk "Domáca Horčica" :en  "Homemade mustard"}
+    :images [{:link "images/recipes/guacamole/guacamole1.jpg"
+              :name {:sk "Avokádo" :en "Avocado"}}
+             {:link "images/recipes/guacamole/guacamole3.jpg"
+              :name {:sk "Ingrediencie" :en "Ingredients"}}
+             {:link "images/recipes/guacamole/guacamole2.jpg"
+              :name {:sk "Ingrediencie" :en "Ingredients"}}
+             {:link "images/recipes/guacamole/guacamole4.jpg"
+              :name {:sk "Pučenie avokáda" :en "Mashing avocados"}}
+             {:link "images/recipes/guacamole/guacamole3.jpg"
+              :name {:sk "Miešanie ingrediencií" :en "Mixing ingredients"}}
+             {:link "images/recipes/guacamole/guacamole.jpg"
+              :name {:sk "Avokádové guacamole" :en "Guacamole"}}]
     :ingredients #{23 24 25 1 10 21}
-    :category 3}
+    :category 3
+    :text {:sk "recipes/homemeade-mustard_sk.md"
+           :en "recipes/homemeade-mustard_en.md"}
+    :serving 2
+    :time 15
+    }
  6 {:id 6
+    :date #inst "2014-10-12"
     :thumbnail-link "images/thumbnails/pizza.jpg"
     :title {:sk "Pizza so špenátovým pestom" :en "Spinach pizza"}
+    :images [{:link "images/recipes/guacamole/guacamole1.jpg"
+              :name {:sk "Avokádo" :en "Avocado"}}
+             {:link "images/recipes/guacamole/guacamole3.jpg"
+              :name {:sk "Ingrediencie" :en "Ingredients"}}
+             {:link "images/recipes/guacamole/guacamole2.jpg"
+              :name {:sk "Ingrediencie" :en "Ingredients"}}
+             {:link "images/recipes/guacamole/guacamole4.jpg"
+              :name {:sk "Pučenie avokáda" :en "Mashing avocados"}}
+             {:link "images/recipes/guacamole/guacamole3.jpg"
+              :name {:sk "Miešanie ingrediencií" :en "Mixing ingredients"}}
+             {:link "images/recipes/guacamole/guacamole.jpg"
+              :name {:sk "Avokádové guacamole" :en "Guacamole"}}]
     :ingredients #{26 27 15 34 1 28 29 10 3 4 13 31 32 33 5 18 35}
-    :category 2}
+    :category 2
+    :text {:sk "recipes/spinach-pizza_sk.md"
+           :en "recipes/guacamole_en.md"}
+    :serving 2
+    :time 15}
  7 {:id 7
+    :date #inst "2014-10-12"
     :thumbnail-link "images/thumbnails/kesu-syr.jpg"
     :title {:sk "Kešu syr" :en "Cashew cheese"}
+    :images [{:link "images/recipes/guacamole/guacamole1.jpg"
+              :name {:sk "Avokádo" :en "Avocado"}}
+             {:link "images/recipes/guacamole/guacamole3.jpg"
+              :name {:sk "Ingrediencie" :en "Ingredients"}}
+             {:link "images/recipes/guacamole/guacamole2.jpg"
+              :name {:sk "Ingrediencie" :en "Ingredients"}}
+             {:link "images/recipes/guacamole/guacamole4.jpg"
+              :name {:sk "Pučenie avokáda" :en "Mashing avocados"}}
+             {:link "images/recipes/guacamole/guacamole3.jpg"
+              :name {:sk "Miešanie ingrediencií" :en "Mixing ingredients"}}
+             {:link "images/recipes/guacamole/guacamole.jpg"
+              :name {:sk "Avokádové guacamole" :en "Guacamole"}}]
     :ingredients #{36 37 41}
-    :category 2}
+    :category 2
+    :text {:sk "recipes/guacamole_sk.md"
+           :en "recipes/guacamole_en.md"}
+    :serving 2
+    :time 15}
  8 {:id 8
+    :date #inst "2014-10-12"
     :thumbnail-link "images/thumbnails/carob-cookies.jpg"
     :title {:sk "Karobové chia cookies" :en "Carob chia cookies"}
+    :images [{:link "images/recipes/guacamole/guacamole1.jpg"
+              :name {:sk "Avokádo" :en "Avocado"}}
+             {:link "images/recipes/guacamole/guacamole3.jpg"
+              :name {:sk "Ingrediencie" :en "Ingredients"}}
+             {:link "images/recipes/guacamole/guacamole2.jpg"
+              :name {:sk "Ingrediencie" :en "Ingredients"}}
+             {:link "images/recipes/guacamole/guacamole4.jpg"
+              :name {:sk "Pučenie avokáda" :en "Mashing avocados"}}
+             {:link "images/recipes/guacamole/guacamole3.jpg"
+              :name {:sk "Miešanie ingrediencií" :en "Mixing ingredients"}}
+             {:link "images/recipes/guacamole/guacamole.jpg"
+              :name {:sk "Avokádové guacamole" :en "Guacamole"}}]
     :ingredients #{34 39 40 37 38 1}
-    :category 4}
+    :category 4
+    :text {:sk "recipes/guacamole_sk.md"
+           :en "recipes/guacamole_en.md"}
+    :serving 2
+    :time 15}
  9 {:id 9
+    :date #inst "2014-10-12"
     :thumbnail-link "images/thumbnails/jahodova-limonada.jpg"
     :title {:sk "Jahodová limonáda" :en  "Strawberry lemonade"}
+    :images [{:link "images/recipes/guacamole/guacamole1.jpg"
+              :name {:sk "Avokádo" :en "Avocado"}}
+             {:link "images/recipes/guacamole/guacamole3.jpg"
+              :name {:sk "Ingrediencie" :en "Ingredients"}}
+             {:link "images/recipes/guacamole/guacamole2.jpg"
+              :name {:sk "Ingrediencie" :en "Ingredients"}}
+             {:link "images/recipes/guacamole/guacamole4.jpg"
+              :name {:sk "Pučenie avokáda" :en "Mashing avocados"}}
+             {:link "images/recipes/guacamole/guacamole3.jpg"
+              :name {:sk "Miešanie ingrediencií" :en "Mixing ingredients"}}
+             {:link "images/recipes/guacamole/guacamole.jpg"
+              :name {:sk "Avokádové guacamole" :en "Guacamole"}}]
     :ingredients #{42 43 10 6 21}
-    :category 5}
+    :category 5
+    :text {:sk "recipes/guacamole_sk.md"
+           :en "recipes/guacamole_en.md"}
+    :serving 2
+    :time 15}
  10 {:id 10
+     :date #inst "2014-10-12"
      :thumbnail-link "images/thumbnails/wrap.jpg"
      :title {:sk "Wrap" :en "Wrap"}
+     :images [{:link "images/recipes/guacamole/guacamole1.jpg"
+               :name {:sk "Avokádo" :en "Avocado"}}
+              {:link "images/recipes/guacamole/guacamole3.jpg"
+               :name {:sk "Ingrediencie" :en "Ingredients"}}
+              {:link "images/recipes/guacamole/guacamole2.jpg"
+               :name {:sk "Ingrediencie" :en "Ingredients"}}
+              {:link "images/recipes/guacamole/guacamole4.jpg"
+               :name {:sk "Pučenie avokáda" :en "Mashing avocados"}}
+              {:link "images/recipes/guacamole/guacamole3.jpg"
+               :name {:sk "Miešanie ingrediencií" :en "Mixing ingredients"}}
+              {:link "images/recipes/guacamole/guacamole.jpg"
+               :name {:sk "Avokádové guacamole" :en "Guacamole"}}]
      :ingredients #{44 45 46 18 47 48 2 5 49}
      :category 2}
  11 {:id 10
+     :date #inst "2014-10-12"
      :thumbnail-link "images/thumbnails/tahini-dresing.jpg"
      :title {:sk "Tahini dressing" :en "Tahini dressing"}
+     :images [{:link "images/recipes/guacamole/guacamole1.jpg"
+               :name {:sk "Avokádo" :en "Avocado"}}
+              {:link "images/recipes/guacamole/guacamole3.jpg"
+               :name {:sk "Ingrediencie" :en "Ingredients"}}
+              {:link "images/recipes/guacamole/guacamole2.jpg"
+               :name {:sk "Ingrediencie" :en "Ingredients"}}
+              {:link "images/recipes/guacamole/guacamole4.jpg"
+               :name {:sk "Pučenie avokáda" :en "Mashing avocados"}}
+              {:link "images/recipes/guacamole/guacamole3.jpg"
+               :name {:sk "Miešanie ingrediencií" :en "Mixing ingredients"}}
+              {:link "images/recipes/guacamole/guacamole.jpg"
+               :name {:sk "Avokádové guacamole" :en "Guacamole"}}]
      :ingredients #{52 51 50}
-     :category 3}}
+     :category 3
+     :text {:sk "recipes/guacamole_sk.md"
+            :en "recipes/guacamole_en.md"}
+     :serving 2
+     :time 15}}

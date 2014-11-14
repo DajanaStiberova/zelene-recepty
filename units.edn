@@ -5,7 +5,7 @@
  2 {:id 2
     :names [{:sk "Gram" :en "Gram"}
             {:sk "Gramy" :en "Grams"}
-            {:sk"Gramov" :en "Grams"}]}
+            {:sk "Gramov" :en "Grams"}]}
  3 {:id 3
     :names [{:sk "Lyžica" :en "Tablespoon"}
             {:sk "Lyžice" :en "Tablespoons"}
