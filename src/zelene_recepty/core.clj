@@ -1,13 +1,6 @@
 (ns zelene-recepty.core
   (:require [clojure.string :as string]))
 
-(defn list-of-categories
-  "TODO"
-  [data-map current-language]
-  (map (fn [[_ entry]]
-         (update-in entry [:title] current-language))
-       data-map))
-
 (defn name-for-ingredient
   "TODO"
   [all-ingredients language-key ingredient-key]

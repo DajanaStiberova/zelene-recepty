@@ -12,8 +12,11 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500' rel='stylesheet' type='text/css'/>
     <link href='http://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'/>
     <link rel="stylesheet" type="text/css" href="style.css"/>
+    <script type="text/javascript" src="out/goog/base.js"></script>
+    <script type="text/javascript" src="script/zelenerecepty_app.js"></script>
+    <script type="text/javascript">goog.require("zelene_recepty.smoothscroll");</script>
   </head>
-  <body>
+  <body onload="zelene_recepty.smoothscroll.set_up('a#up')">
     <header>
       <ul id="menu" class="text-content">
         <li><a href="#">Hlavné jedlá</a></li>
@@ -78,10 +81,7 @@
         </div>
       </div>
     </div>
-    <div id="up">
-      <a href="#hr"><img src="images/up.png" alt="up">
-      </a>
-    </div>
+    <a id="up" href="#hr"><img src="images/up.png" alt="up"></a>
     <footer>
       <div id="copyright">
         <p>&copy; 2014 Made with &#9829 <a href="http://www.clover.sk">Clover</a>

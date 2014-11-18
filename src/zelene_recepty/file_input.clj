@@ -1,10 +1,10 @@
 (ns zelene-recepty.file-input
-  (:require [clojure.java.io :as io]))
+  (:require [clojure.java.io :as io]
+            [markdown.core :as markdown]))
 
-(defn read-numbers-from-file [file-path]
-  (with-open [rdr (io/reader file-path)]
-    (reduce (fn [data-count data]
-              (* data-count
-                 (read-string data)))
-            1
-            (line-seq rdr))))
+(defn recipe-text [path]
+  (-> path
+      io/resource
+      io/file
+      slurp
+      markdown/md-to-html-string))

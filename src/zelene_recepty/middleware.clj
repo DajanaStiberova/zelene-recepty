@@ -10,6 +10,12 @@
             (string/split raw-params #"&"))
     {}))
 
+
+(defn wrap-language [handler]
+  (fn [request]
+    (let [lang (or (-> request :params :lang keyword #{:sk :en}) :sk)]
+      (handler (assoc request :lang lang)))))
+
 (defn wrap-params [handler]
   (fn [request]
     (let [parsed (parse-params (:query-string request))]

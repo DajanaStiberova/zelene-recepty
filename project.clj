@@ -4,7 +4,17 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.6.0"]
+                 [org.clojure/clojurescript "0.0-2371"]
                  [ring/ring-core "1.3.1"]
                  [ring/ring-jetty-adapter "1.3.1"]
                  [clj-time "0.8.0"]
-                 [enlive "1.1.5"]])
+                 [enlive "1.1.5"]
+                 [markdown-clj "0.9.57"]
+                 [domina "1.0.3"]]
+  :plugins [[lein-cljsbuild "1.0.4-SNAPSHOT"]]
+  :cljsbuild {:builds [{:id "zelenerecepty-app"
+                        :source-paths ["src-cljs"]
+                        :compiler {:output-to "resources/public/script/zelenerecepty_app.js"
+                                   :output-dir "resources/public/out"
+                                   :optimizations :none
+                                   :source-maps true}}]})

@@ -10,15 +10,15 @@
 }
 
 
-@font-face {
-    font-family: Liberation;
-    src: url("font/LiberationSans-Regular.ttf") format("opentype");
-}
+/* @font-face { */
+/*     font-family: Liberation; */
+/*     src: url("font/LiberationSans-Regular.ttf") format("opentype"); */
+/* } */
 
-@font-face {
-    font-family: Foglihten;
-    src: url("font/Foglihten-068.otf") format("opentype");
-}
+/* @font-face { */
+/*     font-family: Foglihten; */
+/*     src: url("font/Foglihten-068.otf") format("opentype"); */
+/* } */
 
 html, body, div, span, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -56,15 +56,36 @@ nav ul {
     list-style:none;
 }
 
-blockquote, q {
-    quotes:none;
+/* blockquote, q { */
+/*     quotes:none; */
+/* } */
+
+blockquote {
+    /* font: 14px/22px normal helvetica, sans-serif; */
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 50px;
+    padding-left: 15px;
+    /* border-left: 3px solid #ccc; */
+    padding-top:15px;
+    margin-right: 50px;
+    padding-bottom: 15px;
 }
 
-blockquote:before, blockquote:after,
-q:before, q:after {
-    content:'';
-    content:none;
+#instructions blockquote p {
+    color:rgb(73, 68, 68);
+    font-size:10px;
+    font-family:Mathilde;
+    font-size:40px;
+    line-height:30px;
 }
+
+
+/* blockquote:before, blockquote:after, */
+/* q:before, q:after { */
+/*     content:''; */
+/*     content:none; */
+/* } */
 
 a {
     margin:0;
@@ -204,6 +225,7 @@ hr {
     font-family:Mathilde;
     color:#69A62E;
     /* color:rgba(237, 53, 68, 1); */
+    text-align:center;
     padding-bottom:10px;
 }
 
@@ -213,11 +235,11 @@ hr {
     line-height:20px;
 
 }
-#title-and-serve {
+#time-and-serve {
     position:absolute;
 }
 
-#title-and-serve  h1 {
+#time-and-serve  h1 {
     font-size: 40px;
     font-family: Mathilde;
     color: #10100F;
@@ -225,7 +247,7 @@ hr {
     padding-left: 90px;
 }
 
-#title-and-serve  p {
+#time-and-serve  p {
     font-size: 40px;
     font-family: Mathilde;
     color: #10100F;
@@ -235,15 +257,12 @@ hr {
 }
 
 
-#header {
-
-}
-
 #serve {
     display:inline-block;
     /* float:right; */
     /* width:30%; */
-    padding-left: 650px;
+    padding-left: 600px;
+    padding-top: 70px;
 }
 
 #serve img {
@@ -277,20 +296,31 @@ hr {
     font-size:150px;
     display:block;
     text-align:center;
-    padding-top:40px;
+    padding-top:100px;
     color:#98DA57;
     color:rgba(237, 53, 68, 1);
-    padding-bottom:70px;
-/* margin-left: 160px; */
+    padding-bottom:70px;c
+    margin-left: 50px;
+    margin-right:50px;
+    line-height:90px;
+    margin-left:50px;
 }
 
 #ingredients {
     font-size: 17px;
     display:inline-block;
-    width:30%;
-    padding-left:60px;
+    width:40%;
+    padding-left:80px;
     vertical-align:top;
 /* padding-top:20px; */
+}
+
+#ingredients h1 {
+    font-size: 80px;
+    font-family: Mathilde;
+    color: #69A62E;
+    padding-bottom: 10px;
+    text-align:left;
 }
 
 #ingredients-and-instructions {
@@ -377,39 +407,41 @@ hr {
     box-shadow: 0 10px 20px rgba(0,0,0,.7);
 }
 
-/* END POLAROID IMAGES */
-/* #picture { */
-/*     width: 267px; */
-/*     height: 200px; */
-/*     padding: 8px; */
-/*     border-image: url(images/border_image.png) 9 / 9px stretch; */
-/*     border-width: 9px; */
-/*     margin-top: 10px; */
-/*     margin-left: 50px; */
-/*     margin-bottom:30px; */
-/*     display:inline-block; */
-/* } */
-
 #instructions {
-    /* margin-left: 50px; */
-    width:55%;
-    /* margin-bottom: 80px; */
-    /* width:800px; */
     font-size: 17px;
     padding-left:30px;
     color:#445141;
-    display:inline-block;
     padding-top:60px;
+    margin-left: 50px;
+    margin-right: 50px;
 }
 
-#origin  {
-    margin-left: 20px;
+#instructions h2 {
+    font-size: 20px;
+    color: rgb(73, 70, 70);
+    padding-top: 30px;
+    padding-bottom: 30px;
+    font-weight: 700;
+}
+
+#instructions h2:first-of-type {
+    font-size: 20px;
+    color: rgb(73, 70, 70);
+    padding-top:0px;
+    padding-bottom: 30px;
+    font-weight: 700;
+}
+
+#instructions a {
+    text-decoration:none;
+    color:#69A62E;
 }
 
 #origin h1 {
     display:inline-block;
     font-size:50px;
     padding-right:10px;
+    padding-left: 50PX;
 }
 
 #origin a {

@@ -1,21 +1,21 @@
 {1 {:id 1
     :title {:sk "Najnovšie recepty" :en "Newest recipes"}
-    :link :home#hr}
+    :link "/home"}
  2 {:id 2
     :title {:sk "Hlavné jedlá" :en "Main dishes"}
-    :link :main-dishes#hr}
+    :link "/main-dishes"}
  3 {:id 3
     :title {:sk "Nátierky" :en "Spreads"}
-    :link :spreads#hr}
+    :link "/spreads"}
  4 {:id 4
     :title {:sk "Sladkosti" :en "Sweets"}
-    :link :sweets#hr}
+    :link "/sweets"}
  5 {:id 5
     :title {:sk "Nápoje" :en "Drinks"}
-    :link :drinks#hr}
+    :link "/drinks"}
  6 {:id 6
     :title {:sk "Suroviny" :en "Ingredients"}
-    :link :list-of-ingredients#hr}
+    :link "/list-of-ingredients"}
  7 {:id 7
     :title {:sk "Recepty" :en "Recipes"}
-    :link :list-of-recipes#hr}}
+    :link "/list-of-recipes"}}

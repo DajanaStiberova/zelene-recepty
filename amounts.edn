@@ -73,4 +73,257 @@
  [3 55] {:recipe-id 3
          :ingredient-id 55
          :unit-id 3
-         :amount 1/4}}
+         :amount 1/4}
+ [4 15] {:recipe-id 4
+         :ingredient-id 15
+         :unit-id 1
+         :amount 3}
+ [4 21] {:recipe-id 4
+         :ingredient-id 21
+         :unit-id 1
+         :amount 3/4}
+ [4 44] {:recipe-id 4
+         :ingredient-id 44
+         :unit-id 6
+         :amount 4}
+ [4 54] {:recipe-id 4
+         :ingredient-id 54
+         :unit-id 2
+         :amount 85}
+ [4 57] {:recipe-id 4
+         :ingredient-id 57
+         :unit-id 3
+         :amount 2}
+ [4 6] {:recipe-id 4
+        :ingredient-id 6
+        :unit-id 3
+        :amount 3}
+ [4 58] {:recipe-id 4
+         :ingredient-id 58
+         :unit-id 3
+         :amount 1}
+ [4 59] {:recipe-id 4
+         :ingredient-id 59
+         :unit-id 5
+         :amount 1/4}
+ [4 28] {:recipe-id 4
+         :ingredient-id 28
+         :unit-id 9
+         :amount 1}
+ [4 1] {:recipe-id 4
+        :ingredient-id 1
+        :unit-id 9
+        :amount 1}
+ [5 23] {:recipe-id 5
+         :ingredient-id 23
+         :unit-id 2
+         :amount 120}
+ [5 17] {:recipe-id 5
+         :ingredient-id 17
+         :unit-id 1
+         :amount 1/2}
+ [5 21] {:recipe-id 5
+         :ingredient-id 21
+         :unit-id 10
+         :amount 250}
+ [5 60] {:recipe-id 5
+         :ingredient-id 60
+         :unit-id 3
+         :amount 2}
+ [5 61] {:recipe-id 5
+         :ingredient-id 61
+         :unit-id 3
+         :amount 1.5}
+ [5 62] {:recipe-id 5
+         :ingredient-id 62
+         :unit-id 5
+         :amount 1/2}
+ [5 64] {:recipe-id 5
+         :ingredient-id 64
+         :unit-id 5
+         :amount 1/2}
+ [5 63] {:recipe-id 5
+         :ingredient-id 63
+         :unit-id 5
+         :amount 1}
+ [6 29] {:recipe-id 6
+         :ingredient-id 29
+         :unit-id 5
+         :amount 2}
+ [6 63] {:recipe-id 6
+         :ingredient-id 63
+         :unit-id 3
+         :amount 2}
+ [6 21] {:recipe-id 6
+         :ingredient-id 21
+         :unit-id 3
+         :amount 2}
+ [6 4] {:recipe-id 6
+        :ingredient-id 4
+        :unit-id 2
+        :amount 60}
+ [6 3] {:recipe-id 6
+        :ingredient-id 3
+        :unit-id 7
+        :amount 4}
+ [6 65] {:recipe-id 6
+         :ingredient-id 65
+         :unit-id 3
+         :amount 1}
+ [6 32] {:recipe-id 6
+         :ingredient-id 32
+         :unit-id 6
+         :amount 3}
+ [6 67] {:recipe-id 6
+         :ingredient-id 67
+         :unit-id 6
+         :amount 1}
+ [6 5] {:recipe-id 6
+        :ingredient-id 5
+        :unit-id 6
+        :amount 1}
+ [6 18] {:recipe-id 6
+         :ingredient-id 18
+         :unit-id 5
+         :amount 1}
+ [6 35] {:recipe-id 6
+         :ingredient-id 35
+         :unit-id 5
+         :amount 1}
+ [7 36] {:recipe-id 7
+         :ingredient-id 36
+         :unit-id 1
+         :amount 2}
+ [7 6] {:recipe-id 7
+        :ingredient-id 6
+        :unit-id 5
+        :amount 1}
+ [7 22] {:recipe-id 7
+         :ingredient-id 22
+         :unit-id 5
+         :amount 1/2}
+ [7 68] {:recipe-id 7
+         :ingredient-id 68
+         :unit-id 5
+         :amount 1/2}
+ [7 57] {:recipe-id 7
+         :ingredient-id 57
+         :unit-id 3
+         :amount 1}
+ [7 21] {:recipe-id 7
+         :ingredient-id 21
+         :unit-id 1
+         :amount 1}
+ [8 34] {:recipe-id 8
+         :ingredient-id 34
+         :unit-id 1
+         :amount 1}
+ [8 39] {:recipe-id 8
+         :ingredient-id 39
+         :unit-id 1
+         :amount 1}
+ [8 40] {:recipe-id 8
+         :ingredient-id 40
+         :unit-id 6
+         :amount 4}
+ [8 37] {:recipe-id 8
+         :ingredient-id 37
+         :unit-id 2
+         :amount 50}
+ [8 38] {:recipe-id 8
+         :ingredient-id 38
+         :unit-id 3
+         :amount 3}
+ [8 1] {:recipe-id 8
+        :ingredient-id 1
+        :unit-id 9
+        :amount 1}
+ [9 6] {:recipe-id 9
+        :ingredient-id 6
+        :unit-id 3
+        :amount 4}
+ [9 10] {:recipe-id 9
+         :ingredient-id 10
+         :unit-id 3
+         :amount 4}
+ [9 21] {:recipe-id 9
+         :ingredient-id 21
+         :unit-id 1
+         :amount 2}
+ [9 42] {:recipe-id 9
+         :ingredient-id 42
+         :unit-id 1
+         :amount 1}
+ [11 29] {:recipe-id 11
+          :ingredient-id 29
+          :unit-id 1
+          :amount 2}
+ [11 13] {:recipe-id 11
+          :ingredient-id 13
+          :unit-id 1
+          :amount 2}
+ [11 3] {:recipe-id 11
+         :ingredient-id 3
+         :unit-id 7
+         :amount 2}
+ [11 34] {:recipe-id 11
+          :ingredient-id 34
+          :unit-id 2
+          :amount 27}
+ [11 26] {:recipe-id 11
+          :ingredient-id 26
+          :unit-id 3
+          :amount 2}
+ [11 16] {:recipe-id 11
+          :ingredient-id 16
+          :unit-id 3
+          :amount 2}
+ [11 57] {:recipe-id 11
+          :ingredient-id 57
+          :unit-id 3
+          :amount 2}
+ [11 6] {:recipe-id 11
+         :ingredient-id 6
+         :unit-id 3
+         :amount 2}
+ [11 1] {:recipe-id 11
+         :ingredient-id 1
+         :unit-id 5
+         :amount 1/2}
+ [11 28] {:recipe-id 11
+          :ingredient-id 28
+          :unit-id 9
+          :amount 1}
+ [12 52] {:recipe-id 12
+          :ingredient-id 52
+          :unit-id 10
+          :amount 60}
+ [12 3] {:recipe-id 12
+          :ingredient-id 3
+          :unit-id 7
+          :amount 2}
+ [12 6] {:recipe-id 12
+          :ingredient-id 6
+          :unit-id 10
+          :amount 120}
+ [12 57] {:recipe-id 12
+          :ingredient-id 57
+          :unit-id 2
+          :amount 50}
+ [12 16] {:recipe-id 12
+          :ingredient-id 16
+          :unit-id 3
+          :amount 3}
+ [12 1] {:recipe-id 12
+          :ingredient-id 28
+          :unit-id 5
+          :amount 1}
+ [12 28] {:recipe-id 12
+          :ingredient-id 28
+          :unit-id 5
+          :amount 1}
+ [12 21] {:recipe-id 12
+          :ingredient-id 21
+          :unit-id 3
+          :amount 3}
+ }

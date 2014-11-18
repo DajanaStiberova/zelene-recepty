@@ -37,7 +37,7 @@
  37 {:id 37 :name {:sk "Karob" :en "Carob"}}
  38 {:id 38 :name {:sk "Chia semiačka" :en "Chia seeds"}}
  39 {:id 39 :name {:sk "Hrozienka" :en "Raisins"}}
- 40 {:id 40 :name {:sk "Datle" :en "Dates"}}
+ 40 {:id 40 :name {:sk "Sušené datle" :en "Medjool dates"}}
  41 {:id 41 :name {:sk "Obilné zrná" :en "Cereal grains"}}
  42 {:id 42 :name {:sk "Jahody" :en "Strawberries"}}
  43 {:id 43 :name {:sk "Rebarbora" :en "Rhubarb"}}
@@ -53,4 +53,16 @@
  53 {:id 53 :name {:sk "Petržlenová vňať" :en "Parsley leaves"}}
  54 {:id 54 :name {:sk "Červená cibuľa" :en "Red onion"}}
  55 {:id 55 :name {:sk "Koriander" :en "Cilantro"}}
- 56 {:id 56 :name {:sk "sézamové semiačka" }}}
+ 56 {:id 56 :name {:sk "Sézamové semiačka" :en "Sesame seeds"}}
+ 57 {:id 57 :name {:sk "Lahôdkové droždie" :en "Nutrional yeast flakes"}}
+ 58 {:id 58 :name {:sk "Miso" :en "Miso"}}
+ 59 {:id 59 :name {:sk "Muškátovy oriešok" :en "Nutmeg"}}
+ 60 {:id 60 :name {:sk "Tymián" :en "Thyme"}}
+ 61 {:id 61 :name {:sk "Rozmarín" :en "Rosemary"}}
+ 62 {:id 62 :name {:sk "Čili vločky" :en "Chili flakes"}}
+ 63 {:id 63 :name {:sk "Javorový sirup" :en "Maple syrup"}}
+ 64 {:id 64 :name {:sk "Morská soľ" :en "Sea salt"}}
+ 65 {:id 65 :name {:sk "Špenátovo-bazalkové pesto" :en "Spinach-basil pesto"}}
+ 67 {:id 67 :name {:sk "Kápia" :en "Bell pepper"}}
+ 68 {:id 68 :name {:sk "Probioticky prášok" :en "Probiotic powder"}}
+ }

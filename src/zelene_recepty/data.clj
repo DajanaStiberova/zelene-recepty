@@ -8,11 +8,3 @@
 (def categories (read-file "categories.edn"))
 (def units (read-file "units.edn"))
 (def amounts (read-file "amounts.edn"))
-
-(defn recipe-text [recipe-id language-key]
-  (-> (get recipes recipe-id)
-      :text
-      language-key
-      io/resource
-      io/file
-      slurp))

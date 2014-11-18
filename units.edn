@@ -29,4 +29,8 @@
  9 {:id 9
     :names [{:sk "Štipka" :en "Pinch"}
             {:sk "Štipky" :en "Pinches"}
-            {:sk "Štipiek" :en "Pinches"}]}}
+            {:sk "Štipiek" :en "Pinches"}]}
+ 10 {:id 10
+     :names [{:sk "Mililiter" :en  "Mililiter"}
+             {:sk "Mililitre" :en  "Mililiters"}
+             {:sk "Mililitrov" :en  "Mililiters"}]}}
