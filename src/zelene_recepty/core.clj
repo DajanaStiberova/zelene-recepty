@@ -59,3 +59,15 @@
              (update-in [:title] language-key)
              (update-in [:ingredients] (map-into-set (partial name-for-ingredient all-ingredients language-key))))
         recipes))
+
+(defn mins [number]
+  (rem number 60))
+
+(defn hours [number]
+  (/(- number (mins number))60))
+
+(defn fill-hours-and-mins [number]
+  (cond
+   (and (> (mins number) 0) (> (hours number) 0)) (format "%s hod %s min" (hours number) (mins number))
+   (> (hours number) 0) (format "%s hod" (hours number))
+   (> (mins number) 0) (format "%s min" (mins number))))

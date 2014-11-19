@@ -254,6 +254,26 @@
          :ingredient-id 42
          :unit-id 1
          :amount 1}
+ [10 44] {:recipe-id 10
+          :ingredient-id 44
+          :unit-id 1
+          :amount 2}
+ [10 45] {:recipe-id 10
+          :ingredient-id 42
+          :unit-id 1
+          :amount 1}
+ [10 21] {:recipe-id 10
+          :ingredient-id 21
+          :unit-id 1
+          :amount 1}
+ [10 46] {:recipe-id 10
+          :ingredient-id 46
+          :unit-id 5
+          :amount 1}
+ [10 18] {:recipe-id 10
+          :ingredient-id 18
+          :unit-id 3
+          :amount 2}
  [11 29] {:recipe-id 11
           :ingredient-id 29
           :unit-id 1
@@ -299,13 +319,13 @@
           :unit-id 10
           :amount 60}
  [12 3] {:recipe-id 12
-          :ingredient-id 3
-          :unit-id 7
-          :amount 2}
+         :ingredient-id 3
+         :unit-id 7
+         :amount 2}
  [12 6] {:recipe-id 12
-          :ingredient-id 6
-          :unit-id 10
-          :amount 120}
+         :ingredient-id 6
+         :unit-id 10
+         :amount 120}
  [12 57] {:recipe-id 12
           :ingredient-id 57
           :unit-id 2
@@ -315,9 +335,9 @@
           :unit-id 3
           :amount 3}
  [12 1] {:recipe-id 12
-          :ingredient-id 28
-          :unit-id 5
-          :amount 1}
+         :ingredient-id 28
+         :unit-id 5
+         :amount 1}
  [12 28] {:recipe-id 12
           :ingredient-id 28
           :unit-id 5

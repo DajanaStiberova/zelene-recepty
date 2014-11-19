@@ -125,7 +125,7 @@
     :text {:sk "recipes/cashew-cheese_sk.md"
            :en "recipes/cashew-cheese_en.md"}
     :serving 2
-    :time 15
+    :time 240
     :origin "http://www.vegkitchen.com/"}
  8 {:id 8
     :date #inst "2014-10-12"
@@ -157,20 +157,21 @@
      :date #inst "2014-10-12"
      :thumbnail-link "images/thumbnails/wrap.jpg"
      :title {:sk "Wrap" :en "Wrap"}
-     :images [{:link "images/recipes/guacamole/guacamole1.jpg"
-               :name {:sk "Avokádo" :en "Avocado"}}
-              {:link "images/recipes/guacamole/guacamole3.jpg"
-               :name {:sk "Ingrediencie" :en "Ingredients"}}
-              {:link "images/recipes/guacamole/guacamole2.jpg"
-               :name {:sk "Ingrediencie" :en "Ingredients"}}
-              {:link "images/recipes/guacamole/guacamole4.jpg"
-               :name {:sk "Pučenie avokáda" :en "Mashing avocados"}}
-              {:link "images/recipes/guacamole/guacamole3.jpg"
-               :name {:sk "Miešanie ingrediencií" :en "Mixing ingredients"}}
-              {:link "images/recipes/guacamole/guacamole.jpg"
-               :name {:sk "Avokádové guacamole" :en "Guacamole"}}]
-     :ingredients #{44 45 46 18 47 48 2 5 49}
-     :category 2}
+     :images [{:link "images/recipes/carrot-wrap/carrot-wrap.jpg"
+               :name {:sk "Wrap" :en "Wrap"}}
+              {:link "images/recipes/carrot-wrap/carrot-wrap2.jpg"
+               :name {:sk "Wrap" :en "Wrap"}}
+              {:link "images/recipes/carrot-wrap/carrot-wrap3.jpg"
+               :name {:sk "Wrap" :en "Wrap"}}
+              {:link "images/recipes/carrot-wrap/carrot-wrap4.jpg"
+               :name {:sk "Wrap" :en "Wrap"}}]
+     :ingredients #{44 45 21 46 18}
+     :category 2
+     :text {:sk "recipes/carrot-wrap_sk.md"
+            :en "recipes/carrot-wrap_en.md"}
+     :serving 6
+     :time 330
+     :origin "http://www.choosingraw.com/"}
  11 {:id 11
      :date #inst "2014-11-17"
      :thumbnail-link "images/thumbnails/spinach-basil-pesto.jpg"

@@ -28,7 +28,7 @@
 
 (defn not-found [{:keys [lang] :as request}]
   {:status 404
-   :body (apply str (view/not-found-template (lang {:sk "Stránka nenájdená"
+   :body (apply str (view/not-found-template (lang {:sk "Stránku sa bohužiaľ nepodarilo nájsť"
                                                     :en "Sorry, this page is not available"})
                                              (lang {:sk "images/en-logo-mini.png"
                                                     :en "images/sk-logo-mini.png"})
@@ -40,7 +40,7 @@
       (core/populate-recipe ingredients amounts units lang)
       (update-in [:date] time/format-date)
       (update-in [:time] (fn [time]
-                           (format "%s min" time)))))
+                           (core/fill-hours-and-mins time)))))
 
 (defn- lists [template title all-data key language language-link]
   (template

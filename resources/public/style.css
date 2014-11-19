@@ -339,13 +339,24 @@ ul.text-content li:first-child {
     /* color:inherit; */
     /* bottom:0; */
     /* float:right; */
-    margin-top: -180px;
+    margin-top: -20px;
     margin-right: 30px;
-    /* position:absolute; */
-    /* display:inline-block; */
+/* position:absolute; */
+/* display:inline-block; */
 }
 
 #hr {
+    border: 0;
+    height: 1px;
+    background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+    background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+    background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+    background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+    width:80%;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:80px;
+
 }
 
 /********UP END***********/
@@ -425,7 +436,7 @@ ul.text-content li:first-child {
     width:1240px;
     margin-left:auto;
     margin-right:auto;
-    margin-bottom:190px;
+    margin-bottom:50px;
 }
 
 .view {
@@ -657,7 +668,7 @@ ul.text-content li:first-child {
 
 /********FOOTER**********/
 
-#copyright {
+#copyright-not-found {
     margin-top:100px;
     line-height:60px;
     background-color:#444141;
@@ -666,12 +677,41 @@ ul.text-content li:first-child {
     font-family:Mathilde;
     font-size:40px;
     text-align:center;
+    bottom:0px;
+    width:100%;
+    position:fixed;
+}
+
+#copyright {
+    margin-top:-40px;
+    /* line-height:60px; */
+    /* line-height: 150px; */
+    background-color:#444141;
+    color:white;
+    text-decoration:none;
+    font-family:Mathilde;
+    font-size:40px;
+    text-align:center;
+    bottom:0px;
+    width:100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+footer {
+    bottom:0;
 }
 
 #copyright a {
     text-decoration:none;
     color:white;
 }
+
+#copyright-not-found a {
+    text-decoration:none;
+    color:white;
+}
+
 
 /********FOOTER END*****/
 
@@ -755,3 +795,14 @@ ul.text-content li:first-child {
 
 
 /********RECIPE END******/
+
+/********ICONS****/
+#follow-me {
+/* position:absolute; */
+}
+#like img{
+    margin-top: 110px;
+    position: absolute;
+    margin-left: 50px;
+}
+/********ICONS***/
