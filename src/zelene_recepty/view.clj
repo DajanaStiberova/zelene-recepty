@@ -26,7 +26,7 @@
                (map list-snippet items))))
 
 (html/deftemplate grouped-lists-template "listings.html"
-  [data-snippet site-title language-image language-link data-grouped data-name-path categories site-name title-text language]
+  [data-snippet site-title language-image language-link data-grouped data-name-path categories site-name info-mail title-text language]
   [:div#recipes :h1] (html/content site-title)
   [:div#language-logo :img] (html/set-attr :src language-image)
   [:div#language-logo :a] (html/set-attr :href language-link)
@@ -40,7 +40,10 @@
                      (menu-bar title link))
                    categories))
   [:div#title :h1] (html/content site-name)
-  [:head :title] (html/content title-text))
+  [:a#mail] (html/set-attr :href info-mail)
+  [:a#mail] (html/content info-mail)
+  [:head :title] (html/content title-text)
+  )
 
 (html/defsnippet ingredient-list-item "listings.html" [:div#ingredients-list [:ul (html/nth-of-type 1)] [:li (html/nth-of-type 2)]]
   [name-path language {:keys [id] :as ingredient}]
@@ -68,7 +71,7 @@
   [:a] (html/set-attr :href (format "recipe?Id=%s&lang=%s" link language)))
 
 (html/deftemplate main-template "index.html"
-  [recipe-link recipes categories max-ingredients site-title site-name up-image language-image language-link  title-text language]
+  [recipe-link recipes categories max-ingredients site-title site-name up-image language-image language-link title-text info-mail language]
   [:div#thumbnails] (html/content
                      (map (fn [{:keys [title ingredients thumbnail-link id]}]
                             (thumbnail thumbnail-link title (render-list 7 ingredients) recipe-link id language))
@@ -84,7 +87,9 @@
               (html/at node [:img] (html/set-attr :src up-image))))
   [:div#language-logo :img] (html/set-attr :src language-image)
   [:div#language-logo :a] (html/set-attr :href language-link)
-  [:head :title] (html/content title-text))
+  [:head :title] (html/content title-text)
+  [:a#mail] (html/set-attr :href info-mail)
+  [:a#mail] (html/content info-mail))
 
 (html/defsnippet recipe-images "recipe.html" [[:div.polaroid-image (html/nth-of-type 1)]]
   [image-link image-description]
@@ -99,24 +104,26 @@
 
 (html/deftemplate recipe-template "recipe.html"
   [{:keys [date title images serving time origin ingredients] :as recipe} language
-   ingredients-title instructions-title recipe-text serving-title time-title origin-title]
+   ingredients-title instructions-title recipe-text time-title origin-title facebook-share]
   [:div#date :p] (html/content date)
   [:div#recipe-title :h2] (html/content (language title))
   [:div.polaroid-images] (html/content (map (fn [{:keys [link name]}]
                                               (recipe-images link (language name)))
                                             images))
-  [:div#serving :p] (html/content (str serving))
+  [:div#serving :p] (html/content (str (first serving)))
   [:div#time :p] (html/content time)
   [:div#ingredients :table] (html/content (map ingredients-snippet ingredients))
   [:div#ingredients :h1] (html/content ingredients-title)
   [:div#instructions :h1] (html/content instructions-title)
   [:div#instructions :p] (html/html-content recipe-text)
-  [:div#serving :h1] (html/content serving-title)
+  [:div#serving :h1] (html/content (second serving))
   [:div#time :h1] (html/content time-title)
   [:div#origin :h1] (html/content origin-title)
   [:div#origin :a] (html/do->
                     (html/set-attr :href origin)
-                    (html/content origin)))
+                    (html/content origin))
+  [:a#facebook] (html/set-attr :href facebook-share)
+  )
 
 ;; Returns not-found html with dynamic message (first argument) in the content of
 ;; 'div#title h1' tag and filled categories (sequence of category maps)

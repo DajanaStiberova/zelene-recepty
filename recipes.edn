@@ -18,7 +18,7 @@
     :category 2
     :text {:sk "recipes/guacamole_sk.md"
            :en "recipes/guacamole_en.md"}
-    :serving 2
+    :serving [2 11]
     :time 15
     :origin "http://katherineschwarzenegger.com/"}
  2 {:id 2
@@ -35,7 +35,7 @@
     :category 4
     :text {:sk "recipes/chocolate-mints_sk.md"
            :en "recipes/chocolate-mints_en.md"}
-    :serving 3
+    :serving [3 11]
     :time 30
     :origin "http://pureella.com/"}
  3 {:id 3
@@ -52,7 +52,7 @@
     :category 2
     :text {:sk "recipes/broccoli-salad_sk.md"
            :en "recipes/broccoli-salad_en.md"}
-    :serving 2
+    :serving [2 11]
     :time 15
     :origin "http://theglobalgirl.com/"}
  4 {:id 4
@@ -67,7 +67,7 @@
     :category 2
     :text {:sk "recipes/sunflower-bread_sk.md"
            :en "recipes/sunflower-bread_en.md"}
-    :serving 8
+    :serving [8 11]
     :time 1440
     :origin "http://countercuisine.blogspot.com/"}
  5 {:id 5
@@ -81,7 +81,7 @@
     :category 3
     :text {:sk "recipes/mustard_sk.md"
            :en "recipes/mustard_en.md"}
-    :serving 1.5
+    :serving [1.5 4]
     :time 4320
     :origin "http://www.rawfoodrecipes.com/"
     }
@@ -101,7 +101,7 @@
     :category 2
     :text {:sk "recipes/spinach-pizza_sk.md"
            :en "recipes/spinach-pizza_en.md"}
-    :serving 4
+    :serving [4 11]
     :time 300
     :origin "http://www.thisrawsomeveganlife.com/"}
  7 {:id 7
@@ -124,7 +124,7 @@
     :category 2
     :text {:sk "recipes/cashew-cheese_sk.md"
            :en "recipes/cashew-cheese_en.md"}
-    :serving 2
+    :serving [2 11]
     :time 240
     :origin "http://www.vegkitchen.com/"}
  8 {:id 8
@@ -137,7 +137,7 @@
     :category 4
     :text {:sk "recipes/carob-cookies_sk.md"
            :en "recipes/carob-cookies_en.md"}
-    :serving 2
+    :serving [2 11]
     :time 15
     :origin "https://rawcandy.wordpress.com"}
  9 {:id 9
@@ -150,7 +150,7 @@
     :category 5
     :text {:sk "recipes/strawberry-lemonade_sk.md"
            :en "recipes/strawberry-lemonade_en.md"}
-    :serving 2
+    :serving [2 11]
     :time 15
     :origin "www.green-recipes.com"}
  10 {:id 10
@@ -169,7 +169,7 @@
      :category 2
      :text {:sk "recipes/carrot-wrap_sk.md"
             :en "recipes/carrot-wrap_en.md"}
-     :serving 6
+     :serving [6 11]
      :time 330
      :origin "http://www.choosingraw.com/"}
  11 {:id 11
@@ -182,7 +182,7 @@
      :category 3
      :text {:sk "recipes/spinach-basil-pesto_sk.md"
             :en "recipes/spinach-basil-pesto_en.md"}
-     :serving 1
+     :serving [1 11]
      :time 20
      :origin "http://www.nutritionstripped.com/"}
  12 {:id 12
@@ -197,6 +197,6 @@
      :category 3
      :text {:sk "recipes/tahini-dressing_sk.md"
             :en "recipes/tahini-dressing_en.md"}
-     :serving 2
+     :serving [2 4]
      :time 15
      :origin "http://ohsheglows.com/"}}

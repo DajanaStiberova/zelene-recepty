@@ -20,7 +20,7 @@
        vals
        (filter (comp (partial = category-key) :category))))
 
-(defn- get-proper-word-form [{[first-form second-form third-form] :names} amount]
+(defn get-proper-word-form [{[first-form second-form third-form] :names} amount]
   (cond
    (> 2 amount) first-form
    (and (< 1 amount) (> 5 amount)) second-form
@@ -57,17 +57,24 @@
   [recipes all-ingredients language-key]
   (map  #(-> %
              (update-in [:title] language-key)
-             (update-in [:ingredients] (map-into-set (partial name-for-ingredient all-ingredients language-key))))
+             (update-in [:ingredients]
+                        (map-into-set (partial name-for-ingredient all-ingredients language-key))))
         recipes))
 
-(defn mins [number]
+(defn- mins [number]
   (rem number 60))
 
-(defn hours [number]
+(defn- hours [number]
   (/(- number (mins number))60))
 
 (defn fill-hours-and-mins [number]
   (cond
-   (and (> (mins number) 0) (> (hours number) 0)) (format "%s hod %s min" (hours number) (mins number))
-   (> (hours number) 0) (format "%s hod" (hours number))
-   (> (mins number) 0) (format "%s min" (mins number))))
+   (and (> (mins number) 0) (> (hours number) 0))
+   (format "%s hod %s min" (hours number) (mins number))
+   (> (hours number) 0)
+   (format "%s hod" (hours number))
+   (> (mins number) 0)
+   (format "%s min" (mins number))))
+
+(defn serving-units [all-units lang [amount unit-id]]
+  [amount (lang (get-proper-word-form (get all-units unit-id) amount))])

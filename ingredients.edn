@@ -63,6 +63,6 @@
  63 {:id 63 :name {:sk "Javorový sirup" :en "Maple syrup"}}
  64 {:id 64 :name {:sk "Morská soľ" :en "Sea salt"}}
  65 {:id 65 :name {:sk "Špenátovo-bazalkové pesto" :en "Spinach-basil pesto"}}
+ 66 {:id 66 :name {:sk "Kapari" :en "Capari"}}
  67 {:id 67 :name {:sk "Kápia" :en "Bell pepper"}}
- 68 {:id 68 :name {:sk "Probioticky prášok" :en "Probiotic powder"}}
- }
+ 68 {:id 68 :name {:sk "Probioticky prášok" :en "Probiotic powder"}}}

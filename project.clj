@@ -5,12 +5,14 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [org.clojure/clojurescript "0.0-2371"]
+                 [org.clojure/java.jdbc "0.3.6"]
                  [ring/ring-core "1.3.1"]
                  [ring/ring-jetty-adapter "1.3.1"]
                  [clj-time "0.8.0"]
                  [enlive "1.1.5"]
                  [markdown-clj "0.9.57"]
-                 [domina "1.0.3"]]
+                 [domina "1.0.3"]
+                 [org.postgresql/postgresql "9.3-1100-jdbc41"]]
   :plugins [[lein-cljsbuild "1.0.4-SNAPSHOT"]]
   :cljsbuild {:builds [{:id "zelenerecepty-app"
                         :source-paths ["src-cljs"]

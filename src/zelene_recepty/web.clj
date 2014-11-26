@@ -40,7 +40,8 @@
       (core/populate-recipe ingredients amounts units lang)
       (update-in [:date] time/format-date)
       (update-in [:time] (fn [time]
-                           (core/fill-hours-and-mins time)))))
+                           (core/fill-hours-and-mins time)))
+      (update-in [:serving] (partial core/serving-units data/units lang))))
 
 (defn- lists [template title all-data key language language-link]
   (template
@@ -51,6 +52,7 @@
    [key language]
    (list-of-categories language)
    (language {:sk "RAW Vegan Kuchárka" :en "RAW Vegan CookBook"})
+   (language {:sk "info@zelenerecepty.sk" :en "info@green-recipes.com"})
    (language {:sk "Zelené recepty" :en"Green recipes"})
    (name language)))
 
@@ -69,6 +71,7 @@
                        (lang {:sk "images/en-logo-mini.png" :en "images/sk-logo-mini.png"})
                        (language-link link lang)
                        (lang {:sk "Zelené recepty" :en"Green recipes"})
+                       (lang {:sk "info@zelenerecepty.sk" :en "info@green-recipes.com"})
                        (name lang)))}))
 
 (def routing-map {"/home" (partial category-handler 1 (vals data/recipes))
@@ -99,7 +102,7 @@
                                                                 lang
                                                                 (language-link "/list-of-recipes" lang)))})
 
-                  "/recipe" (fn [{:keys [lang] :as request}]
+                  "/recipe" (fn [{:keys [lang server-name uri query-string] :as request}]
                               (let [recipe-id (-> request :params :Id (maybe-param 0))]
                                 {:status 200
                                  :body (apply str (view/recipe-template
@@ -108,9 +111,9 @@
                                                    (lang {:en "Ingredients" :sk "Ingrediencie"})
                                                    (lang {:en "Method" :sk "Postup"})
                                                    (file-input/recipe-text (-> (get data/recipes recipe-id) :text lang))
-                                                   (lang {:sk "Porcie" :en "Serving"})
                                                    (lang {:sk "Čas" :en "Time"})
-                                                   (lang {:sk "Zdroj:" :en "Origin:"})))}))
+                                                   (lang {:sk "Zdroj:" :en "Origin:"})
+                                                   (format "http://www.facebook.com/sharer.php?u=%s" (str server-name uri query-string))))}))
 
                   "/recipes" (fn [{:keys [lang] :as request}]
                                (let [ingredient-id (-> request :params :ingredientId (maybe-param 0))]
@@ -126,6 +129,7 @@
                                                     (lang {:sk "images/hore.png"  :en "images/up.png"})
                                                     (lang {:sk "images/en-logo-mini.png" :en "images/sk-logo-mini.png"})
                                                     (language-link "/recipes" lang)
+                                                    (lang {:sk "info@zelenerecepty.sk" :en "info@green-recipes.com"})
                                                     (lang {:sk "Zelené recepty" :en "Green recipes"})
                                                     (name lang)))}))})
 

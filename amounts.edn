@@ -335,7 +335,7 @@
           :unit-id 3
           :amount 3}
  [12 1] {:recipe-id 12
-         :ingredient-id 28
+         :ingredient-id 1
          :unit-id 5
          :amount 1}
  [12 28] {:recipe-id 12
@@ -345,5 +345,4 @@
  [12 21] {:recipe-id 12
           :ingredient-id 21
           :unit-id 3
-          :amount 3}
- }
+          :amount 3}}
