@@ -1,45 +1,56 @@
 {1  {:id 1
      :names [{:sk "Šálka" :en "Cup"}
              {:sk "Šálky" :en "Cups"}
-             {:sk "Šálok" :en "Cups"}]}
+             {:sk "Šálok" :en "Cups"}
+             {:sk "Šálky" :en "Cup"}]}
  2 {:id 2
     :names [{:sk "Gram" :en "Gram"}
             {:sk "Gramy" :en "Grams"}
-            {:sk "Gramov" :en "Grams"}]}
+            {:sk "Gramov" :en "Grams"}
+            {:sk "Gramu" :en "Gram"}]}
  3 {:id 3
     :names [{:sk "Lyžica" :en "Tablespoon"}
             {:sk "Lyžice" :en "Tablespoons"}
-            {:sk "Lyžíc" :en "Tablespoons"}]}
+            {:sk "Lyžíc" :en "Tablespoons"}
+            {:sk "Lyžice" :en "Tablespoon"}]}
 
  4 {:id 4
     :names [{:sk "Pohár" :en "Cup"}
             {:sk "Poháre" :en "Cups"}
-            {:sk "Pohárov" :en "Cups"}]}
+            {:sk "Pohárov" :en "Cups"}
+            {:sk "Pohára" :en "Cup"}]}
  5 {:id 5
     :names [{:sk "Čajová lyžička" :en "Teaspoon" }
             {:sk "Čajové lyžičky" :en "Teaspoons"}
-            {:sk "Čajových lyžičiek" :en "Teaspoons" }]}
+            {:sk "Čajových lyžičiek" :en "Teaspoons"}
+            {:sk "Čajovej lyžičky" :en "Teaspoon"}]}
  6 {:id 6
     :names [{:sk "Kus" :en "Piece"}
             {:sk "Kusy" :en "Pieces"}
-            {:sk "Kusov" :en "Pieces"}]}
+            {:sk "Kusov" :en "Pieces"}
+            {:sk "Kusu" :en "Piece"}]}
  7 {:id 7
     :names [{:sk "Strúčik" :en "Clove" }
             {:sk "Strúčiky" :en "Cloves" }
-            {:sk "Strúčikov" :en "Cloves"}]}
+            {:sk "Strúčikov" :en "Cloves"}
+            {:sk "Strúčika" :en "Clove"}]}
  8 {:id 8
     :names [{:sk "Liter" :en "Liter"}
             {:sk "Litre" :en "Liters"}
-            {:sk "Litrov" :en "Liters"}]}
+            {:sk "Litrov" :en "Liters"}
+            {:sk "Litra" :en "Liter"}]}
  9 {:id 9
     :names [{:sk "Štipka" :en "Pinch"}
             {:sk "Štipky" :en "Pinches"}
-            {:sk "Štipiek" :en "Pinches"}]}
+            {:sk "Štipiek" :en "Pinches"}
+            {:sk "Štipky" :en "Pinch"}]}
  10 {:id 10
      :names [{:sk "Mililiter" :en  "Mililiter"}
              {:sk "Mililitre" :en  "Mililiters"}
-             {:sk "Mililitrov" :en  "Mililiters"}]}
+             {:sk "Mililitrov" :en  "Mililiters"}
+             {:sk "Milillitra" :en  "Mililiter"}]}
  11 {:id 11
      :names [{:sk "Porcia" :en  "Serving"}
              {:sk "Porcie" :en  "Servings"}
-             {:sk "Porcií" :en  "Servings"}]}}
+             {:sk "Porcií" :en  "Servings"}
+             {:sk "Porcie" :en  "Serving"}]}}

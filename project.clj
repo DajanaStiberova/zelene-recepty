@@ -9,6 +9,7 @@
                  [ring/ring-core "1.3.1"]
                  [ring/ring-jetty-adapter "1.3.1"]
                  [clj-time "0.8.0"]
+                 [yesql "0.4.0"]
                  [enlive "1.1.5"]
                  [markdown-clj "0.9.57"]
                  [domina "1.0.3"]

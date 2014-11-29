@@ -40,7 +40,7 @@
                      (menu-bar title link))
                    categories))
   [:div#title :h1] (html/content site-name)
-  [:a#mail] (html/set-attr :href info-mail)
+  [:a#mail] (html/set-attr :href (format "mailto:%s" info-mail))
   [:a#mail] (html/content info-mail)
   [:head :title] (html/content title-text)
   )
@@ -88,7 +88,7 @@
   [:div#language-logo :img] (html/set-attr :src language-image)
   [:div#language-logo :a] (html/set-attr :href language-link)
   [:head :title] (html/content title-text)
-  [:a#mail] (html/set-attr :href info-mail)
+  [:a#mail] (html/set-attr :href (format "mailto:%s" info-mail))
   [:a#mail] (html/content info-mail))
 
 (html/defsnippet recipe-images "recipe.html" [[:div.polaroid-image (html/nth-of-type 1)]]
@@ -97,26 +97,27 @@
   [:a] (html/set-attr :title image-description))
 
 (html/defsnippet ingredients-snippet "recipe.html" [:table [:tr (html/nth-of-type 1)]]
-  [[ingredient amount unit :as ingredients]]
-  [[:td (html/nth-of-type 1)]] (html/content ingredient)
+  [{:keys [name amount unit-name] :as ingredients}]
+  [[:td (html/nth-of-type 1)]] (html/content name)
   [[:td (html/nth-of-type 2)]] (html/content (str amount))
-  [[:td (html/nth-of-type 3)]] (html/content unit))
+  [[:td (html/nth-of-type 3)]] (html/content unit-name))
 
 (html/deftemplate recipe-template "recipe.html"
-  [{:keys [date title images serving time origin ingredients] :as recipe} language
-   ingredients-title instructions-title recipe-text time-title origin-title facebook-share]
-  [:div#date :p] (html/content date)
-  [:div#recipe-title :h2] (html/content (language title))
+  [{:keys [recipe-date title images serving-unit serving-amount preparation-time origin ingredients] :as recipe}
+   language ingredients-title instructions-title
+   recipe-text time-title origin-title facebook-share]
+  [:div#date :p] (html/content recipe-date)
+  [:div#recipe-title :h2] (html/content title)
   [:div.polaroid-images] (html/content (map (fn [{:keys [link name]}]
                                               (recipe-images link (language name)))
                                             images))
-  [:div#serving :p] (html/content (str (first serving)))
-  [:div#time :p] (html/content time)
+  [:div#serving :p] (html/content (str serving-amount))
+  [:div#time :p] (html/content preparation-time)
   [:div#ingredients :table] (html/content (map ingredients-snippet ingredients))
   [:div#ingredients :h1] (html/content ingredients-title)
   [:div#instructions :h1] (html/content instructions-title)
   [:div#instructions :p] (html/html-content recipe-text)
-  [:div#serving :h1] (html/content (second serving))
+  [:div#serving :h1] (html/content serving-unit)
   [:div#time :h1] (html/content time-title)
   [:div#origin :h1] (html/content origin-title)
   [:div#origin :a] (html/do->
@@ -124,6 +125,7 @@
                     (html/content origin))
   [:a#facebook] (html/set-attr :href facebook-share)
   )
+
 
 ;; Returns not-found html with dynamic message (first argument) in the content of
 ;; 'div#title h1' tag and filled categories (sequence of category maps)

@@ -18,6 +18,8 @@ CREATE TABLE unit (
        form_second_en VARCHAR(255),
        form_third_sk VARCHAR(255),
        form_third_en VARCHAR(255),
+       form_fourth_sk VARCHAR(255),
+       form_fourth_en VARCHAR(255),
        PRIMARY KEY (id)
 );
 

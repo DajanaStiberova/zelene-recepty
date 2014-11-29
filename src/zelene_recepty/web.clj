@@ -5,8 +5,8 @@
             [ring.middleware.content-type :as content-type]
             [ring.middleware.not-modified :as not-modified]
             [zelene-recepty.middleware :as middleware]
-            [zelene-recepty.core :as core]
-            [zelene-recepty.data :as data]
+            [zelene-recepty.utils :as utils]
+            [zelene-recepty.db :as db]
             [zelene-recepty.view :as view]
             [zelene-recepty.time :as time]
             [zelene-recepty.file-input :as file-input]))
@@ -19,12 +19,11 @@
 
 (defn- list-of-categories
   [current-language]
-  (map (comp (fn [category]
-               (-> category
-                   (update-in [:title] current-language)
-                   (update-in [:link] #(format "%s?lang=%s#hr" % (name current-language)))))
-             second)
-       data/categories))
+  (map (fn [category]
+         (-> category
+             (update-in [:title] current-language)
+             (update-in [:link] #(format "%s?lang=%s#hr" % (name current-language)))))
+       (db/categories-menu db/zelene-recepty-db)))
 
 (defn not-found [{:keys [lang] :as request}]
   {:status 404
@@ -35,20 +34,29 @@
                                              (list-of-categories lang)
                                              (language-link "/not-found" lang)))})
 
-(defn- update-recipe [recipe ingredients amounts units lang]
+(defn- update-recipe [recipe lang]
   (-> recipe
-      (core/populate-recipe ingredients amounts units lang)
-      (update-in [:date] time/format-date)
-      (update-in [:time] (fn [time]
-                           (core/fill-hours-and-mins time)))
-      (update-in [:serving] (partial core/serving-units data/units lang))))
+      (update-in [:images]
+                 (partial map (fn [image]
+                                (update-in image [:name] lang))))
+      (update-in [:ingredients]
+                 (partial map (fn [ingredient]
+                                (-> ingredient
+                                    (update-in [:unit-name] lang)
+                                    (update-in [:name] lang)))))
+      (update-in [:title] lang)
+      (update-in [:text] lang)
+      (update-in [:serving-unit] lang)
+      (update-in [:recipe-date] time/format-date)
+      (update-in [:preparation-time] (fn [time]
+                                       (utils/fill-hours-and-mins time)))))
 
 (defn- lists [template title all-data key language language-link]
   (template
    (language title)
    (language {:sk "images/en-logo-mini.png" :en "images/sk-logo-mini.png"})
    language-link
-   (core/group-and-sort (vals all-data) [key language])
+   (utils/group-and-sort all-data [key language])
    [key language]
    (list-of-categories language)
    (language {:sk "RAW Vegan Kuchárka" :en "RAW Vegan CookBook"})
@@ -57,12 +65,17 @@
    (name language)))
 
 (defn- category-handler [category-id recipes {:keys [lang] :as request}]
-  (let [{:keys [title link]} (get data/categories category-id)]
+  (let [[{:keys [title link]}] (filter (fn [category]
+                                         (= (:id category) category-id))
+                                       (db/categories-menu db/zelene-recepty-db))]
     {:status 200
      :body (apply str (view/main-template
                        (lang {:sk "Recept" :en "Recipe"})
-                       (core/update-recipes recipes
-                                            data/ingredients lang)
+                       (->> recipes
+                            (map (fn [recipe]
+                                   (-> recipe
+                                       (update-in [:title] lang)
+                                       (update-in [:ingredients] (partial map #(get-in % [:name lang])))))))
                        (list-of-categories lang)
                        7
                        (lang title)
@@ -74,21 +87,21 @@
                        (lang {:sk "info@zelenerecepty.sk" :en "info@green-recipes.com"})
                        (name lang)))}))
 
-(def routing-map {"/home" (partial category-handler 1 (vals data/recipes))
+(def routing-map {"/home" (partial category-handler 1 (sort-by :recipe-date (db/get-all-thumbnails db/zelene-recepty-db)))
 
-                  "/main-dishes" (partial category-handler 2 (core/recipes-for-category 2 data/recipes))
+                  "/main-dishes" (partial category-handler 2 (db/get-thumbnails-for-category db/zelene-recepty-db 2))
 
-                  "/spreads" (partial category-handler 3 (core/recipes-for-category 3 data/recipes))
+                  "/spreads" (partial category-handler 3 (db/get-thumbnails-for-category db/zelene-recepty-db 3))
 
-                  "/sweets" (partial category-handler 4 (core/recipes-for-category 4 data/recipes))
+                  "/sweets" (partial category-handler 4 (db/get-thumbnails-for-category db/zelene-recepty-db 4))
 
-                  "/drinks" (partial category-handler 5 (core/recipes-for-category 5 data/recipes))
+                  "/drinks" (partial category-handler 5 (db/get-thumbnails-for-category db/zelene-recepty-db 5))
 
                   "/list-of-ingredients" (fn [{:keys [lang] :as request}]
                                            {:status 200
                                             :body (apply str (lists view/ingredients-template
                                                                     {:sk "Zoznam surovín" :en "List of ingredients"}
-                                                                    data/ingredients
+                                                                    (db/get-list-of-all-ingredients db/zelene-recepty-db)
                                                                     :name
                                                                     lang
                                                                     (language-link "/list-of-ingredients" lang)))})
@@ -97,7 +110,7 @@
                                        {:status 200
                                         :body (apply str (lists view/recipes-template
                                                                 {:sk "Zoznam receptov" :en "List of recipes"}
-                                                                data/recipes
+                                                                (db/get-list-of-all-recipes db/zelene-recepty-db)
                                                                 :title
                                                                 lang
                                                                 (language-link "/list-of-recipes" lang)))})
@@ -106,31 +119,37 @@
                               (let [recipe-id (-> request :params :Id (maybe-param 0))]
                                 {:status 200
                                  :body (apply str (view/recipe-template
-                                                   (update-recipe (get data/recipes recipe-id) data/ingredients data/amounts data/units lang)
+                                                   (update-recipe (db/get-recipe db/zelene-recepty-db recipe-id) lang)
                                                    lang
                                                    (lang {:en "Ingredients" :sk "Ingrediencie"})
                                                    (lang {:en "Method" :sk "Postup"})
-                                                   (file-input/recipe-text (-> (get data/recipes recipe-id) :text lang))
+                                                   (file-input/recipe-text (-> (db/get-recipe db/zelene-recepty-db recipe-id) :text lang))
                                                    (lang {:sk "Čas" :en "Time"})
                                                    (lang {:sk "Zdroj:" :en "Origin:"})
                                                    (format "http://www.facebook.com/sharer.php?u=%s" (str server-name uri query-string))))}))
+
 
                   "/recipes" (fn [{:keys [lang] :as request}]
                                (let [ingredient-id (-> request :params :ingredientId (maybe-param 0))]
                                  {:status 200
                                   :body (apply str (view/main-template
                                                     (lang {:sk "Recept" :en "Recipe"})
-                                                    (core/update-recipes (core/recipes-for-ingredient ingredient-id data/recipes)
-                                                                         data/ingredients lang)
+                                                    (->>
+                                                     (db/get-thumbnails-for-ingredient db/zelene-recepty-db ingredient-id)
+                                                     (map (fn [recipe]
+                                                            (-> recipe
+                                                                (update-in [:title] lang)
+                                                                (update-in [:ingredients] (partial map #(get-in % [:name lang])))))))
                                                     (list-of-categories lang)
                                                     7
-                                                    (core/name-for-ingredient data/ingredients lang ingredient-id)
+                                                    (db/get-proper-ingredient-name-from-id db/zelene-recepty-db ingredient-id lang)
                                                     (lang {:sk "RAW Vegan Kuchárka" :en "RAW Vegan CookBook"})
                                                     (lang {:sk "images/hore.png"  :en "images/up.png"})
                                                     (lang {:sk "images/en-logo-mini.png" :en "images/sk-logo-mini.png"})
-                                                    (language-link "/recipes" lang)
-                                                    (lang {:sk "info@zelenerecepty.sk" :en "info@green-recipes.com"})
+                                                    (format "%s&lang=%s" (format "/recipes?ingredientId=%s" ingredient-id)
+                                                            (if (= lang :sk) "en" "sk"))
                                                     (lang {:sk "Zelené recepty" :en "Green recipes"})
+                                                    (lang {:sk "info@zelenerecepty.sk" :en "info@green-recipes.com"})
                                                     (name lang)))}))})
 
 (defn router [request]
