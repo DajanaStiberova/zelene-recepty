@@ -132,6 +132,14 @@
 ;; 'div#title h1' tag and filled categories (sequence of category maps)
 ;; in the content of 'ul#menu' tag.
 
+
+(html/deftemplate in-construction-template "in-construction.html"
+  [site-description title language-image language-link]
+  [:div#site-description :h1] (html/content site-description)
+  [:div#title :h1] (html/content title)
+  [:div#language-logo :img] (html/set-attr :src language-image)
+  [:div#language-logo :a] (html/set-attr :href language-link))
+
 (html/deftemplate not-found-template "not-found.html"
   [not-found-message language-image categories language-link]
   [:div#title :h1] (html/content not-found-message)

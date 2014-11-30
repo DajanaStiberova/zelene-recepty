@@ -1,5 +1,6 @@
 (ns zelene-recepty.middleware
-  (:require [clojure.string :as string]))
+  (:require [clojure.string :as string]
+            [clj-detector.core :as ua ]))
 
 (defn parse-params [raw-params]
   (if raw-params
@@ -23,5 +24,24 @@
 
 (defn wrap-html-response [handler]
   (fn [request]
-    (assoc (handler request)
-      :headers {"Content-Type" "text/html; charset=utf-8"})))
+    (-> request
+        handler
+        (assoc :headers {"Content-Type" "text/html; charset=utf-8"})
+        (update-in [:body] (partial apply str)))))
+
+(defn wrap-ua-info [handler]
+  (fn [{:keys [headers] :as request}]
+    (let [user-agent (ua/user-agent (get headers "user-agent"))]
+      (handler (assoc request
+                 :user-agent
+                 {:name (:name user-agent)
+                  :producer (:producer user-agent)
+                  :type (:type user-agent)
+                  :version (:version user-agent)
+                  :device (:device user-agent)})))))
+
+(defn wrap-in-construction [handler in-construction-handler]
+  (fn [{{device :device} :user-agent :as request}]
+    (if (= :pc device)
+      (handler request)
+      (in-construction-handler request))))

@@ -34,6 +34,16 @@
                                   (list-of-categories lang)
                                   (language-link "/not-found" lang))})
 
+(defn in-construction [{:keys [lang] :as request}]
+  {:status 200
+   :body (view/in-construction-template (lang {:sk "RAW Vegan Kuchárka"
+                                               :en "RAW Vegan Cook Book"})
+                                        (lang {:sk "Na mobilnej verzii stránky sa pracuje :)"
+                                               :en "Mobile version of website is under construction :)"})
+                                        (lang {:sk "images/en-logo-mini.png"
+                                               :en "images/sk-logo-mini.png"})
+                                        (language-link "/in-construction" lang))})
+
 (defn- update-recipe [recipe lang]
   (-> recipe
       (update-in [:images]
@@ -152,11 +162,11 @@
 
 (defn router [request]
   (let [request-fn (get routing-map (:uri request) not-found)]
-    (-> request
-        request-fn
-        (update-in [:body] (partial apply str)))))
+    (request-fn request)))
 
 (def handler (-> router
+                 (middleware/wrap-in-construction in-construction)
+                 middleware/wrap-ua-info
                  middleware/wrap-language
                  middleware/wrap-params
                  middleware/wrap-html-response

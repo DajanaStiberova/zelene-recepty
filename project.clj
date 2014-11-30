@@ -13,6 +13,8 @@
                  [enlive "1.1.5"]
                  [markdown-clj "0.9.57"]
                  [domina "1.0.3"]
+                 [clj-detector "0.0.2"]
+                 [net.sf.uadetector/uadetector-resources "2014.10"]
                  [org.postgresql/postgresql "9.3-1100-jdbc41"]]
   :plugins [[lein-cljsbuild "1.0.4-SNAPSHOT"]]
   :cljsbuild {:builds [{:id "zelenerecepty-app"
