@@ -1057,22 +1057,25 @@ select:after {
 
 /*********MODAL WINDOW*****/
 
-.modalWindow {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: rgba(0,0,0,0.2);
-    z-index: 99999;
-    opacity:0;
-    pointer-events: none;
-    overflow:auto;
-}
-.modalWindow:target {
-    opacity:1;
-    pointer-events: auto;
-}
+/*
+  .modalWindow {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0,0,0,0.2);
+  z-index: 99999;
+  opacity:0;
+  pointer-events: none;
+  overflow:auto;
+  }*/
+
+/* .modalWindow:target { */
+/*     opacity:1; */
+/*     pointer-events: auto; */
+/* } */
+
 /* .modalWindow > div { */
 /*     width: 500px; */
 /*     position: relative; */
@@ -1081,18 +1084,21 @@ select:after {
 /* } */
 
 .modalWindow {
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    top: 0px;
+    right: 0px;
+    width: 100%;
+    height: 100%;
     background: rgba(15, 13, 13, 0.7);
-    z-index: 99999;
-    opacity:0;
-    -webkit-transition: opacity 400ms ease-in;
-    -moz-transition: opacity 400ms ease-in;
-    transition: opacity 400ms ease-in;
-    pointer-events: none;
-}
+    z-index: 1000;
+    visibility: hidden;
+    position: fixed;
+    overflow: auto;
+/* opacity:0; */
+/*     -webkit-transition: opacity 400ms ease-in; */
+/*     -moz-transition: opacity 400ms ease-in; */
+/*     transition: opacity 400ms ease-in; */
+/*     pointer-events: none; */
+/* } */
 /* .modalWindow > div { */
 /*     width: 500px; */
 /*     position: relative; */
@@ -1102,6 +1108,35 @@ select:after {
 /*     border-radius: 5px; */
 /*     background: #fff; */
 }
+
+.modalWindow #content {
+    margin-top:100px;
+    margin-left:auto;
+    margin-right:auto;
+    padding-bottom:50px;
+    background: url(images/recept.png);
+    width: 1050px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px #494444;
+    margin-bottom:40px;
+}
+
+.modalWindow #content h1 {
+    font-size:70px;
+    font-family:Mathilde;
+    color:#69A62E;
+    /* color:rgba(237, 53, 68, 1); */
+    text-align:center;
+    padding-bottom:10px;
+}
+
+.modalWindow #content p {
+    color:#444141;
+    list-style:none;
+    line-height:18px;
+
+}
+
 .close {
     background: #606061;
     color: #FFFFFF;
@@ -1149,7 +1184,7 @@ select:after {
     font-family: Mathilde;
     font-size: 2.4em;
     font-weight: bold;
-    padding: 6px 35px 6px 40px;
+    padding: 6px 50px 6px 40px;
     margin: 30px 10px 10px -20px;
     color:rgba(221, 15, 32, 1);
     background-color: rgba(237, 53, 68, 1);
@@ -1188,33 +1223,6 @@ select:after {
     border-color: rgba(237, 53, 68, 1) rgba(237, 53, 68, 1) rgba(237, 53, 68, 1) transparent;
 }
 
-#content {
-    margin-top:100px;
-    margin-left:auto;
-    margin-right:auto;
-    padding-bottom:50px;
-    background: url(images/recept.png);
-    width: 1050px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px #494444;
-    margin-bottom:40px;
-}
-
-#content h1 {
-    font-size:70px;
-    font-family:Mathilde;
-    color:#69A62E;
-    /* color:rgba(237, 53, 68, 1); */
-    text-align:center;
-    padding-bottom:10px;
-}
-
-#content p {
-    color:#444141;
-    list-style:none;
-    line-height:18px;
-
-}
 #time-and-serve {
     position:absolute;
 }
@@ -1228,7 +1236,7 @@ select:after {
 }
 
 #time-and-serve  p {
-    font-size: 30px;
+    font-size: 40px;
     font-family: Mathilde;
     color: #10100F;
     padding-bottom: 0px;
@@ -1241,7 +1249,7 @@ select:after {
     display:inline-block;
     /* float:right; */
     /* width:30%; */
-    padding-left: 600px;
+    padding-left: 500px;
     padding-top: 70px;
 }
 
@@ -1400,7 +1408,7 @@ select:after {
     color: rgb(73, 70, 70);
     padding-top: 30px;
     padding-bottom: 30px;
-    font-weight: 700;
+    font-weight: normal;
 }
 
 #instructions h2:first-of-type {
@@ -1408,7 +1416,7 @@ select:after {
     color: rgb(73, 70, 70);
     padding-top:0px;
     padding-bottom: 30px;
-    font-weight: 700;
+    font-weight: normal;
 }
 
 #instructions a {
@@ -1451,6 +1459,7 @@ select:after {
     text-align:right;
     width:105px;
     vertical-align:bottom;
+    display:none;
 }
 
 #twitter:hover {
@@ -1465,7 +1474,8 @@ select:after {
     height:50px;
     text-align:right;
     width:120px;
-    vertical-align:bottom
+    vertical-align:bottom;
+    display:none;
 }
 
 #facebook-recipe:hover {
@@ -1480,6 +1490,7 @@ select:after {
     text-align:right;
     width:115px;
     vertical-align:bottom;
+    display:none;
 }
 
 #comment:hover {
@@ -1497,6 +1508,8 @@ select:after {
     font-size:35px;
     vertical-align:bottom;
     display:inline-block;
+    display:none;
 }
 
 /*****END ICONS****/
+

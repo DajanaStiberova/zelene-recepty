@@ -22,9 +22,6 @@
 (defquery images-for-recipe  "queries/images_for_recipe.sql")
 (defquery amounts-and-units-for-ingredients-in-recipe  "queries/amounts_and_units_for_ingredients_in_recipe.sql")
 
-
-
-
 (defn split-and-nest
   "Splits keyword names in associative structure by specified regexp
   and creates nested structure if needed, existing non-splitable key-val
@@ -50,49 +47,38 @@
            (split-and-nest category #"_"))
          (categories conn))))
 
-(defn proper-form-for-ingredient-amount [{{numerator :numerator denominator :denominator} :amount
-                                          {first :first second :second third :third fourth :fourth} :form
-                                          :as amount-and-units}]
-  (let [amount (/ numerator denominator)]
-    (->
-     (cond
-      (and (> amount 1) (< amount 5)) (assoc amount-and-units :unit-name second)
-      (= amount 1) (assoc amount-and-units :unit-name first)
-      (> amount 5) (assoc amount-and-units :unit-name third)
-      (< amount 1) (assoc amount-and-units :unit-name fourth))
-     (dissoc :form)
-     (assoc :amount amount))))
-
-(defn proper-form-for-serving-amount [{amount :serving-amount {first :first second :second third :third fourth :fourth} :form :as recipe}]
+(defn proper-form-for-amount [{amount :amount
+                               {first :first second :second third :third fourth :fourth} :form
+                               :as data}]
   (->
    (cond
-    (and (> amount 1) (< amount 5)) (assoc-in recipe [:serving-unit] second)
-    (= amount 1) (assoc-in recipe [:serving-unit] first)
-    (> amount 5) (assoc-in recipe [:serving-unit] third)
-    (< amount 1) (assoc-in recipe [:serving-unit] fourth))
+    (and (> amount 1) (< amount 5)) (assoc data :unit-name second)
+    (= amount 1) (assoc data :unit-name first)
+    (> amount 4) (assoc data :unit-name third)
+    (< amount 1) (assoc data :unit-name fourth))
    (dissoc :form)
-   (assoc :serving_amount amount)))
+   (assoc :amount amount)))
 
 (defn get-ingredients-with-units-for-recipe [db recipe-id]
   (->> (amounts-and-units-for-ingredients-in-recipe db recipe-id)
        (map (fn [amount-and-units]
               (-> amount-and-units
                   (split-and-nest #"_")
+                  (update-in [:amount] (fn [{:keys [numerator denominator]}]
+                                         (/ numerator denominator)))
                   proper-form-for-amount)))))
 
 (defn get-recipe [db recipe-id]
   (j/with-db-transaction [conn db]
     (-> (first (recipe conn recipe-id))
         (underscore->hypen :recipe_date)
-        (underscore->hypen :preparation_time)
-        (underscore->hypen :serving_unit)
-        (underscore->hypen :serving_amount)
+        (underscore->hypen :preparation_time) 
         (split-and-nest #"_")
-        (proper-form-for-serving-amount)
+        (update-in [:serving] proper-form-for-amount)
         (assoc :images (->> (images-for-recipe conn recipe-id)
                             (map #(split-and-nest % #"_"))
                             (into #{})))
-        (assoc :ingredients (->> (get-ingredients-with-units-for-recipe db recipe-id)
+        (assoc :ingredients (->> (get-ingredients-with-units-for-recipe conn recipe-id)
                                  (into #{}))))))
 
 (defn get-all-thumbnails [db]

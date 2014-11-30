@@ -6,3 +6,4 @@ goog.addDependency("../domina.js", ['domina'], ['goog.dom.forms', 'goog.dom', 'g
 goog.addDependency("../domina/css.js", ['domina.css'], ['goog.dom', 'cljs.core', 'domina', 'goog.dom.query']);
 goog.addDependency("../domina/events.js", ['domina.events'], ['cljs.core', 'domina', 'goog.object', 'goog.events']);
 goog.addDependency("../zelene_recepty/smoothscroll.js", ['zelene_recepty.smoothscroll'], ['domina.css', 'cljs.core', 'domina', 'domina.events']);
+goog.addDependency("../zelene_recepty/thumbnail.js", ['zelene_recepty.thumbnail'], ['domina.css', 'goog.net.XhrIo', 'cljs.core', 'domina', 'domina.events']);

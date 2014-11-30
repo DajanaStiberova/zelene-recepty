@@ -27,7 +27,7 @@
                             :form_third_sk form-third-sk
                             :form_third_en form-third-en
                             :form_fourth_sk form-fourth-sk
-                            :form_fourth_en form-fourth-sk})
+                            :form_fourth_en form-fourth-en})
                          second))))
   (apply j/insert! database :recipe
          (->> data/recipes

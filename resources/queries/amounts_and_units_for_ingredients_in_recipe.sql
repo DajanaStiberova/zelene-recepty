@@ -7,7 +7,9 @@ SELECT ingredient.name_sk,
        unit.form_second_sk,	
        unit.form_second_en,
        unit.form_third_sk,
-       unit.form_third_en
+       unit.form_third_en,
+       unit.form_fourth_sk,
+       unit.form_fourth_en
 FROM amount 
 INNER JOIN ingredient ON ingredient.id = amount.ingredient_id
 INNER JOIN unit ON unit.id = amount.unit_id

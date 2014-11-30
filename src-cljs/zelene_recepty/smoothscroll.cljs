@@ -19,18 +19,20 @@
       distance)))
 
 (defn ^:export set-up [speed moving-frequency anchor]
-  (let [up-element (css/sel anchor)
-        scroll-to-element (css/sel (dom/attr up-element :href))
-        hop-count (/ speed moving-frequency)]
-    (events/listen! up-element :click (fn [e]
-                                        (let [scroll-to-top-document-at-begin (scroll-to-top-document-distance js/window js/document)
-                                              gap (/ (- (scroll-to-top-distance (dom/single-node scroll-to-element))
-                                                        scroll-to-top-document-at-begin)
-                                                     hop-count)]
-                                          (dotimes [n hop-count]
-                                            (.setTimeout js/window
-                                                         #(.scrollTo js/window
-                                                                     0
-                                                                     (+ (* gap n)
-                                                                        scroll-to-top-document-at-begin))
-                                                         (* moving-frequency n))))))))
+  (when-let [up-element (dom/single-node (css/sel anchor))]
+    (let [scroll-to-element (css/sel (dom/attr up-element :href))
+          hop-count (/ speed moving-frequency)]
+      (events/listen! up-element
+                      :click
+                      (fn [e]
+                        (let [scroll-to-top-document-at-begin (scroll-to-top-document-distance js/window js/document)
+                              gap (/ (- (scroll-to-top-distance (dom/single-node scroll-to-element))
+                                        scroll-to-top-document-at-begin)
+                                     hop-count)]
+                          (dotimes [n hop-count]
+                            (.setTimeout js/window
+                                         #(.scrollTo js/window
+                                                     0
+                                                     (+ (* gap n)
+                                                        scroll-to-top-document-at-begin))
+                                         (* moving-frequency n)))))))))
