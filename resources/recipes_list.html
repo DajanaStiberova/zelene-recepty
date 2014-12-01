@@ -12,18 +12,8 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500' rel='stylesheet' type='text/css'/>
     <link href='http://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'/>
     <link rel="stylesheet" type="text/css" href="style.css"/>
-    <script type="text/javascript" src="out/goog/base.js"></script>
-    <script type="text/javascript" src="script/zelenerecepty_app.js"></script>
-    <script type="text/javascript">
-      goog.require("zelene_recepty.thumbnail");
-      function set_up() {
-      zelene_recepty.thumbnail.set_up('div.modalWindow','div.modalWindow div#content a#close','div#ingredients-list li.list');
-      }
-    </script>
   </head>
-  <body onload="set_up()">
-    <div class="modalWindow">
-    </div>
+  <body>
     <header>
       <a id="facebook" href="https://www.facebook.com/zelenerecepty"><img src="images/facebook-link.png" alt="Follow me"></a>
       <ul id="menu" class="text-content">
@@ -45,19 +35,19 @@
         <ul>
           <li class="letter :hover"><a href="#">A</a></li>
           <li><a href="#">Surovina1</a></li>
-          <li class="list :hover" data-recipe-id="2" data-recipe-lang="sk">Surovina2</li>
+          <li><a href="#">Surovina2</a></li>
         </ul>
         <ul>
           <li class="letter :hover"><a href="#">B</a></li>
-          <li data-recipe-id="1" data-recipe-lang="sk">čučoriedka</li>
-          <li data-recipe-id="1" data-recipe-lang="sk">Surovina4</li>
+          <li><a href="#">čučoriedka</a></li>
+          <li><a href="#">Surovina4</a></li>
         </ul>
       </div>
     </div>
     <a id="follow-me" href="https://twitter.com/intent/user?screen_name=zelenerecepty"><img src="images/birds_and_sign.png" alt="Follow me"></a>
     <footer>
       <div id="copyright">
-        <p>&copy;2014 Made with &#9829 <a href="http://www.clover.sk">Clover</a>
+        <p>&copy; 2014 Made with &#9829 <a href="http://www.clover.sk">Clover</a>
         </p>
         <a id="mail" href="mailto:info@zelenerecepty.sk"> info@zelenerecepty.sk</a>
       </div>

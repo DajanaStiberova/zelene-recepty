@@ -27,7 +27,7 @@
 
 (html/deftemplate grouped-lists-template "listings.html"
   [data-snippet site-title language-image language-link data-grouped data-name-path categories site-name info-mail title-text language]
-  [:div#recipes :h1] (html/content site-title)
+  [:div#listing :h1] (html/content site-title)
   [:div#language-logo :img] (html/set-attr :src language-image)
   [:div#language-logo :a] (html/set-attr :href language-link)
   [:div#ingredients-list] (html/content
@@ -42,7 +42,7 @@
   [:div#title :h1] (html/content site-name)
   [:a#mail] (html/set-attr :href (format "mailto:%s" info-mail))
   [:a#mail] (html/content info-mail)
-  [:head :title] (html/content title-text)
+  [:head :tile] (html/content title-text)
   )
 
 (html/defsnippet ingredient-list-item "listings.html" [:div#ingredients-list [:ul (html/nth-of-type 1)] [:li (html/nth-of-type 2)]]
@@ -54,11 +54,12 @@
 (def ingredients-template (partial grouped-lists-template ingredient-list-item))
 
 (html/defsnippet recipe-list-item "listings.html"
-  [:div#ingredients-list [:ul (html/nth-of-type 1)] [:li (html/nth-of-type 2)]]
+  [:div#ingredients-list [:ul (html/nth-of-type 1)] [:li (html/nth-of-type 3)]]
   [name-path language {:keys [id] :as recipe}]
-  [:li :a] (html/do->
-            (html/set-attr :href (format "recipe?Id=%s&lang=%s" id language))
-            (html/content (get-in recipe name-path))))
+  [:li] (html/do->
+         (html/set-attr :data-recipe-id id)
+         (html/set-attr :data-recipe-lang language)
+         (html/content (get-in recipe name-path))))
 
 (def recipes-template (partial grouped-lists-template recipe-list-item))
 

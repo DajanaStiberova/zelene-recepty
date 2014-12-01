@@ -173,6 +173,3 @@
                  (resource/wrap-resource "public")
                  content-type/wrap-content-type
                  not-modified/wrap-not-modified))
-
-(defonce server (jetty/run-jetty #'handler {:port 3000
-                                            :join? false}))

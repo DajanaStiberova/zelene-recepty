@@ -236,6 +236,14 @@ ul.text-content li:first-child {
     color: #37cd3c;
 }
 
+li.list {
+    cursor:pointer;
+}
+
+#ingredients-list li.list:hover {
+    color: #37cd3c;
+}
+
 
 /******** INGREDIENTS END *****/
 
@@ -361,6 +369,7 @@ ul.text-content li:first-child {
 }
 
 .view {
+    cursor:pointer;
     width: 300px;
     height: 200px;
     margin: 5px;
@@ -424,6 +433,10 @@ ul.text-content li:first-child {
     -webkit-box-shadow: 0 0 5px #000;
     -moz-box-shadow: 0 0 5px #000;
     box-shadow: 0 0 5px #000;
+}
+
+.thumbnail {
+    cursor:pointer;
 }
 
 .thumbnail img {
@@ -733,6 +746,11 @@ footer {
 }
 
 /*****DROPDOWN-INGREDIENTS-LIST*****/
+#listing {
+    padding-top:80px;
+}
+
+
 td:first-child select{
     position: relative;
     width: 126px;
@@ -1002,6 +1020,7 @@ select:after {
     float: right;
     margin-right: 40px;
     position:absolute;
+    cursor:pointer;
 }
 
 #date {
