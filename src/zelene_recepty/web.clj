@@ -97,7 +97,9 @@
             (lang {:sk "info@zelenerecepty.sk" :en "info@green-recipes.com"})
             (name lang))}))
 
-(def routing-map {"/home" (partial category-handler 1 (sort-by :recipe-date (db/get-all-thumbnails db/zelene-recepty-db)))
+(def ^:private home-handler (partial category-handler 1 (sort-by :recipe-date (db/get-all-thumbnails db/zelene-recepty-db))))
+
+(def routing-map {"/home" home-handler
 
                   "/main-dishes" (partial category-handler 2 (db/get-thumbnails-for-category db/zelene-recepty-db 2))
 
@@ -160,9 +162,11 @@
                                          (lang {:sk "info@zelenerecepty.sk" :en "info@green-recipes.com"})
                                          (name lang))}))})
 
-(defn router [request]
-  (let [request-fn (get routing-map (:uri request) not-found)]
-    (request-fn request)))
+(defn router [{:keys [uri] :as request}]
+  (if (= "/" uri)
+    (home-handler request)
+    (let [request-fn (get routing-map uri not-found)]
+      (request-fn request))))
 
 (def handler (-> router
                  (middleware/wrap-in-construction in-construction)
