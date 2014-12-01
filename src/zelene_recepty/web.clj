@@ -160,9 +160,14 @@
                                          (lang {:sk "info@zelenerecepty.sk" :en "info@green-recipes.com"})
                                          (name lang))}))})
 
-(defn router [{:keys [uri] :as request}]
+(defn router [{:keys [server-name uri] :as request}]
+  (println server-name)
   (if (= "/" uri)
-    (home-handler request)
+    (let [lang (cond
+                (re-matches #".*\.com" server-name) :en
+                (re-matches #".*\.sk" server-name) :sk
+                :else :sk)]
+      (home-handler (assoc request :lang lang)))
     (let [request-fn (get routing-map uri not-found)]
       (request-fn request))))
 
