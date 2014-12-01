@@ -161,7 +161,6 @@
                                          (name lang))}))})
 
 (defn router [{:keys [server-name uri] :as request}]
-  (println server-name)
   (if (= "/" uri)
     (let [lang (cond
                 (re-matches #".*\.com" server-name) :en
