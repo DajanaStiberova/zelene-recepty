@@ -1,5 +1,4 @@
-(ns zelene-recepty.data
-  (:require [clojure.java.io :as io]))
+(ns zelene-recepty.data)
 
 (def ^:private read-file (comp read-string slurp))
 

@@ -1,7 +1,5 @@
 (ns zelene-recepty.web
-  (:require [clojure.string :as string]
-            [ring.adapter.jetty :as jetty]
-            [ring.middleware.resource :as resource]
+  (:require [ring.middleware.resource :as resource]
             [ring.middleware.content-type :as content-type]
             [ring.middleware.not-modified :as not-modified]
             [zelene-recepty.middleware :as middleware]
