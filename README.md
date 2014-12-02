@@ -1,14 +1,21 @@
-# zelene-recepty
+# Green recipes
 
-A Clojure library designed to ... well, that part is up to you.
+Website [www.green-recipes.com](www.green-recipes.com)
 
-## Usage
 
-FIXME
+A website written in Clojure and ClojureScript, using Enlive for templates and Postgresql as datastore.
+
+Main functionality:
+
+* filtering recipes by ingredient
+* grouping recipes by recipe category
+
+## Future functionality
+
+* adding recipes via web UI
+* filtering recipes by various conditions
 
 ## License
 
-Copyright © 2014 FIXME
+Copyright © 2014 Dajanka
 
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
