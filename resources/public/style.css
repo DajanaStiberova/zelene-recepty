@@ -1271,23 +1271,24 @@ select:after {
 
 #icons {
     margin-top:20px;
-    width:455px;
+    width:655px;
     margin-left:auto;
     margin-right:auto;
+    text-align:center;
 }
-#twitter {
+
+#twitter-recipe {
     display:inline-block;
     padding-right:20px;
     background-image: url("images/twitter-before.png");
     background-repeat:no-repeat;
     height:50px;
     text-align:right;
-    width:105px;
+    width:205px;
     vertical-align:bottom;
-    display:none;
 }
 
-#twitter:hover {
+#twitter-recipe:hover {
     background-image: url("images/twitter.png");
 }
 
@@ -1298,16 +1299,15 @@ select:after {
     background-repeat:no-repeat;
     height:50px;
     text-align:right;
-    width:120px;
+    width:220px;
     vertical-align:bottom;
-    display:none;
 }
 
 #facebook-recipe:hover {
     background-image: url("images/facebook.png");
 }
 
-#comment {
+#comment-recipe {
     display:inline-block;
     background-image: url("images/comment-before.ico");
     background-repeat:no-repeat;
@@ -1315,11 +1315,12 @@ select:after {
     text-align:right;
     width:115px;
     vertical-align:bottom;
-    display:none;
+
 }
 
-#comment:hover {
+#comment-recipe:hover {
     background-image: url("images/comment.ico");
+
 }
 
 #comment-and-title {
@@ -1328,12 +1329,19 @@ select:after {
 
 #icons a {
     text-decoration :none;
-    color:black;
+    color:rgb(56, 51, 51);
     font-family:Mathilde;
-    font-size:35px;
+    font-size:38px;
     vertical-align:bottom;
     display:inline-block;
-    display:none;
+}
+
+#icons a:nth-child(2) {
+    padding-left:10px;
+}
+
+#icons a:hover {
+    color:black;
 }
 
 /*****END ICONS****/

@@ -64,20 +64,23 @@
 (def recipes-template (partial grouped-lists-template recipe-list-item))
 
 (html/defsnippet thumbnail "index.html" [[:div.thumbnail (html/nth-of-type 1)]]
-  [thumbnail-link name description recipe-link recipe-id language]
+  [{:keys [thumbnail-link title ingredients id]} language]
   [:div.mask] (html/do->
-               (html/set-attr :data-recipe-id recipe-id)
+               (html/set-attr :data-recipe-id id)
                (html/set-attr :data-recipe-lang language))
   [:img] (html/set-attr :src thumbnail-link)
-  [:h2] (html/content name)
-  [:p] (html/content description)
-  [:a.info] (html/content recipe-link))
+  [:h2] (html/content title)
+  [:p] (html/content ingredients)
+  ;;[:a] (html/set-attr :href (format "#recipe/%s/lang/%s" id language))
+  )
 
 (html/deftemplate main-template "index.html"
-  [recipe-link recipes categories max-ingredients site-title site-name up-image language-image language-link title-text info-mail language]
+  [recipes categories max-ingredients site-title site-name up-image language-image language-link title-text info-mail language]
   [:div#thumbnails] (html/content
-                     (map (fn [{:keys [title ingredients thumbnail-link id]}]
-                            (thumbnail thumbnail-link title (render-list 6 ingredients) recipe-link id language))
+                     (map (fn [{:keys [ingredients] :as recipe}]
+                            (-> recipe
+                                (update-in [:ingredients] #(render-list 6 %))
+                                (thumbnail language)))
                           recipes))
   [:ul#menu] (html/content
               (map (fn [{:keys [title link]}]
@@ -107,7 +110,8 @@
 
 (html/defsnippet recipe-snippet "recipe.html" [:body :div#content]
   [{:keys [recipe-date title images serving preparation-time origin ingredients text] :as recipe}
-   language ingredients-title instructions-title time-title origin-title facebook-share]
+   language ingredients-title instructions-title time-title origin-title 
+   facebook-share-text facebook-share twitter-share-text twitter-share]
   [:div#date :p] (html/content recipe-date)
   [:div#recipe-title :h2] (html/content title)
   [:div.polaroid-images] (html/content (map (fn [{:keys [link name]}]
@@ -125,7 +129,10 @@
   [:div#origin :a] (html/do->
                     (html/set-attr :href origin)
                     (html/content origin))
-  [:a#facebook] (html/set-attr :href facebook-share))
+  [:a#facebook-recipe] (html/content facebook-share-text)
+  [:a#facebook-recipe] (html/set-attr :href facebook-share)
+  [:a#twitter-recipe] (html/content twitter-share-text)
+  [:a#twitter-recipe] (html/set-attr :href twitter-share))
 
 (def recipe-template (comp (partial apply html/emit*) recipe-snippet))
 

@@ -59,3 +59,9 @@ goog.addDependency("net/wrapperxmlhttpfactory.js", ['goog.net.WrapperXmlHttpFact
 goog.addDependency("net/xmlhttp.js", ['goog.net.DefaultXmlHttpFactory', 'goog.net.XmlHttp', 'goog.net.XmlHttp.OptionType', 'goog.net.XmlHttp.ReadyState', 'goog.net.XmlHttpDefines'], ['goog.asserts', 'goog.net.WrapperXmlHttpFactory', 'goog.net.XmlHttpFactory']);
 goog.addDependency("uri/utils.js", ['goog.uri.utils', 'goog.uri.utils.ComponentIndex', 'goog.uri.utils.QueryArray', 'goog.uri.utils.QueryValue', 'goog.uri.utils.StandardQueryParam'], ['goog.asserts', 'goog.string', 'goog.userAgent']);
 goog.addDependency("net/xhrio.js", ['goog.net.XhrIo', 'goog.net.XhrIo.ResponseType'], ['goog.Timer', 'goog.array', 'goog.debug.entryPointRegistry', 'goog.events.EventTarget', 'goog.json', 'goog.log', 'goog.net.ErrorCode', 'goog.net.EventType', 'goog.net.HttpStatus', 'goog.net.XmlHttp', 'goog.object', 'goog.string', 'goog.structs', 'goog.structs.Map', 'goog.uri.utils', 'goog.userAgent']);
+goog.addDependency("history/eventtype.js", ['goog.history.EventType'], []);
+goog.addDependency("events/eventhandler.js", ['goog.events.EventHandler'], ['goog.Disposable', 'goog.events', 'goog.object']);
+goog.addDependency("history/event.js", ['goog.history.Event'], ['goog.events.Event', 'goog.history.EventType']);
+goog.addDependency("labs/useragent/device.js", ['goog.labs.userAgent.device'], ['goog.labs.userAgent.util']);
+goog.addDependency("memoize/memoize.js", ['goog.memoize'], []);
+goog.addDependency("history/history.js", ['goog.History', 'goog.History.Event', 'goog.History.EventType'], ['goog.Timer', 'goog.dom', 'goog.events.EventHandler', 'goog.events.EventTarget', 'goog.events.EventType', 'goog.history.Event', 'goog.history.EventType', 'goog.labs.userAgent.device', 'goog.memoize', 'goog.string', 'goog.userAgent']);

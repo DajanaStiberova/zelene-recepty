@@ -14,6 +14,7 @@
                  [markdown-clj "0.9.57"]
                  [domina "1.0.3"]
                  [clj-detector "0.0.2"]
+                 [secretary "1.2.1"]
                  [net.sf.uadetector/uadetector-resources "2014.10"]
                  [org.postgresql/postgresql "9.3-1100-jdbc41"]]
   :main ^:skip-aot zelene-recepty.main

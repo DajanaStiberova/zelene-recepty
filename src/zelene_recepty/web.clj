@@ -12,8 +12,15 @@
 (defn- maybe-param [param default]
   (or (and param (read-string param)) default))
 
+
 (defn- language-link [url lang]
   (format "%s?lang=%s" url (if (= lang :sk) "en" "sk")))
+
+
+(defn- url [lang id]
+  (format "%s/home#/recipe/%s/lang/%s"
+          (if (= lang "en") "www.green-recipes.com" "www.zelene-recepty.sk") id lang))
+
 
 (defn- list-of-categories
   [current-language]
@@ -78,7 +85,6 @@
                                        (db/categories-menu db/zelene-recepty-db))]
     {:status 200
      :body (view/main-template
-            (lang {:sk "Recept" :en "Recipe"})
             (->> recipes
                  (map (fn [recipe]
                         (-> recipe
@@ -135,7 +141,11 @@
                                         (lang {:en "Method" :sk "Postup"})
                                         (lang {:sk "Čas" :en "Time"})
                                         (lang {:sk "Zdroj:" :en "Origin:"})
-                                        (format "http://www.facebook.com/sharer.php?u=%s" (str server-name uri query-string)))}))
+                                        (lang {:sk "Zdieľaj na facebooku" :en "Share on facebook"})
+                                        (format "http://www.facebook.com/sharer.php?u=%s" (url (name lang) recipe-id))
+                                        (lang {:sk "Zdieľaj na twittri" :en "Share on twitter"})
+                                        (format "http://twitter.com/share?url=%s" (url (name lang) recipe-id)))}))
+
 
                   "/recipes" (fn [{:keys [lang] :as request}]
                                (let [ingredient-id (-> request :params :ingredientId (maybe-param 0))]

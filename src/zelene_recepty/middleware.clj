@@ -42,7 +42,6 @@
 
 (defn wrap-in-construction [handler in-construction-handler]
   (fn [{{device :device type :type} :user-agent :as request}]
-    (println type)
     (if (and (= :pc device) (= :browser type))
       (handler request)
       (in-construction-handler request))))

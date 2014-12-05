@@ -19,7 +19,7 @@
       goog.require("zelene_recepty.thumbnail");
       function set_up() {
       zelene_recepty.smoothscroll.set_up(500,15,'a#up');
-      zelene_recepty.thumbnail.set_up('div.modalWindow','div.modalWindow div#content a#close','div.thumbnail div.mask');
+      zelene_recepty.thumbnail.set_up('div.thumbnail div.mask');
       }
     </script>
   </head>
@@ -58,13 +58,15 @@
           <div class="mask" data-recipe-id="1" data-recipe-lang="sk">
             <h2>Guacamole</h2>
             <p>Uzasna dajanka je najúžasnejsia, twigulda je úžasna tiez, a kedze tu herich nie je tak nie je s nami úžasny.</p>
+            <!--a href="#" class="info">Recept</a-->
           </div>
         </div>
         <div class="view thumbnail">
           <img src="images/guacamole.jpg"/>
-          <div class="mask" data-recipe-id="2" data-recipe-lang="sk">
+          <div class="mask" data-recipe-id="1" data-recipe-lang="sk">
             <h2>Guacamole</h2>
             <p>Uzasna dajanka je najúžasnejsia, twigulda je úžasna tiez, a kedze tu herich nie je tak nie je s nami úžasny.</p>
+            <!--a href="#" class="info">Recept</a-->
           </div>
         </div>
       </div>
@@ -73,7 +75,7 @@
     <a id="follow-me" href="https://twitter.com/intent/user?screen_name=zelenerecepty"><img src="images/birds_and_sign.png" alt="Follow me"></a>
     <footer>
       <div id="copyright">
-        <p>&copy; 2014 Made with &#9829 <a href="http://www.clover.sk">Clover</a>
+        <p>&copy; 2014 Made with &#9829 Dajanka</a>
         </p>
         <a id="mail" href="mailto:info@zelenerecepty.sk"> info@zelenerecepty.sk</a>
       </div>
