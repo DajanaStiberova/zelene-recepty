@@ -12,15 +12,12 @@
 (defn- maybe-param [param default]
   (or (and param (read-string param)) default))
 
-
 (defn- language-link [url lang]
   (format "%s?lang=%s" url (if (= lang :sk) "en" "sk")))
-
 
 (defn- url [lang id]
   (format "%s/home#/recipe/%s/lang/%s"
           (if (= lang "en") "www.green-recipes.com" "www.zelene-recepty.sk") id lang))
-
 
 (defn- list-of-categories
   [current-language]
