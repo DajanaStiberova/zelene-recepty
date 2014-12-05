@@ -7,7 +7,8 @@
             [zelene-recepty.db :as db]
             [zelene-recepty.view :as view]
             [zelene-recepty.time :as time]
-            [zelene-recepty.file-input :as file-input]))
+            [zelene-recepty.file-input :as file-input])
+  (:import [java.net URLEncoder]))
 
 (defn- maybe-param [param default]
   (or (and param (read-string param)) default))
@@ -16,8 +17,8 @@
   (format "%s?lang=%s" url (if (= lang :sk) "en" "sk")))
 
 (defn- url [lang id]
-  (format "%s/home#/recipe/%s/lang/%s"
-          (if (= lang "en") "www.green-recipes.com" "www.zelene-recepty.sk") id lang))
+  (URLEncoder/encode (format "%s/home#/recipe/%s/lang/%s")
+                     "UTF-8"))
 
 (defn- list-of-categories
   [current-language]
@@ -139,9 +140,13 @@
                                         (lang {:sk "Čas" :en "Time"})
                                         (lang {:sk "Zdroj:" :en "Origin:"})
                                         (lang {:sk "Zdieľaj na facebooku" :en "Share on facebook"})
-                                        (format "http://www.facebook.com/sharer.php?u=%s" (url (name lang) recipe-id))
+                                        (format "http://www.facebook.com/sharer.php?u=%s"
+                                                (URLEncoder/encode (format "%s/home#/recipe/%s/lang/%s" server-name recipe-id (name lang))
+                                                                   "UTF-8"))
                                         (lang {:sk "Zdieľaj na twittri" :en "Share on twitter"})
-                                        (format "http://twitter.com/share?url=%s" (url (name lang) recipe-id)))}))
+                                        (format "http://twitter.com/share?url=%s"
+                                                (URLEncoder/encode (format "%s/home#/recipe/%s/lang/%s" server-name recipe-id (name lang))
+                                                                   "UTF-8")))}))
 
 
                   "/recipes" (fn [{:keys [lang] :as request}]
