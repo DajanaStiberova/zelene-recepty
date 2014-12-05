@@ -44,4 +44,4 @@
   (fn [{{device :device} :user-agent :as request}]
     (if (#{:phone :tablet :pda} device)
       (in-construction-handler request)
-      (handler request)))
+      (handler request))))
