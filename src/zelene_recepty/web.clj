@@ -184,7 +184,7 @@
       (request-fn request))))
 
 (def handler (-> router
-                 middleware/wrap-in-construction
+                 (middleware/wrap-in-construction in-construction)
                  middleware/wrap-ua-info
                  middleware/wrap-language
                  middleware/wrap-params
