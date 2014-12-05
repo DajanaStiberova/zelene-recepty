@@ -110,7 +110,7 @@
 
 (html/defsnippet recipe-snippet "recipe.html" [:body :div#content]
   [{:keys [recipe-date title images serving preparation-time origin ingredients text] :as recipe}
-   language ingredients-title instructions-title time-title origin-title 
+   language ingredients-title instructions-title time-title origin-title
    facebook-share-text facebook-share twitter-share-text twitter-share]
   [:div#date :p] (html/content recipe-date)
   [:div#recipe-title :h2] (html/content title)
