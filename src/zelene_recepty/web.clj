@@ -141,11 +141,11 @@
                                         (lang {:sk "Zdroj:" :en "Origin:"})
                                         (lang {:sk "Zdieľaj na facebooku" :en "Share on facebook"})
                                         (format "http://www.facebook.com/sharer.php?u=%s"
-                                                (URLEncoder/encode (format "%s/home#/recipe/%s/lang/%s" server-name recipe-id (name lang))
+                                                (URLEncoder/encode (format "http://%s/home#/recipe/%s/lang/%s" server-name recipe-id (name lang))
                                                                    "UTF-8"))
                                         (lang {:sk "Zdieľaj na twittri" :en "Share on twitter"})
                                         (format "http://twitter.com/share?url=%s"
-                                                (URLEncoder/encode (format "%s/home#/recipe/%s/lang/%s" server-name recipe-id (name lang))
+                                                (URLEncoder/encode (format "http://%s/home#/recipe/%s/lang/%s" server-name recipe-id (name lang))
                                                                    "UTF-8")))}))
 
 
