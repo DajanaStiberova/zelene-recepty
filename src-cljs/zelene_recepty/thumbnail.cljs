@@ -26,7 +26,10 @@
     (set-body-overflow! "hidden")
     (dom/set-html! modal-element (.getResponseText (.-target event)))
     (setup-close modal-close-selector modal-element)
-    (dom/set-styles! modal-element {:visibility "visible"})))
+    (dom/set-styles! modal-element {:visibility "visible"})
+    (dom/append! (css/sel "head")
+                 (str "<meta property='og:title' content=\"" (dom/text (dom/single-node (css/sel "div#recipe-title"))) "\"/>"
+                      "<meta property='og:title' content=\""(dom/text (dom/single-node (css/sel "div#ingredients")))"\"/>"))))
 
 (defroute recipe-route "/recipe/:recipe-id/lang/:lang" [recipe-id lang]
   (xhr/send (str (str "/recipe?Id=" recipe-id)
