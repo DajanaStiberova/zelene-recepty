@@ -136,6 +136,45 @@
 
 (def recipe-template (comp (partial apply html/emit*) recipe-snippet))
 
+(html/defsnippet select-category "add-recipe.html"
+  [:select#category [:option (html/nth-of-type 1)]]
+  [category]
+  [:option] (html/content category))
+
+(html/defsnippet select-ingredient "add-recipe.html"
+  [:select#ingredient [:option (html/nth-of-type 1)]]
+  [ingredient]
+  [:option] (html/content ingredient))
+
+(html/defsnippet select-unit "add-recipe.html"
+  [:select#unit [:option (html/nth-of-type 1)]]
+  [unit]
+  [:option] (html/content unit))
+
+(html/deftemplate add-recipe-template "add-recipe.html"
+  [categories title language-image language-link categories-titles ingredients-titles units-titles amount-text]
+  [:ul#menu] (html/content
+              (map (fn [{:keys [title link]}]
+                     (menu-bar title (name link)))
+                   categories))
+  [:div#ar-title] (html/content title)
+  [:div#language-logo :img] (html/set-attr :src language-image)
+  [:div#language-logo :a] (html/set-attr :href language-link)
+  [:select#category] (html/content (map (fn [category]
+                                          (select-category category))
+                                        categories-titles))
+  [:select#ingredient] (html/content (map (fn [ingredient]
+                                            (select-ingredient ingredient))
+                                          ingredients-titles))
+  [:select#unit] (html/content (map (fn [unit]
+                                      (select-unit unit))
+                                    units-titles))
+  [:select#serving-unit] (html/content (map (fn [unit]
+                                              (select-unit unit))
+                                            units-titles))
+
+  [:input#amount] (html/set-attr :placeholder amount-text))
+
 ;; Returns not-found html with dynamic message (first argument) in the content of
 ;; 'div#title h1' tag and filled categories (sequence of category maps)
 ;; in the content of 'ul#menu' tag.

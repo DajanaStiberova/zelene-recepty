@@ -920,6 +920,14 @@ select:after {
     width:200px;
 }
 
+#serving-time {
+    display:block;
+}
+
+#serving-time input {
+    width:200px;
+}
+
 #send-recipe button {
 
     background: rgba(223, 33, 49, 0.8);
@@ -966,6 +974,30 @@ select:after {
     width:auto;
 
 }
+
+#serving {
+    padding-bottom:30px;
+
+}
+
+#serving-section input {
+    width:100px;
+    display:inline-block;
+}
+
+#serving-unit {
+    display:inline-block;
+}
+
+#serving-section {
+    display:block;
+}
+
+#serving-section tr {
+    display:inline-block;
+}
+
+
 
 /*********MODAL WINDOW*****/
 

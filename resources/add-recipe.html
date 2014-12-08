@@ -37,9 +37,6 @@
     <div id="ar-content">
 
       <div id="ar-left">
-        <!-- <div id="ar-ingredients-title"> -->
-        <!--   <h1>Zoznam ingrediencií</h1> -->
-        <!-- </div> -->
         <select id="category">
           <option>Kategoria</option>
           <option>Hlavné jedlá</option>
@@ -56,7 +53,7 @@
                 </select>
               </td>
               <td>
-                <input type="text" placeholder="počet">
+                <input id="amount" type="text" placeholder="počet">
               </td>
               <td>
                 <select id="unit">
@@ -75,7 +72,7 @@
                 </select>
               </td>
               <td>
-                <input type="text" placeholder="počet">
+                <input id="amount" type="text" placeholder="počet">
               </td>
               <td>
                 <select id="unit">
@@ -102,6 +99,7 @@
               </td>
               <td>
                 <select id="unit">
+                  <option id="ingredient">Ingrediencia</option>
                   <option>Kusov</option>
                   <option>Lyžičiek</option>
                   <option>Pohárov</option>
@@ -121,6 +119,26 @@
             <a href="#">+</a>
             <a href="#">-</a>
           </div>
+        </div>
+        <div id="serving-section">
+          <table>
+            <tr>
+              <td>
+                <input type="text" placeholder="Výsledné množstvo">
+              </td>
+            <tr>
+              <td>
+                <select id="serving-unit">
+                  <option>Ingrediencia</option>
+                  <option>Jablká</option>
+                  <option>Agáve</option>
+                </select>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="serving-time">
+          <input type="text" placeholder="čas prípravy v minútach">
         </div>
         <div id="origin">
           <input type="text" placeholder="zdroj">

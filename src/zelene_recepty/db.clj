@@ -18,6 +18,7 @@
 (defquery thumbnail-for-recipe  "queries/thumbnail_for_recipe.sql")
 (defquery list-of-all-ingredients  "queries/ingredients_list.sql")
 (defquery list-of-all-recipes  "queries/recipes_list.sql")
+(defquery all-units  "queries/all_from_unit.sql")
 (defquery recipe  "queries/recipe.sql")
 (defquery images-for-recipe  "queries/images_for_recipe.sql")
 (defquery amounts-and-units-for-ingredients-in-recipe  "queries/amounts_and_units_for_ingredients_in_recipe.sql")
@@ -72,7 +73,7 @@
   (j/with-db-transaction [conn db]
     (-> (first (recipe conn recipe-id))
         (underscore->hypen :recipe_date)
-        (underscore->hypen :preparation_time) 
+        (underscore->hypen :preparation_time)
         (split-and-nest #"_")
         (update-in [:serving] proper-form-for-amount)
         (assoc :images (->> (images-for-recipe conn recipe-id)
@@ -143,3 +144,9 @@
     (map (fn [ingredient]
            (split-and-nest ingredient  #"_"))
          (list-of-all-recipes conn))))
+
+(defn get-list-of-all-units [db]
+  (j/with-db-transaction [conn db]
+    (map (fn [unit]
+           (split-and-nest unit #"_"))
+         (all-units conn))))
