@@ -178,10 +178,10 @@
                                           {:status 200
                                            :body (view/add-recipe-template
                                                   (list-of-categories lang)
-                                                  (lang {:sk "Pridaj vlastný recept" :en "Add your own recipe"})
+                                                  (lang {:sk "Pridaj recept" :en "Add recipe"})
                                                   (lang {:sk "images/en-logo-mini.png" :en "images/sk-logo-mini.png"})
                                                   (language-link "/add-recipe" lang)
-                                                  (rest (map :title (list-of-categories lang)))
+                                                  (take 4 (rest (map :title (list-of-categories lang))))
                                                   (cons (lang {:sk "Ingrediencie" :en "Ingredients"})
                                                         (sort (map (comp lang :name) (db/get-list-of-all-ingredients db/zelene-recepty-db))))
 
