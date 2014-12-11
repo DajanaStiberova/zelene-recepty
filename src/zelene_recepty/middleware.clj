@@ -1,26 +1,25 @@
 (ns zelene-recepty.middleware
-  (:require [clojure.string :as string]
+  (:require [zelene-recepty.utils :as utils]
+            [clojure.string :as string]
             [clj-detector.core :as ua ]))
-
-(defn parse-params [raw-params]
-  (if raw-params
-    (reduce (fn [acc kv-entry]
-              (let [[k v] (string/split kv-entry #"=")]
-                (assoc acc (keyword k) v)))
-            {}
-            (string/split raw-params #"&"))
-    {}))
-
 
 (defn wrap-language [handler]
   (fn [request]
     (let [lang (or (-> request :params :lang keyword #{:sk :en}) :sk)]
       (handler (assoc request :lang lang)))))
 
-(defn wrap-params [handler]
+(defn- keywordize [m]
+  (->> m
+       (map (fn [[k v]]
+              [(keyword k) v]))
+       (into {})))
+
+(defn wrap-keyword-params [handler]
   (fn [request]
-    (let [parsed (parse-params (:query-string request))]
-      (handler (assoc request :params parsed)))))
+    (handler (-> request
+                 (update-in [:params] keywordize)
+                 (update-in [:query-params] keywordize)
+                 (update-in [:form-params] keywordize)))))
 
 (defn wrap-html-response [handler]
   (fn [request]
@@ -40,8 +39,16 @@
                   :version (:version user-agent)
                   :device (:device user-agent)})))))
 
+
+
+
 (defn wrap-in-construction [handler in-construction-handler]
   (fn [{{device :device} :user-agent :as request}]
     (if (#{:phone :tablet :pda} device)
       (in-construction-handler request)
       (handler request))))
+
+(comment (defn wrap-add-recipe-params [handler]
+  (fn [request]
+    (handler (-> request
+                 (update-in [:params] utils/recipe-data-from-params))))))

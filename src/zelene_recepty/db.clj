@@ -1,5 +1,5 @@
 (ns zelene-recepty.db
-  (:require [clojure.string :as str]
+  (:require [zelene-recepty.utils :as utils]
             [clojure.java.jdbc :as j]
             [yesql.core :refer [defquery]]))
 
@@ -23,29 +23,11 @@
 (defquery images-for-recipe  "queries/images_for_recipe.sql")
 (defquery amounts-and-units-for-ingredients-in-recipe  "queries/amounts_and_units_for_ingredients_in_recipe.sql")
 
-(defn split-and-nest
-  "Splits keyword names in associative structure by specified regexp
-  and creates nested structure if needed, existing non-splitable key-val
-  mappings are unaffected."
-  [data delimiter]
-  (reduce (fn [acc [k v]]
-            (let [key-strs (-> k name (str/split delimiter))]
-              (assoc-in acc (map keyword key-strs) v)))
-          {}
-          data))
-
-(defn underscore->hypen
-  [data k]
-  (if-let [v (get data k)]
-    (-> data
-        (dissoc k)
-        (assoc (-> k name (str/replace #"_" "-") keyword) v))
-    data))
 
 (defn categories-menu [db]
   (j/with-db-transaction [conn db]
     (map (fn [category]
-           (split-and-nest category #"_"))
+           (utils/split-and-nest category #"_"))
          (categories conn))))
 
 (defn proper-form-for-amount [{amount :amount
@@ -64,7 +46,7 @@
   (->> (amounts-and-units-for-ingredients-in-recipe db recipe-id)
        (map (fn [amount-and-units]
               (-> amount-and-units
-                  (split-and-nest #"_")
+                  (utils/split-and-nest #"_")
                   (update-in [:amount] (fn [{:keys [numerator denominator]}]
                                          (/ numerator denominator)))
                   proper-form-for-amount)))))
@@ -72,12 +54,12 @@
 (defn get-recipe [db recipe-id]
   (j/with-db-transaction [conn db]
     (-> (first (recipe conn recipe-id))
-        (underscore->hypen :recipe_date)
-        (underscore->hypen :preparation_time)
-        (split-and-nest #"_")
+        (utils/underscore->hypen :recipe_date)
+        (utils/underscore->hypen :preparation_time)
+        (utils/split-and-nest #"_")
         (update-in [:serving] proper-form-for-amount)
         (assoc :images (->> (images-for-recipe conn recipe-id)
-                            (map #(split-and-nest % #"_"))
+                            (map #(utils/split-and-nest % #"_"))
                             (into #{})))
         (assoc :ingredients (->> (get-ingredients-with-units-for-recipe conn recipe-id)
                                  (into #{}))))))
@@ -87,11 +69,11 @@
     (->> (all-thumbnails conn)
          (map (fn [{:keys [id] :as recipe}]
                 (-> recipe
-                    (underscore->hypen :recipe_date)
-                    (underscore->hypen :thumbnail_link)
-                    (split-and-nest #"_")
+                    (utils/underscore->hypen :recipe_date)
+                    (utils/underscore->hypen :thumbnail_link)
+                    (utils/split-and-nest #"_")
                     (assoc :ingredients (->> (ingredients-for-recipe conn id)
-                                             (map #(split-and-nest % #"_"))
+                                             (map #(utils/split-and-nest % #"_"))
                                              (into #{}))))))
          doall)))
 
@@ -100,11 +82,11 @@
     (->> (thumbnails-for-category conn category-id)
          (map (fn [{:keys [id] :as recipe}]
                 (-> recipe
-                    (underscore->hypen :recipe_date)
-                    (underscore->hypen :thumbnail_link)
-                    (split-and-nest #"_")
+                    (utils/underscore->hypen :recipe_date)
+                    (utils/underscore->hypen :thumbnail_link)
+                    (utils/split-and-nest #"_")
                     (assoc :ingredients (->> (ingredients-for-recipe conn id)
-                                             (map #(split-and-nest % #"_"))
+                                             (map #(utils/split-and-nest % #"_"))
                                              (into #{}))))))
          doall)))
 
@@ -116,11 +98,11 @@
 
          (map (fn [{:keys [id] :as recipe}]
                 (-> recipe
-                    (underscore->hypen :recipe_date)
-                    (underscore->hypen :thumbnail_link)
-                    (split-and-nest #"_")
+                    (utils/underscore->hypen :recipe_date)
+                    (utils/underscore->hypen :thumbnail_link)
+                    (utils/split-and-nest #"_")
                     (assoc :ingredients (->> (ingredients-for-recipe conn id)
-                                             (map #(split-and-nest % #"_"))
+                                             (map #(utils/split-and-nest % #"_"))
                                              (into #{}))))))
          doall)))
 
@@ -129,24 +111,28 @@
     (->
      (ingredient-names conn ingredient-id)
      first
-     (split-and-nest #"_")
+     (utils/split-and-nest #"_")
      :name
      language)))
 
 (defn get-list-of-all-ingredients [db]
   (j/with-db-transaction [conn db]
     (map (fn [ingredient]
-           (split-and-nest ingredient  #"_"))
+           (utils/split-and-nest ingredient  #"_"))
          (list-of-all-ingredients conn))))
 
 (defn get-list-of-all-recipes [db]
   (j/with-db-transaction [conn db]
     (map (fn [ingredient]
-           (split-and-nest ingredient  #"_"))
+           (utils/split-and-nest ingredient  #"_"))
          (list-of-all-recipes conn))))
 
 (defn get-list-of-all-units [db]
   (j/with-db-transaction [conn db]
     (map (fn [unit]
-           (split-and-nest unit #"_"))
+           (utils/split-and-nest unit #"_"))
          (all-units conn))))
+
+;;(defn save-new-recipe! [db ])
+
+

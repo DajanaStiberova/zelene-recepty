@@ -35,129 +35,134 @@
       </div>
     </div>
     <div id="ar-content">
-
-      <div id="ar-left">
-        <select id="category">
-          <option>Kategoria</option>
-          <option>Hlavné jedlá</option>
-          <option>Dobroty</option>
-        </select>
-        <div id="ingredients-amounts-units">
-          <table>
-            <tr>
-              <td>
-                <select id="ingredient">
-                  <option>Ingrediencia</option>
-                  <option>Jablká</option>
-                  <option>Agáve</option>
-                </select>
-              </td>
-              <td>
-                <input id="amount" type="text" placeholder="počet">
-              </td>
-              <td>
-                <select id="unit">
-                  <option>Kusov</option>
-                  <option>Lyžičiek</option>
-                  <option>Pohárov</option>
-                </select>
-              <td>
-            </tr>
-            <tr>
-              <td>
-                <select id="ingredient">
-                  <option>Ingrediencia</option>
-                  <option>Jablká</option>
-                  <option>Agáve</option>
-                </select>
-              </td>
-              <td>
-                <input id="amount" type="text" placeholder="počet">
-              </td>
-              <td>
-                <select id="unit">
-                  <option>Kusov</option>
-                  <option>Lyžičiek</option>
-                  <option>Pohárov</option>
-                </select>
-              <td>
-            </tr>
-          </table>
-          <div id="add-remove">
-            <a href="#">+</a>
-            <a href="#">-</a>
+      <form action="/add-recipe" method="POST">
+        <div id="ar-left">
+          <select name="category" id="category">
+            <option>Kategoria</option>
+            <option>Hlavné jedlá</option>
+            <option>Dobroty</option>
+          </select>
+          <div id="ingredients-amounts-units">
+            <table>
+              <tr>
+                <td>
+                  <div id="ingredients-for-snippet">
+                    <select name="ingredient_name" id="ingredient">
+                      <option>Ingrediencia</option>
+                      <option>Jablká</option>
+                      <option>Agáve</option>
+                    </select>
+                  </div>
+                </td>
+                <td>
+                  <input name="ingredient_amount" id="amount" type="text" placeholder="počet">
+                </td>
+                <td>
+                  <div id="units-for-snippet">
+                    <select name="ingredient_unit" id="unit">
+                      <option>Kusov</option>
+                      <option>Lyžičiek</option>
+                      <option>Pohárov</option>
+                    </select>
+                  </div>
+                <td>
+              </tr>
+              <tr>
+                <td>
+                  <select name="ingredient_name" id="ingredient">
+                    <option>Ingrediencia</option>
+                    <option>Jablká</option>
+                    <option>Agáve</option>
+                  </select>
+                </td>
+                <td>
+                  <input name="ingredient_amount" id="amount" type="text" placeholder="počet">
+                </td>
+                <td>
+                  <select name="ingredient_unit" id="unit">
+                    <option>Kusov</option>
+                    <option>Lyžičiek</option>
+                    <option>Pohárov</option>
+                  </select>
+                <td>
+              </tr>
+            </table>
+            <div id="add-remove">
+              <a href="#">+</a>
+              <a href="#">-</a>
+            </div>
+          </div>
+          <div id="new-ingredient">
+            <table>
+              <tr>
+                <td>
+                  <input name="ingredient_name" id="add-ingredient" type="text" placeholder="Nová ingrediencia">
+                </td>
+                <td>
+                  <input name="ingredient_amount" id="add-amount" type="text" placeholder="počet">
+                </td>
+                <td>
+                  <select name="ingredient_unit" id="unit">
+                    <option>Ingrediencia</option>
+                    <option>Kusov</option>
+                    <option>Lyžičiek</option>
+                    <option>Pohárov</option>
+                  </select>
+                <td>
+              </tr>
+            </table>
+            <div id="add-remove">
+              <a href="#">+</a>
+              <a href="#">-</a>
+            </div>
+          </div>
+          <div class="file-upload">
+            <!-- <h1>Pridaj obrázok</h1> -->
+            <input id="file-upload" type="file"  />
+            <div id="add-remove">
+              <a href="#">+</a>
+              <a href="#">-</a>
+            </div>
+          </div>
+          <div id="serving-section">
+            <table>
+              <tr>
+                <td>
+                  <input name="serving-amount" id="serving-amount" type="text" placeholder="Výsledné množstvo">
+                </td>
+              <tr>
+                <td>
+                  <select name="serving-unit" id="serving-unit">
+                    <option>Ingrediencia</option>
+                    <option>Jablká</option>
+                    <option>Agáve</option>
+                  </select>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div id="serving-time">
+            <input name="seving-time" type="text" placeholder="čas prípravy v minútach">
+          </div>
+          <div id="origin">
+            <input name="origin" type="text" placeholder="zdroj">
           </div>
         </div>
-        <div id="new-ingredient">
-          <table>
-            <tr>
-              <td>
-                <input id="add-ingredient" type="text" placeholder="Nová ingrediencia">
-              </td>
-              <td>
-                <input type="text" placeholder="počet">
-              </td>
-              <td>
-                <select id="unit">
-                  <option id="ingredient">Ingrediencia</option>
-                  <option>Kusov</option>
-                  <option>Lyžičiek</option>
-                  <option>Pohárov</option>
-                </select>
-              <td>
-            </tr>
-          </table>
-          <div id="add-remove">
-            <a href="#">+</a>
-            <a href="#">-</a>
+        <div id="ar-recipe-text-and-title">
+          <div id="ar-recipe-title">
+            <input type="text" name="recipe-name" placeholder="Názov receptu">
+          </div>
+          <div id="ar-recipe-text">
+            <textarea placeholder="Postup" name="descrpition" cols="90" rows="20">
+            </textarea>
+          </div>
+          <div id="send-recipe">
+            <button type="submit">
+              Odošli recept
+            </button>
           </div>
         </div>
-        <div class="file-upload">
-          <!-- <h1>Pridaj obrázok</h1> -->
-          <input id="file-upload" type="file"  />
-          <div id="add-remove">
-            <a href="#">+</a>
-            <a href="#">-</a>
-          </div>
-        </div>
-        <div id="serving-section">
-          <table>
-            <tr>
-              <td>
-                <input type="text" placeholder="Výsledné množstvo">
-              </td>
-            <tr>
-              <td>
-                <select id="serving-unit">
-                  <option>Ingrediencia</option>
-                  <option>Jablká</option>
-                  <option>Agáve</option>
-                </select>
-              </td>
-            </tr>
-          </table>
-        </div>
-        <div id="serving-time">
-          <input type="text" placeholder="čas prípravy v minútach">
-        </div>
-        <div id="origin">
-          <input type="text" placeholder="zdroj">
-        </div>
-      </div>
-      <div id="ar-recipe-text-and-title">
-        <div id="ar-recipe-title">
-          <input type="text" placeholder="Názov receptu">
-        </div>
-        <div id="ar-recipe-text">
-          <textarea placeholder="Postup" cols="90" rows="20">
-          </textarea>
-        </div>
-        <div id="send-recipe">
-          <button type="submit">
-            Odošli recept
-          </button>
-        </div>
-      </div>
+      </form>
     </div>
     <a id="follow-me" href="https://twitter.com/intent/user?screen_name=zelenerecepty"><img src="images/birds_and_sign.png" alt="Follow me"></a>
     <footer>

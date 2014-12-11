@@ -1,6 +1,26 @@
 (ns zelene-recepty.utils
   (:require [clojure.string :as string]))
 
+(defn split-and-nest
+  "Splits keyword names in associative structure by specified regexp
+  and creates nested structure if needed, existing non-splitable key-val
+  mappings are unaffected."
+  [data delimiter]
+  (reduce (fn [acc [k v]]
+            (let [key-strs (-> k name (string/split delimiter))]
+              (assoc-in acc (map keyword key-strs) v)))
+          {}
+          data))
+
+(defn underscore->hypen
+  [data k]
+  (if-let [v (get data k)]
+    (-> data
+        (dissoc k)
+        (assoc (-> k name (string/replace #"_" "-") keyword) v))
+    data))
+
+
 (defn- mins [number]
   (rem number 60))
 
@@ -27,3 +47,18 @@
   (->> (group-by-first-letter ks sequence-of-maps)
        (sort-by first)
        (map (juxt first (comp (partial sort-by #(get-in % ks)) second)))))
+
+
+(defn recipe-data-from-params [params]
+  (-> params
+      second
+      (split-and-nest #"_")
+      (update-in [:ingredient] #(->> (reduce (fn [acc [k v]]
+                                               (assoc acc k
+                                                      (map (fn [x] (assoc {} k x)) v)))
+                                             {} %)
+                                     vals
+                                     (map (partial reduce into []))
+                                     (apply map vector)
+                                     (map (partial into {}))
+                                     (into [])))))

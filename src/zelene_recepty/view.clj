@@ -134,6 +134,33 @@
   [:a#twitter-recipe] (html/content twitter-share-text)
   [:a#twitter-recipe] (html/set-attr :href twitter-share))
 
+(html/deftemplate recipe-template-full "recipe.html" 
+  [{:keys [recipe-date title images serving preparation-time origin ingredients text] :as recipe}
+   language ingredients-title instructions-title time-title origin-title
+   facebook-share-text facebook-share twitter-share-text twitter-share]
+  [:div#date :p] (html/content recipe-date)
+  [:div#recipe-title :h2] (html/content title)
+  [:div.polaroid-images] (html/content (map (fn [{:keys [link name]}]
+                                              (recipe-images link name))
+                                            images))
+  [:div#serving :p] (html/content (str (:amount serving)))
+  [:div#time :p] (html/content preparation-time)
+  [:div#ingredients :table] (html/content (map ingredients-snippet ingredients))
+  [:div#ingredients :h1] (html/content ingredients-title)
+  [:div#instructions :h1] (html/content instructions-title)
+  [:div#instructions :p] (html/html-content text)
+  [:div#serving :h1] (html/content (:unit-name serving))
+  [:div#time :h1] (html/content time-title)
+  [:div#origin :h1] (html/content origin-title)
+  [:div#origin :a] (html/do->
+                    (html/set-attr :href origin)
+                    (html/content origin))
+  [:a#facebook-recipe] (html/content facebook-share-text)
+  [:a#facebook-recipe] (html/set-attr :href facebook-share)
+  [:a#twitter-recipe] (html/content twitter-share-text)
+  [:a#twitter-recipe] (html/set-attr :href twitter-share))
+
+
 (def recipe-template (comp (partial apply html/emit*) recipe-snippet))
 
 (html/defsnippet select-category "add-recipe.html"
@@ -142,17 +169,18 @@
   [:option] (html/content category))
 
 (html/defsnippet select-ingredient "add-recipe.html"
-  [:select#ingredient [:option (html/nth-of-type 1)]]
+  [:div#ingredients-amounts-units :div#ingredients-for-snippet [:select#ingredient (html/nth-of-type 1)] [:option (html/nth-of-type 1)]]
   [ingredient]
   [:option] (html/content ingredient))
 
 (html/defsnippet select-unit "add-recipe.html"
-  [:select#unit [:option (html/nth-of-type 1)]]
+  [:div#ingredients-amounts-units :div#units-for-snippet [:select#unit (html/nth-of-type 1)] [:option (html/nth-of-type 1)]]
   [unit]
   [:option] (html/content unit))
 
 (html/deftemplate add-recipe-template "add-recipe.html"
-  [categories title language-image language-link categories-titles ingredients-titles units-titles amount-text]
+  [categories title language-image language-link categories-titles ingredients-titles
+   units-titles amount-text add-ingredient-text serving-amount-text serving-time-text origin-text recipe-title-placeholder method-placeholder submit-text]
   [:ul#menu] (html/content
               (map (fn [{:keys [title link]}]
                      (menu-bar title (name link)))
@@ -173,7 +201,15 @@
                                               (select-unit unit))
                                             units-titles))
 
-  [:input#amount] (html/set-attr :placeholder amount-text))
+  [:input#amount] (html/set-attr :placeholder amount-text)
+  [:div#new-ingredient :input#add-ingredient] (html/set-attr :placeholder add-ingredient-text)
+  [:div#new-ingredient :input#add-amount] (html/set-attr :placeholder amount-text)
+  [:div#serving-section :input#serving-amount] (html/set-attr :placeholder serving-amount-text)
+  [:div#serving-time :input] (html/set-attr :placeholder serving-time-text)
+  [:div#origin :input] (html/set-attr :placeholder origin-text)
+  [:div#ar-recipe-title :input] (html/set-attr :placeholder recipe-title-placeholder)
+  [:div#ar-recipe-text :textarea] (html/set-attr :placeholder method-placeholder)
+  [:div#send-recipe :button] (html/content submit-text))
 
 ;; Returns not-found html with dynamic message (first argument) in the content of
 ;; 'div#title h1' tag and filled categories (sequence of category maps)

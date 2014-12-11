@@ -942,13 +942,14 @@ select:after {
     margin-top: 50px;
     font-size: 50px;
     font-family: Mathilde;
+    cursor:pointer;
 
 }
 
-#send-recipe button:hover {
-    box-shadow: 0 3px 8px #000;
+/* #send-recipe button:hover { */
+/*     box-shadow: 0 3px 8px #000; */
 
-}
+/* } */
 
 #ingredients-amounts-units {
     padding-bottom:30px;
