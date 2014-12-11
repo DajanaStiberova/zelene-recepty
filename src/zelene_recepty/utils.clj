@@ -6,11 +6,11 @@
   and creates nested structure if needed, existing non-splitable key-val
   mappings are unaffected."
   [data delimiter]
-  (reduce (fn [acc [k v]]
-            (let [key-strs (-> k name (string/split delimiter))]
-              (assoc-in acc (map keyword key-strs) v)))
-          {}
-          data))
+  (when data (reduce (fn [acc [k v]]
+                       (let [key-strs (-> k name (string/split delimiter))]
+                         (assoc-in acc (map keyword key-strs) v)))
+                     {}
+                     data)))
 
 (defn underscore->hypen
   [data k]
@@ -49,16 +49,18 @@
        (map (juxt first (comp (partial sort-by #(get-in % ks)) second)))))
 
 
-(defn recipe-data-from-params [params]
-  (-> params
-      second
-      (split-and-nest #"_")
-      (update-in [:ingredient] #(->> (reduce (fn [acc [k v]]
-                                               (assoc acc k
-                                                      (map (fn [x] (assoc {} k x)) v)))
-                                             {} %)
-                                     vals
-                                     (map (partial reduce into []))
-                                     (apply map vector)
-                                     (map (partial into {}))
-                                     (into [])))))
+(defn recipe-data-from-params [form-params]
+  (when form-params (if (:ingredient form-params)
+                      (-> form-params
+                          (split-and-nest #"_")
+                          (update-in  [:ingredient] #(->> (reduce (fn [acc [k v]]
+                                                                    (assoc acc k
+                                                                           (map (fn [x] (assoc {} k x)) v)))
+                                                                  {} %)
+                                                          vals
+                                                          (map (partial reduce into []))
+                                                          (apply map vector)
+                                                          (map (partial into {}))
+                                                          (into []))))
+                      (-> form-params
+                          (split-and-nest #"_")))))

@@ -3,6 +3,7 @@
             [ring.middleware.content-type :as content-type]
             [ring.middleware.not-modified :as not-modified]
             [ring.middleware.params :as params]
+            [ring.middleware.stacktrace :as stacktrace]
             [zelene-recepty.middleware :as middleware]
             [zelene-recepty.utils :as utils]
             [zelene-recepty.db :as db]
@@ -193,7 +194,8 @@
                                                   (lang {:sk "Názov receptu" :en "Recipe title"})
                                                   (lang {:sk "Postup" :en "Method"})
                                                   (lang {:sk "Pošli" :en "Submit"}))})
-                  #{"/add-recipe" :post} (fn [{:keys [lang] :as request}]
+                  #{"/add-recipe" :post} (fn [{:keys [lang form-params] :as request}]
+                                           (println form-params)
                                            {:status 200
                                             :body (select-keys request [:params])})})
 
@@ -211,9 +213,11 @@
                  (middleware/wrap-in-construction in-construction)
                  middleware/wrap-ua-info
                  middleware/wrap-language
+                 middleware/wrap-add-recipe-params
                  middleware/wrap-keyword-params
                  params/wrap-params
                  middleware/wrap-html-response
                  (resource/wrap-resource "public")
                  content-type/wrap-content-type
-                 not-modified/wrap-not-modified))
+                 not-modified/wrap-not-modified
+                 stacktrace/wrap-stacktrace))

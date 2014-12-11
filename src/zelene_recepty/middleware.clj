@@ -48,7 +48,6 @@
       (in-construction-handler request)
       (handler request))))
 
-(comment (defn wrap-add-recipe-params [handler]
+(defn wrap-add-recipe-params [handler]
   (fn [request]
-    (handler (-> request
-                 (update-in [:params] utils/recipe-data-from-params))))))
+    (handler (update-in request [:form-params] utils/recipe-data-from-params))))

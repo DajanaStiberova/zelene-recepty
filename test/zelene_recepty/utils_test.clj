@@ -5,35 +5,38 @@
 (deftest recipe-data-from-params
   (testing
       "Function should return recipe data in correct form"
-    (is (= (utils/recipe-data-from-params [:params
-                                           {:category "Sladkosti",
-                                            :ingredient_name
-                                            ["Jablčný ocot" "Himalájska soľ" "Cuketa"],
-                                            :ingredient_amount ["2" "1" "3"],
-                                            :recipe-name "Falafel",
-                                            :seving-time "30",
-                                            :origin "dajanka",
-                                            :descrpition " Uvarime a zjeme",
-                                            :serving-unit "Porcie",
-                                            :ingredient_unit ["Lyžice" "Pohár" "Kusy"],
-                                            :serving-amount "4"}])
-           {:serving-amount "4",
-            :serving-unit "Porcie",
-            :descrpition " Uvarime a zjeme",
-            :origin "dajanka",
-            :seving-time "30",
-            :recipe-name "Falafel",
-            :ingredient
-            [{:name "Jablčný ocot", :amount "2", :unit "Lyžice"}
-             {:name "Himalájska soľ", :amount "1", :unit "Pohár"}
-             {:name "Cuketa", :amount "3", :unit "Kusy"}], :category "Sladkosti"}))))
+    (is (= (utils/recipe-data-from-params  {:category "Sweets"
+                                            :ingredient_name ["Avocado" "Cashew" "Persimmon"],
+                                            :ingredient_amount ["1" "2" "1"],
+                                            :recipe-name "persimmon cake,"
+                                            :seving-time "120"
+                                            :origin "Dajanka"
+                                            :descrpition "Make persimon cake"
+                                            :serving-unit "Servings"
+                                            :ingredient_unit ["Piece" "Cups" "Piece"],
+                                            :serving-amount "3"})
+           {:serving-amount "3",
+            :serving-unit "Servings",
+            :descrpition "Make persimon cake",
+            :origin "Dajanka",
+            :seving-time "120",
+            :recipe-name "persimmon cake,",
+            :ingredient [{:name "Avocado", :amount "1", :unit "Piece"}
+                         {:name "Cashew", :amount "2", :unit "Cups"}
+                         {:name "Persimmon", :amount "1", :unit "Piece"}], :category "Sweets"})))
+  (testing "That it doesn't crash on nil"
+    (is (= nil (utils/recipe-data-from-params nil)))))
 
 (deftest split-and-nest
   (testing
       "Function should splits keyword names in associative structure by specified regexp and create nested structure if needed, existing non-splitable key-val
   mappings are unaffected."
     (is (= (utils/split-and-nest {:ingredient_amount ["2" "1" "3"] :ingredient_name ["Jablčný ocot" "Himalájska soľ" "Cuketa"]} #"_")
-           {:ingredient {:amount ["2" "1" "3"], :name ["Jablčný ocot" "Himalájska soľ" "Cuketa"]}}))))
+           {:ingredient {:amount ["2" "1" "3"], :name ["Jablčný ocot" "Himalájska soľ" "Cuketa"]}})))
+  (testing "That it doesn't crash on nil"
+    (is (= nil (utils/split-and-nest nil #"_"))))
+  (testing "That it doesn't crash on empty map"
+    (is (= {} (utils/split-and-nest {} #"_")))))
 
 (deftest underscore->hypen
   (testing

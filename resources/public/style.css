@@ -841,8 +841,9 @@ select:after {
 
 #ar-recipe-text-and-title {
     display:inline-block;
-    float:right;
-    margin-right: 100px;
+    margin-left: 100px;
+    vertical-align: top;
+}
 }
 
 #ar-recipe-title {

@@ -7,6 +7,7 @@
                  [org.clojure/clojurescript "0.0-2371"]
                  [org.clojure/java.jdbc "0.3.6"]
                  [ring/ring-core "1.3.1"]
+                 [ring/ring-devel "1.3.1"]
                  [ring/ring-jetty-adapter "1.3.1"]
                  [clj-time "0.8.0"]
                  [yesql "0.4.0"]
@@ -18,6 +19,7 @@
                  [net.sf.uadetector/uadetector-resources "2014.10"]
                  [org.postgresql/postgresql "9.3-1100-jdbc41"]]
   :main ^:skip-aot zelene-recepty.main
+  :repl-options {:init-ns zelene-recepty.dev}
   :plugins [[lein-cljsbuild "1.0.4-SNAPSHOT"]]
   :cljsbuild {:builds [{:id "zelenerecepty-app"
                         :source-paths ["src-cljs"]

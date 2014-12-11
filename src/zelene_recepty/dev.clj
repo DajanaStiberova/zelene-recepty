@@ -3,4 +3,4 @@
             [zelene-recepty.web :as web]))
 
 (defonce server (jetty/run-jetty #'web/handler {:port 3000
-                                                :join? false }))
+                                                :join? false}))
