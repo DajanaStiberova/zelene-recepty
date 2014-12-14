@@ -136,7 +136,6 @@
                                        (let [ingredient-id (-> request :params :ingredientId (maybe-param 0))]
                                          {:status 200
                                           :body (view/main-template
-                                                 (lang {:sk "Recept" :en "Recipe"})
                                                  (->>
                                                   (db/get-thumbnails-for-ingredient db/zelene-recepty-db ingredient-id)
                                                   (map (fn [recipe]

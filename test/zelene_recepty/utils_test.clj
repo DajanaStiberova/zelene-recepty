@@ -24,8 +24,12 @@
             :ingredient [{:name "Avocado", :amount "1", :unit "Piece"}
                          {:name "Cashew", :amount "2", :unit "Cups"}
                          {:name "Persimmon", :amount "1", :unit "Piece"}], :category "Sweets"})))
-  (testing "That it doesn't crash on nil"
-    (is (= nil (utils/recipe-data-from-params nil)))))
+  (testing
+      "That it doesn't crash on nil"
+    (is (= nil (utils/recipe-data-from-params nil))))
+  (testing
+      "That it doesn't crash on empty map"
+    (is (= {} (utils/recipe-data-from-params {})))))
 
 (deftest split-and-nest
   (testing

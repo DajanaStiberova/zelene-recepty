@@ -50,7 +50,7 @@
 
 
 (defn recipe-data-from-params [form-params]
-  (when form-params (if (:ingredient form-params)
+  (when form-params (if (:ingredient_name form-params)
                       (-> form-params
                           (split-and-nest #"_")
                           (update-in  [:ingredient] #(->> (reduce (fn [acc [k v]]
