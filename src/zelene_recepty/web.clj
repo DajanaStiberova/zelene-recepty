@@ -22,6 +22,9 @@
   (URLEncoder/encode (format "%s/home#/recipe/%s/lang/%s")
                      "UTF-8"))
 
+(defn redirect-script [server-name recipe-id lang]
+  (format "window.location.href=%s/home#/recipe/%s/lang/%s;"
+          server-name recipe-id (name lang)))
 
 (defn- list-of-categories
   [current-language]
@@ -167,12 +170,39 @@
                                                 (lang {:sk "Zdieľaj na facebooku" :en "Share on facebook"})
                                                 (format "http://www.facebook.com/sharer.php?u=%s"
                                                         (URLEncoder/encode
-                                                         (format "http://%s/home#/recipe/%s/lang/%s"
+                                                         (format "http://%s/recipe-full?Id=%s&lang=%s"
                                                                  server-name recipe-id (name lang)) "UTF-8"))
                                                 (lang {:sk "Zdieľaj na twittri" :en "Share on twitter"})
                                                 (format "http://twitter.com/share?url=%s"
-                                                        (URLEncoder/encode (format "http://%s/home#/recipe/%s/lang/%s" server-name recipe-id (name lang))
+                                                        (URLEncoder/encode (format "http://%s/recipe-full?Id=%s&lang=%s" server-name recipe-id (name lang))
                                                                            "UTF-8")))}))
+                  #{"/recipe-full" :get} (fn [{:keys [lang server-name uri query-string] :as request}]
+                                           (let [recipe-id (-> request :params :Id (maybe-param 0))]
+                                             {:status 200
+                                              :body (view/recipe-template-full
+
+                                                     (update-recipe (db/get-recipe db/zelene-recepty-db recipe-id) lang)
+                                                     lang
+                                                     (lang {:en "Ingredients" :sk "Ingrediencie"})
+                                                     (lang {:en "Method" :sk "Postup"})
+                                                     (lang {:sk "Čas" :en "Time"})
+                                                     (lang {:sk "Zdroj:" :en "Origin:"})
+                                                     (lang {:sk "Zdieľaj na facebooku" :en "Share on facebook"})
+                                                     (format "http://www.facebook.com/sharer.php?u=%s"
+                                                             (URLEncoder/encode
+                                                              (format "http://%s/recipe-full?id=%s&lang=%s"
+                                                                      server-name recipe-id (name lang)) "UTF-8"))
+                                                     (lang {:sk "Zdieľaj na twittri" :en "Share on twitter"})
+                                                     (format "http://twitter.com/share?url=%s"
+                                                             (URLEncoder/encode (format "http://%s/recipe-full?id=%s&lang=%s" server-name recipe-id (name lang))
+                                                                                "UTF-8"))
+                                                     (str (lang {:sk "http://zelenerecepty.sk/" :en "http://green-recipes.com/"})
+                                                          (:thumbnail_link (first (db/get-thumbnail-for-recipe db/zelene-recepty-db recipe-id))))
+                                                     (lang {:sk "www.zelenerecepty.sk" :en "www.green-recipes.com"})
+                                                     (apply str (interpose ", " (map lang (db/get-list-of-ingredients-for-recipe db/zelene-recepty-db recipe-id))))
+                                                     (format "window.location.href=\"home#/recipe/%s/lang/%s\";"
+                                                             recipe-id (name lang)))}))
+
                   #{"/add-recipe" :get} (fn [{:keys [lang] :as request}]
                                           {:status 200
                                            :body (view/add-recipe-template

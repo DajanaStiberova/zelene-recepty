@@ -134,10 +134,16 @@
   [:a#twitter-recipe] (html/content twitter-share-text)
   [:a#twitter-recipe] (html/set-attr :href twitter-share))
 
-(html/deftemplate recipe-template-full "recipe.html" 
-  [{:keys [recipe-date title images serving preparation-time origin ingredients text] :as recipe}
-   language ingredients-title instructions-title time-title origin-title
-   facebook-share-text facebook-share twitter-share-text twitter-share]
+(html/deftemplate recipe-template-full "recipe.html"
+  [{:keys [title recipe-date images serving preparation-time origin ingredients text] :as recipe}
+   language ingredients-title instructions-title 
+   time-title origin-title facebook-share-text facebook-share twitter-share-text
+   twitter-share image-link url meta-description-ingredients redirect-script]
+  [[:meta (html/nth-of-type 1)]] (html/set-attr :content title)
+  [[:meta (html/nth-of-type 3)]] (html/set-attr :content image-link)
+  [[:meta (html/nth-of-type 4)]] (html/set-attr :content url)
+  [[:meta (html/nth-of-type 5)]] (html/set-attr :content meta-description-ingredients)
+  [[:script (html/nth-of-type 1)]] (html/content redirect-script)
   [:div#date :p] (html/content recipe-date)
   [:div#recipe-title :h2] (html/content title)
   [:div.polaroid-images] (html/content (map (fn [{:keys [link name]}]

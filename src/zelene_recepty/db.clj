@@ -23,6 +23,15 @@
 (defquery images-for-recipe  "queries/images_for_recipe.sql")
 (defquery amounts-and-units-for-ingredients-in-recipe  "queries/amounts_and_units_for_ingredients_in_recipe.sql")
 
+(defn get-list-of-ingredients-for-recipe [db recipe-id]
+  (j/with-db-transaction [conn db]
+    (map #(:name (utils/split-and-nest % #"_"))
+         (ingredients-for-recipe conn recipe-id))))
+
+(defn get-thumbnail-for-recipe [db recipe-id]
+  (j/with-db-transaction [conn db]
+    (thumbnail-for-recipe conn recipe-id)))
+
 
 (defn categories-menu [db]
   (j/with-db-transaction [conn db]
@@ -134,5 +143,3 @@
          (all-units conn))))
 
 ;;(defn save-new-recipe! [db ])
-
-
